@@ -1,0 +1,26 @@
+
+> site-creator-vinext-starter@0.1.0 test:archive
+> node --experimental-strip-types scripts/test-archive.mjs
+
+PASS: Five programs; Nursing/Midwifery appears once
+PASS: Admin adds paper
+PASS: Retired input fields are rejected
+PASS: Admin edits paper; authors and status persist
+PASS: Admin uploads PDF and can download exact bytes
+PASS: visitor: list and detail contain no private data
+PASS: visitor: full text and PDF return 403
+PASS: visitor: add/edit/delete/upload denied
+PASS: visitor: abstract readable; detail HTML excludes full-text controls
+PASS: public user: list and detail contain no private data
+PASS: public user: full text and PDF return 403
+PASS: public user: add/edit/delete/upload denied
+PASS: public user: abstract readable; detail HTML excludes full-text controls
+PASS: Direct file paths are inaccessible
+PASS: Admin full-text endpoint works; retired response fields absent
+PASS: Merged program and both legacy filters find the paper
+PASS: Active schema omits removed fields
+PASS: Citation formats handle 0/1/2/3/7/21 authors without private fields
+PASS: Blocked clipboard fallback copies text or offers manual selection
+Archive migration complete. Original database preserved at C:\Users\KurtJohn\Desktop\1KUTA\verification\migration-backups\before-archive-update-1790866430166.sqlite
+PASS: Migration preserves legacy papers, links, files and Introduction
+PASS: Admin deletes paper and links cleanly

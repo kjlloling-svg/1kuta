@@ -1,0 +1,51 @@
+
+> site-creator-vinext-starter@0.1.0 build
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 42ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1252ms
+  Running TypeScript ...
+  Finished TypeScript in 5.4s ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/5) ...
+  Generating static pages using 15 workers (1/5) 
+  Generating static pages using 15 workers (2/5) 
+  Generating static pages using 15 workers (3/5) 
+✓ Generating static pages using 15 workers (5/5) in 421ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /about
+├ ƒ /admin
+├ ƒ /admin/setup
+├ ƒ /api/admin/setup
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/me
+├ ƒ /api/auth/register
+├ ƒ /api/bookmarks
+├ ƒ /api/keywords
+├ ƒ /api/papers
+├ ƒ /api/papers/[id]
+├ ƒ /api/papers/[id]/download
+├ ƒ /api/papers/[id]/sections
+├ ƒ /api/papers/[id]/upload
+├ ƒ /api/programs
+├ ƒ /api/research-papers/[slug]/abstract
+├ ƒ /api/stats
+├ ƒ /faq
+├ ƒ /login
+├ ƒ /programs
+├ ƒ /register
+├ ƒ /research-papers
+└ ƒ /research-papers/[slug]
+
+
+ƒ  (Dynamic)  server-rendered on demand
+

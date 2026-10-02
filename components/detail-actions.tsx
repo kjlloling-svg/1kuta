@@ -1,0 +1,8 @@
+'use client';
+import {useRef,useState} from 'react';
+export function DetailActions({slug,title,hasFile}:{id:number;slug:string;title:string;hasFile:boolean}){
+ const dialog=useRef<HTMLDialogElement>(null),[text,setText]=useState<string|null>(null),[notice,setNotice]=useState('');
+ async function open(){try{const r=await fetch(`/api/papers/${encodeURIComponent(slug)}/sections`,{cache:'no-store'});if(!r.ok)throw new Error('Administrator access is required.');setText(((await r.json()) as {full_text:string|null}).full_text);dialog.current?.showModal();}catch(e){setNotice((e as Error).message);}}
+ return <section className="detail-actions"><h2>Administrator access</h2><div className="card-actions"><button type="button" onClick={open}>View full paper</button>{hasFile&&<a className="button button-outline" href={`/api/papers/${encodeURIComponent(slug)}/download`}>Download</a>}</div><p className="card-toast" role="status">{notice}</p><dialog ref={dialog} className="archive-modal" aria-label={`Full paper: ${title}`} onClick={e=>{if(e.target===dialog.current)dialog.current?.close();}}><div className="modal-heading"><h2>{title}</h2><button type="button" aria-label="Close full paper" onClick={()=>dialog.current?.close()}>×</button></div>{text?<section className="paper-section"><h3>Introduction</h3><p>{text}</p></section>:<p>No separate full text is stored. Use the attached PDF to view the complete paper.</p>}{hasFile&&<iframe className="admin-pdf-viewer" title={`Full paper PDF: ${title}`} src={`/api/papers/${encodeURIComponent(slug)}/download?inline=1`}/>}{hasFile&&<a className="button button-primary" href={`/api/papers/${encodeURIComponent(slug)}/download`}>Download full paper PDF</a>}</dialog></section>;
+}
+

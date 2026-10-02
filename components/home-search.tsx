@@ -1,0 +1,2 @@
+/** Native GET form keeps home search usable before JavaScript loads. */
+export function HomeSearch(){return <form className="hero-search" role="search" action="/research-papers" method="get"><label className="sr-only" htmlFor="home-search">Search research papers</label><span aria-hidden="true">⌕</span><input id="home-search" name="q" type="search" placeholder="Search titles, authors, or keywords"/><button type="submit">Search archive</button></form>;}

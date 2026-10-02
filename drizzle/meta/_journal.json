@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1790693503303,
+      "tag": "0000_blue_galactus",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1790694651765,
+      "tag": "0001_pretty_doomsday",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1790698818781,
+      "tag": "0002_curly_the_enforcers",
+      "breakpoints": true
+    }
+  ]
+}

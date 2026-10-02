@@ -1,0 +1,22 @@
+[
+  {
+    "action": "hard reload",
+    "checked": true,
+    "theme": "dark"
+  },
+  {
+    "action": "navigate",
+    "checked": true,
+    "theme": "dark"
+  },
+  {
+    "action": "back",
+    "checked": true,
+    "theme": "dark"
+  },
+  {
+    "action": "forward",
+    "checked": true,
+    "theme": "dark"
+  }
+]

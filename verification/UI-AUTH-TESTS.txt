@@ -1,0 +1,18 @@
+
+> site-creator-vinext-starter@0.1.0 test:auth
+> node scripts/test-local-auth.mjs
+
+PASS: Logged-out me returns 401
+PASS: Protected admin redirects to Login
+PASS: Empty fields rejected
+PASS: Malformed email rejected
+PASS: Wrong password has generic error
+PASS: Unknown user has same generic error
+PASS: Correct admin login and Remember me cookie
+PASS: Session persists across repeated page requests
+PASS: Admin dashboard opens
+PASS: Logout revokes session
+PASS: Public login goes home and lacks admin access
+PASS: Passwords stored as bcrypt hashes
+PASS: Cross-origin login rejected
+PASS: Login rate limiter returns 429

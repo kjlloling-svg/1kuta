@@ -1,0 +1,17 @@
+{
+  "cssBeforeBytes": 35742,
+  "cssAfterBytes": 41038,
+  "cssBeforeGzip": 8488,
+  "cssAfterGzip": 8990,
+  "backdropDeclarationsBefore": 10,
+  "backdropDeclarationsAfter": 6,
+  "assets": {
+    "kuta-locality-original.jpg": 769172,
+    "kuta-locality.webp": 106790,
+    "kuta-locality.jpg": 98302,
+    "slsu-gumaca-original.jpg": 507443,
+    "slsu-gumaca-logo.webp": 14448
+  },
+  "compiledCssBeforeSourceScopeBytes": 163733,
+  "compiledCssAfterSourceScopeBytes": 57336
+}

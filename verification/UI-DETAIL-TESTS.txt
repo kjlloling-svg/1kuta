@@ -1,0 +1,19 @@
+
+> site-creator-vinext-starter@0.1.0 test:ui
+> node --experimental-strip-types scripts/test-ui.mjs
+
+PASS: visitor details: one author(s), citation DTO and private-field boundary
+PASS: admin details: one author(s), citation DTO and private-field boundary
+PASS: visitor details: several author(s), citation DTO and private-field boundary
+PASS: admin details: several author(s), citation DTO and private-field boundary
+PASS: visitor details: suffix author(s), citation DTO and private-field boundary
+PASS: admin details: suffix author(s), citation DTO and private-field boundary
+PASS: visitor details: missing optional author(s), citation DTO and private-field boundary
+PASS: admin details: missing optional author(s), citation DTO and private-field boundary
+PASS: / includes progress; locality image only on homepage
+PASS: /research-papers includes progress; locality image only on homepage
+PASS: /programs includes progress; locality image only on homepage
+PASS: /about includes progress; locality image only on homepage
+PASS: /faq includes progress; locality image only on homepage
+PASS: /login includes progress; locality image only on homepage
+PASS: /admin includes progress; locality image only on homepage

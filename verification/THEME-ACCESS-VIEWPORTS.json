@@ -1,0 +1,2786 @@
+[
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#f3c76e",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#ecadd4",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#edac94",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#82d5b8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#8dd0f8",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 320,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "23px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/programs",
+    "cards": [
+      {
+        "accent": "#bf8a2d",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b06690",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#b97059",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "30px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/research-papers",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "22px",
+        "pseudoRadius": "18px",
+        "radius": "18px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "route": "/admin",
+    "cards": [
+      {
+        "accent": "#438978",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      },
+      {
+        "accent": "#498bc0",
+        "bottom": "0px",
+        "clip": "hidden",
+        "left": "0px",
+        "padding": "0px",
+        "pseudoRadius": "0px",
+        "radius": "0px",
+        "relative": "relative",
+        "top": "0px",
+        "width": "6px"
+      }
+    ],
+    "headerTop": 4,
+    "overflow": false,
+    "theme": "light"
+  }
+]
