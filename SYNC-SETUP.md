@@ -112,3 +112,5 @@ Get-Content .sync/sync.log -Tail 20
 ```
 
 The full imported project has pre-existing trailing whitespace and blank lines at EOF; these were left intact. The new/edited sync files were checked separately. The watcher integration tests also cover the background stop request. The user's existing commit identity was retained.
+
+Initial upload succeeded: local HEAD and GitHub `main` both resolved to `092b33c64be2a4b0d9db9c42220472f2153b284f` (`Initial commit`). The working tree was clean. The background watcher was launched successfully; this final documentation update is the live automatic-sync verification change. Its resulting `Auto-sync:` commit can be checked in the GitHub commit history. Authentication and package setup require no further manual steps. The watcher must be started again after reboot, as documented in `SYNC.md`.
