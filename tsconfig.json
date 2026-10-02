@@ -51,5 +51,6 @@
     "backup-before-header-update-*",
     "backup-before-theme-access-update-*",
     "backup-before-year-bento-*"
+    "vite.config.ts"
   ]
 }
