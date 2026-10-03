@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
+import {clientIp} from '@/lib/client-ip.mjs';
 import { createSession, findUser, normalizeEmail, rateLimited, safeReturnTo, sameOrigin, validEmail, SESSION_COOKIE, SESSION_SECONDS } from '@/lib/auth';
 const dummyHash=bcrypt.hash('unavailable-account',12);
 export async function POST(request:NextRequest){
@@ -12,7 +13,7 @@ export async function POST(request:NextRequest){
  if(typeof data.identifier!=='string'||typeof data.password!=='string'||(data.remember!==undefined&&typeof data.remember!=='boolean'))return reply('Check the submitted fields',400);
  const identifier=normalizeEmail(data.identifier),password=data.password;
  if(!identifier||identifier.length>254||(identifier.includes('@')?!validEmail(identifier):! /^[a-z0-9._-]{3,64}$/.test(identifier))||!password||password.length>128)return reply('Enter a valid email or username and password',400);
- if(await rateLimited(`login-ip:${request.headers.get('x-kuta-client-ip')||'local'}`,30)||await rateLimited(`login:${identifier}`,8))return reply('Too many attempts. Please wait 15 minutes and try again.',429);
+ if(await rateLimited(`login-ip:${clientIp(request)}`,30)||await rateLimited(`login:${identifier}`,8))return reply('Too many attempts. Please wait 15 minutes and try again.',429);
  const user=await findUser(identifier);
  const hash=user?.password_hash||await dummyHash;
  const matches=await bcrypt.compare(password,hash);

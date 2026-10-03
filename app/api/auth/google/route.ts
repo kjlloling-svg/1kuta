@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSession, randomHex, sameOrigin, safeReturnTo, rateLimited, SESSION_COOKIE, SESSION_SECONDS } from '@/lib/auth';
 import { verifyGoogleToken, saveGoogleUser } from '@/lib/google-auth';
+import {clientIp} from '@/lib/client-ip.mjs';
 
 const nonceCookie='kuta_google_nonce';
 const headers={'Cache-Control':'no-store'};
@@ -16,7 +17,7 @@ export async function POST(request:NextRequest) {
   if(!sameOrigin(request))return reply('Please sign in from this site.',403);
   try {
     if(!process.env.GOOGLE_CLIENT_ID)return reply('Google sign-in is not configured yet.',503);
-    if(await rateLimited(`google:${request.headers.get('x-kuta-client-ip')||'local'}`,30))return reply('Too many attempts. Please try again in 15 minutes.',429);
+    if(await rateLimited(`google:${clientIp(request)}`,30))return reply('Too many attempts. Please try again in 15 minutes.',429);
     const body=await request.json() as Record<string,unknown>|null;
     const nonce=request.cookies.get(nonceCookie)?.value;
     if(!nonce || !body || typeof body.credential!=='string' || body.credential.length>12000)return reply('Please refresh this page and try Google sign-in again.',400);

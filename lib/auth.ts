@@ -43,11 +43,12 @@ export async function clearSession() {
 }
 export async function rateLimited(key:string,limit=6) {
   const now=Math.floor(Date.now()/1000), db=database(), hashed=await sha256(key);
-  const row=await db.prepare('SELECT count, window_start FROM login_attempts WHERE key=?').bind(hashed).first<{count:number;window_start:number}>();
-  if(row && now-row.window_start<900 && row.count>=limit)return true;
-  const next=row && now-row.window_start<900?row.count+1:1;
-  await db.prepare('INSERT INTO login_attempts (key,count,window_start) VALUES (?,?,?) ON CONFLICT(key) DO UPDATE SET count=excluded.count, window_start=excluded.window_start').bind(hashed,next,next===1?now:row!.window_start).run();
-  return false;
+  const row=await db.prepare(`INSERT INTO login_attempts (key,count,window_start) VALUES (?,1,?)
+    ON CONFLICT(key) DO UPDATE SET
+    count=CASE WHEN excluded.window_start-login_attempts.window_start>=900 THEN 1 ELSE MIN(login_attempts.count+1,?) END,
+    window_start=CASE WHEN excluded.window_start-login_attempts.window_start>=900 THEN excluded.window_start ELSE login_attempts.window_start END
+    RETURNING count`).bind(hashed,now,limit+1).first<{count:number}>();
+  return !row||row.count>limit;
 }
 export async function findUser(email:string) { return database().prepare('SELECT id,email,role,name,password_hash,password_salt FROM users WHERE email=? OR username=? LIMIT 1').bind(email,email).first<{id:string;email:string;role:'admin'|'public';name:string;password_hash:string;password_salt:string}>(); }
 export async function registerUser(email:string,password:string) {

@@ -3,6 +3,7 @@ import {departmentAccentFor} from '@/lib/departments';
 import {normalizeKeywords} from '@/lib/keywords.mjs';
 import {programFor} from '@/lib/programs';
 import {KeywordChips} from './keyword-chips';
+import {uploadPaper} from '@/lib/upload-paper';
 
 import { useCallback,useEffect,useRef,useState,type FormEvent } from 'react';
 type Program={id:number;slug:string;name:string;major:string|null};
@@ -43,7 +44,7 @@ export function AdminConsole(){
       const res=await fetch(editing?`/api/papers/${editing}`:'/api/papers',{method:editing?'PUT':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
       const data=(await res.json()) as {id:number;error?:string;details?:{field:string;message:string}[]};if(!res.ok)throw new Error(data.details?.map(x=>`${x.field}: ${x.message}`).join('; ')||data.error||'Unable to save.');
       setEditing(data.id);
-      if(file){const upload=new FormData();upload.set('file',file);const r=await fetch(`/api/papers/${data.id}/upload`,{method:'POST',body:upload});const u=(await r.json()) as {error?:string};if(!r.ok)throw new Error(`Record saved, but PDF upload failed: ${u.error}`);}
+      if(file){try{await uploadPaper(data.id,file);}catch(error){throw new Error(`Record saved, but PDF upload failed: ${(error as Error).message}`);}}
       setNotice('Research record saved.');setForm(empty);setEditing(null);setFile(null);if(fileInput.current)fileInput.current.value='';await refresh();
     }catch(e){setNotice((e as Error).message);}finally{setBusy(false);}
   }
@@ -68,7 +69,6 @@ export function AdminConsole(){
     </form><p role="status" aria-live="polite" className="admin-notice">{notice}</p></section>
   </div>;
 }
-
 
 
 
