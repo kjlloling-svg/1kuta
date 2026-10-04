@@ -1,45 +1,34 @@
-# KUTA local setup
+# KUTA setup
 
-GitHub upload and automatic syncing: see [SYNC.md](SYNC.md). Start the watcher with `npm run sync` after authentication and the initial push.
+Authentication is now Google-only. See [GOOGLE-ONLY-AUTH.md](GOOGLE-ONLY-AUTH.md) for Google Cloud, Vercel, private administrator setup and test instructions. This guide supersedes authentication instructions in historical update documents below.
 
-Requires Node.js 22.13 or newer and npm. All application data stays in this project. No cloud account or deployment is required.
+Requires Node.js 24.x. Use npm (Vercel runs npm ci). Production uses Next.js, Turso and private Vercel Blob; local development uses SQLite and local PDF storage.
 
 ```powershell
 Set-Location 'C:\Users\KurtJohn\Desktop\1KUTA'
-npm install --cache .npm-cache
+npm ci
 npm run seed
+# Set GOOGLE_CLIENT_ID in your private .env, then:
 npm start
 ```
 
-In another PowerShell window:
+The seed creates private local configuration and initializes the database. It never creates password accounts. Sign in with Google first, then run `npm run admin:google -- --local` to promote your local Google account. Existing data is preserved. Google sign-in requires an internet connection and the correct authorized origin.
 
-```powershell
-Start-Process 'http://localhost:3000'
-```
-
-The seed prints randomly generated **DEMO** admin and public credentials. Save the displayed passwords. Existing accounts are preserved when seeding again. Change demo credentials before real use. Login accepts the displayed email or username.
-
-The seed generates `.env` with a random session secret. Do not share it. `PORT` defaults to 3000; `DATABASE_PATH` defaults to `data/kuta.sqlite` and must remain inside this project. SQLite contains bcrypt password hashes and hashed session tokens. Remember me lasts 14 days; unchecked uses a browser-session cookie with a 12-hour server expiration. Logout revokes the session in SQLite. Authentication requests use the same origin as the page. Login attempts are limited by account and client address.
-
-Express serves the existing Next application in local development mode; the first page may take several seconds to compile. Existing pages, styles, KUTA welcome text, and archive database schema are retained. PDF storage is local under `data/uploads`. The original source is preserved in `backup-before-local-login-20261001-211122` (generated dependency/build folders were excluded). The previous dependency layout is also preserved in `node_modules-pnpm-preserved` and `backup-before-local-login-20261001-211122/dependencies-pnpm`.
-
-With the server running, verify authentication:
+GitHub upload and automatic syncing: [SYNC.md](SYNC.md). Keep the watcher stopped while editing authentication, and push completed, tested changes.
 
 ```powershell
 npm run test:auth
+npm run build
+npm run test:auth:http
 ```
 
-This creates temporary test accounts, checks authentication and protected pages, and removes those test records afterward. The demo accounts remain. Rate limiting counters persist for 15 minutes; repeated test runs may reach the client limit.
-
-Inter font and the original campus background image are saved in `public/assets`, so the design and login work locally without external requests.
-
-
+The new authentication suites run against disposable databases and synthetic signed test tokens, without contacting Google or changing hosted data. The HTTP suite starts and stops its own production server. Research and layout regression suites can also run in this isolated server with `node scripts/test-google-http.mjs --regressions`.
 
 ## Archive management update
 
 The dashboard now contains only title, authors, program, year, department, category, keywords, abstract, admin-only PDF upload, and status. The retired six fields are absent from the active database, UI and API. DOI and the separate Introduction input were also removed to match this field list. Existing Introduction text is retained as private `full_text`, accessible only to administrators; complete papers are available to admins through the attached PDF.
 
-Guests can browse titles and basic metadata only; abstracts and citations require login. Signed-in public accounts can read abstracts and cite in all formats. They receive no file information or private full text from paper APIs. Full-text/PDF endpoints return 403 for non-admins, and uploaded PDFs are kept outside public static files. Administrators can view PDFs inline or download them, including pending/demo records.
+All pages and research APIs require Google sign-in. Signed-in public accounts can read abstracts and cite in all formats. They receive no file information or private full text from paper APIs. Full-text/PDF endpoints return 403 for non-admins, and uploaded PDFs are kept outside public static files. Administrators can view PDFs inline or download them, including pending/demo records.
 
 The program group is **BS Nursing / Diploma in Midwifery** (`bs-nursing-midwifery`). Old `bs-nursing` and `diploma-midwifery` filter URLs still resolve to the merged group. The catalog has five programs.
 

@@ -1,4 +1,5 @@
-import 'dotenv/config';
+process.env.GOOGLE_CLIENT_ID='test-client.apps.googleusercontent.com';
+process.env.TURSO_DATABASE_URL='';process.env.TURSO_AUTH_TOKEN='';process.env.VERCEL='';process.env.BLOB_READ_WRITE_TOKEN='';
 import assert from 'node:assert/strict';
 import {generateKeyPairSync,sign,randomUUID} from 'node:crypto';
 import {readFileSync,writeFileSync,unlinkSync} from 'node:fs';

@@ -1,3 +1,6 @@
+import 'dotenv/config';
+import {sqlite} from './local-database.mjs';
+import {newSession,SESSION_COOKIE} from '../lib/google-session.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {randomUUID} from 'node:crypto';
@@ -38,5 +41,7 @@ for(const [name,matrix] of Object.entries(matrices)){let min=Infinity;for(const 
 report+='\nHue differences can converge under these simulations. Department names and program-card numbers preserve identification without color. [Machado primary-source thesis, Appendix A](https://www.inf.ufrgs.br/~oliveira/students_dissertations/Masters/Gustavo_Machado_Masters_thesis_UFRGS_2010.pdf).\n';
 report+='\nUnknown department fallback: muted text, soft tint, line edge; its displayed name is retained. See THEME-CONTRAST.md for neutral fallback measurements.\n\nCommon color-vision deficiencies: color is never the only identifier; program names and program-card numbers remain visible. Physical-device testing is listed separately in HEADER-UPDATE.md.\n\n[W3C text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html), [W3C non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).\n';
 fs.writeFileSync('verification/DEPARTMENT-PALETTE.md',report);console.log(report);
-const html=await(await fetch('http://localhost:3000/')).text();assert.equal((html.match(/<h1[ >]/g)||[]).length,1);assert.match(html,/w=44[^" ]* 1x[^"<>]*w=88[^" ]* 2x/);assert.ok(!html.includes('w=3840'));assert.ok(!html.includes('Keywords: [')&&!html.includes('Keywords: [&quot;'));assert.match(html,/Explore research/);assert.match(html,/Browse programs/);
+const id=randomUUID();sqlite.prepare("INSERT INTO users(id,email,google_sub,password_hash,password_salt,created_at) VALUES(?,?,?,'','',0)").run(id,id+'@example.com',id);let html;
+try{const cookie=SESSION_COOKIE+'='+await newSession(id);html=await(await fetch('http://localhost:'+(process.env.PORT||3000)+'/',{headers:{cookie}})).text();}
+finally{sqlite.prepare('DELETE FROM sessions WHERE user_id=?').run(id);sqlite.prepare('DELETE FROM users WHERE id=?').run(id);}assert.equal((html.match(/<h1[ >]/g)||[]).length,1);assert.match(html,/w=44[^" ]* 1x[^"<>]*w=88[^" ]* 2x/);assert.ok(!html.includes('w=3840'));assert.ok(!html.includes('Keywords: [')&&!html.includes('Keywords: [&quot;'));assert.match(html,/Explore research/);assert.match(html,/Browse programs/);
 console.log('PASS: one home h1, fixed 44/88 logo, hero actions and no keyword JSON dump');

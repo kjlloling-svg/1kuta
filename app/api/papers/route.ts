@@ -8,7 +8,8 @@ export async function GET(request:NextRequest){
   try{
     const s=request.nextUrl.searchParams;
     const year=Number(s.get('year')),page=Number(s.get('page'));
-    const access=(await getCurrentUser())?.role||'guest';
+    const user=await getCurrentUser();if(!user)return json({error:'Please sign in with Google.'},401);
+    const access=user.role;
     const result=await searchPapers({q:s.get('q')||'',author:s.get('author')||'',program:s.get('program')||'',year:Number.isInteger(year)&&year>=2009&&year<=2026?year:undefined,keyword:s.get('keyword')||'',page:Number.isInteger(page)?page:1,sort:s.get('sort')||'',access});
     return json({...result,papers:await Promise.all(result.papers.map(p=>publicPaper(p,access)))});
   }catch(e){return fail(e);}

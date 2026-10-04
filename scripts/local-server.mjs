@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import next from 'next';
-if(!process.env.SESSION_SECRET||process.env.SESSION_SECRET.length<32)throw new Error('Run npm run seed first to create .env and the demo account');
+if(!process.env.SESSION_SECRET||process.env.SESSION_SECRET.length<32)throw new Error('Run npm run seed first to create .env');
 const port=Number(process.env.PORT||3000);
 const app=next({dev:true,hostname:'localhost',port});
 await app.prepare();

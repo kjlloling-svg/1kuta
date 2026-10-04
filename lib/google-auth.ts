@@ -19,7 +19,7 @@ export async function saveGoogleUser(profile: {sub:string;email?:string;name?:st
   const existing=await db.prepare('SELECT id FROM users WHERE google_sub=?').bind(profile.sub).first();
   const collision=await db.prepare('SELECT id FROM users WHERE email=? AND (google_sub IS NULL OR google_sub<>?)').bind(email,profile.sub).first();
   if(collision) return null; // Never link a password/admin account merely by matching email.
-  const id=existing?.id || crypto.randomUUID();
+  const id=existing?.id || profile.sub;
   const picture=profile.picture?.startsWith('https://')?profile.picture:null;
   await db.prepare(`INSERT INTO users (id,email,name,picture,google_sub,password_hash,password_salt,role,created_at)
     VALUES (?,?,?,?,?,'','','public',?) ON CONFLICT(google_sub) DO UPDATE SET
@@ -27,3 +27,5 @@ export async function saveGoogleUser(profile: {sub:string;email?:string;name?:st
     .bind(id,email,profile.name||email,picture,profile.sub,Math.floor(Date.now()/1000)).run();
   return (await db.prepare('SELECT id FROM users WHERE google_sub=?').bind(profile.sub).first())!.id as string;
 }
+
+export async function hasGoogleUser(sub:string){return !!await env.DB.prepare('SELECT id FROM users WHERE google_sub=?').bind(sub).first();}
