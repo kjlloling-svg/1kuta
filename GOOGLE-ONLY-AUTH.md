@@ -1,5 +1,7 @@
 # Google-only authentication: setup and verification
 
+Access-policy update: [PUBLIC-BROWSING.md](PUBLIC-BROWSING.md) supersedes the blanket login gates described below. Public pages and metadata are now open; abstracts/citations require login, while full papers/PDFs and editing remain administrator-only. Google setup and private administrator instructions below still apply.
+
 KUTA uses Next.js on Vercel, not a Vite production build. The existing Vercel configuration remains unchanged. No new service or Gmail permission is needed.
 
 ## What changed

@@ -1,3 +1,4 @@
+import {clientIp} from './client-ip.mjs';
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 import { requireAdmin, sameOrigin } from './auth';
@@ -14,4 +15,9 @@ export async function adminMutation(request:Request){
   if(!sameOrigin(request))return json({error:'Invalid request origin'},403);
   if(!await requireAdmin())return json({error:'Admin access required'},403);
   return null;
+}
+
+export function authRequired(request:Request){
+ console.info(JSON.stringify({event:'restricted_content_denied',timestamp:new Date().toISOString(),ip:clientIp(request),endpoint:new URL(request.url).pathname,reason:'auth_required'}));
+ return json({error:'Login required',type:'auth_required'},403);
 }

@@ -1,12 +1,15 @@
 PASS: Pre-paint theme: cookie, legacy storage, system dark and unavailable storage
 PASS: Guest mapper is fail-closed and never serializes abstract/file names
+PASS: guest: list/detail metadata and no-store session separation
+PASS: guest: detail HTML/RSC payload and metadata obey access rules
+PASS: guest: abstract endpoint and all eight citation formats
 PASS: public: list/detail metadata and no-store session separation
 PASS: public: detail HTML/RSC payload and metadata obey access rules
 PASS: public: abstract endpoint and all eight citation formats
 PASS: admin: list/detail metadata and no-store session separation
 PASS: admin: detail HTML/RSC payload and metadata obey access rules
 PASS: admin: abstract endpoint and all eight citation formats
-PASS: Guest search is denied
+PASS: Guest search cannot search private abstracts
 PASS: Guest home/archive responses contain no protected text
 PASS: Dark cookie is in server HTML and blocking head script precedes body
 PASS: Expired/revoked sessions cannot read abstract or cite

@@ -8,8 +8,8 @@ export const dynamic='force-dynamic';
 type C={params:Promise<{id:string}>};
 export async function GET(request:NextRequest,{params}:C){
   try{
-    const user=await getCurrentUser();if(!user)return json({error:'Please sign in with Google.'},401);
-    const access=user.role,admin=access==='admin';
+    const user=await getCurrentUser();
+    const access=user?.role||'guest',admin=access==='admin';
     const paper=await getPaper((await params).id,access);
     if(!paper)return json({error:'Record not found'},404);
     const result=await publicPaper(paper,access);

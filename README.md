@@ -1,6 +1,6 @@
 # KUTA setup
 
-Authentication is now Google-only. See [GOOGLE-ONLY-AUTH.md](GOOGLE-ONLY-AUTH.md) for Google Cloud, Vercel, private administrator setup and test instructions. This guide supersedes authentication instructions in historical update documents below.
+Public browsing is enabled; only abstracts/citations require Google sign-in, and full papers/PDFs remain administrator-only. See [PUBLIC-BROWSING.md](PUBLIC-BROWSING.md) for the current access rules and testing walkthrough. Authentication is Google-only. See [GOOGLE-ONLY-AUTH.md](GOOGLE-ONLY-AUTH.md) for Google Cloud, Vercel, private administrator setup and test instructions. This guide supersedes authentication instructions in historical update documents below.
 
 Requires Node.js 24.x. Use npm (Vercel runs npm ci). Production uses Next.js, Turso and private Vercel Blob; local development uses SQLite and local PDF storage.
 
@@ -28,7 +28,7 @@ The new authentication suites run against disposable databases and synthetic sig
 
 The dashboard now contains only title, authors, program, year, department, category, keywords, abstract, admin-only PDF upload, and status. The retired six fields are absent from the active database, UI and API. DOI and the separate Introduction input were also removed to match this field list. Existing Introduction text is retained as private `full_text`, accessible only to administrators; complete papers are available to admins through the attached PDF.
 
-All pages and research APIs require Google sign-in. Signed-in public accounts can read abstracts and cite in all formats. They receive no file information or private full text from paper APIs. Full-text/PDF endpoints return 403 for non-admins, and uploaded PDFs are kept outside public static files. Administrators can view PDFs inline or download them, including pending/demo records.
+Public pages and metadata APIs allow anonymous browsing. Abstracts and citation APIs require Google sign-in. Signed-in public accounts can read abstracts and cite in all formats. They receive no file information or private full text from paper APIs. Full-text/PDF endpoints return 403 for non-admins, and uploaded PDFs are kept outside public static files. Administrators can view PDFs inline or download them, including pending/demo records.
 
 The program group is **BS Nursing / Diploma in Midwifery** (`bs-nursing-midwifery`). Old `bs-nursing` and `diploma-midwifery` filter URLs still resolve to the merged group. The catalog has five programs.
 
