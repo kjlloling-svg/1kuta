@@ -14,7 +14,7 @@ export async function proxy(request:NextRequest){
     console.info(JSON.stringify({event:'public_access_denied',timestamp:new Date().toISOString(),ip:clientIp(request),endpoint:path,reason:'rate_limited'}));
     return NextResponse.json({error:'Too many requests. Please wait a minute.',type:'rate_limited'},{status:429,headers:{'Cache-Control':'no-store','Retry-After':'60'}});
    }
-   const publicApi=request.method==='GET'&&(/^\/api\/(?:papers(?:\/[^/]+)?|programs|keywords|stats)$/.test(path)||/^\/api\/papers\/[^/]+\/citation$/.test(path)||/^\/api\/research-papers\/[^/]+\/abstract$/.test(path));
+   const publicApi=request.method==='GET'&&(/^\/api\/(?:papers(?:\/[^/]+)?|programs|keywords|stats|year-counts)$/.test(path)||/^\/api\/papers\/[^/]+\/citation$/.test(path)||/^\/api\/research-papers\/[^/]+\/abstract$/.test(path));
    // Abstract/citation endpoints enforce their own required 403 response and audit log.
    if(path.startsWith('/api/')&&!publicApi)return NextResponse.json({error:'Please sign in with Google.'},{status:401,headers:{'Cache-Control':'no-store'}});
    if(path==='/admin'||path.startsWith('/admin/')){

@@ -1,4 +1,5 @@
 PASS: Pre-paint theme: cookie, legacy storage, system dark and unavailable storage
+PASS: Interactive theme changes persist and do not disable CSS transitions
 PASS: Guest mapper is fail-closed and never serializes abstract/file names
 PASS: guest: list/detail metadata and no-store session separation
 PASS: guest: detail HTML/RSC payload and metadata obey access rules
