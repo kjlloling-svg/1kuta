@@ -45,3 +45,14 @@ html .program-marquee:is(:hover,:focus-within) .marquee-track,html .program-marq
 @media(max-width:900px){html .program-grid,html .program-directory{grid-template-columns:repeat(2,minmax(0,1fr))}html .program-tile:first-child,html .directory-card:first-child{grid-column:span 2;grid-row:auto;min-height:240px}}
 @media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .program-tile:first-child,html .directory-card:first-child{grid-column:auto;min-height:220px}html .program-tile,html .directory-card{min-height:210px}html .program-marquee{padding:14px}}
 @media(prefers-reduced-motion:reduce){html .marquee-track{animation:none!important;width:auto}html .marquee-track ul{flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal}html .marquee-track ul[aria-hidden],html .marquee-pause{display:none}}
+/* Honest archive states and a short path into the existing reading flow. */
+html .how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
+html .how-steps li{padding:28px 0;border-top:1px solid var(--line)}
+html .how-steps li>span{font-size:13px;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+html .how-steps h3{font-size:23px;margin:20px 0 12px}
+html .how-steps p{max-width:34ch;color:var(--muted);line-height:1.7}
+html .state-card{background:var(--surface);border:1px dashed var(--line);border-radius:20px;box-shadow:none;padding:48px 24px}
+html .state-symbol{color:var(--green);background:var(--soft)}
+html .year-tile.year-zero{background:var(--soft);color:var(--muted);box-shadow:none}
+html .year-zero .year-number,html .year-zero .year-count{color:var(--muted)}
+@media(max-width:620px){html .how-steps{grid-template-columns:1fr;gap:0}html .how-steps li{padding:24px 0}html .how-steps h3{margin-top:12px}}
