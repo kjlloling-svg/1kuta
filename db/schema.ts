@@ -1,4 +1,5 @@
 import { sqliteTable, integer, text, primaryKey, index, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import {desc} from 'drizzle-orm';
 
 export const programs = sqliteTable('programs', {
   id: integer('id').primaryKey({ autoIncrement: true }),
@@ -33,7 +34,7 @@ export const researchPapers = sqliteTable('research_papers', {
   status: text('status').notNull().default('pending'),
   createdAt: text('created_at').notNull().default(''),
   updatedAt: text('updated_at').notNull().default(''),
-}, (t) => [uniqueIndex('paper_slug_unique').on(t.slug), index('paper_year_program_idx').on(t.year, t.programId), index('paper_title_idx').on(t.title)]);
+}, (t) => [uniqueIndex('paper_slug_unique').on(t.slug), index('paper_year_program_idx').on(t.year, t.programId), index('paper_title_idx').on(t.title), index('papers_review_queue_idx').on(t.status,t.programId,desc(t.year),desc(t.id))]);
 
 export const researchPaperAuthors = sqliteTable('research_paper_authors', {
   paperId: integer('paper_id').notNull().references(() => researchPapers.id, { onDelete: 'cascade' }),
@@ -67,5 +68,6 @@ export const loginAttempts = sqliteTable('login_attempts', {
 export const bookmarks = sqliteTable('bookmarks', {
   userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   paperId: integer('paper_id').notNull().references(() => researchPapers.id, { onDelete: 'cascade' }),
-}, (t) => [primaryKey({ columns: [t.userId, t.paperId] }), index('bookmarks_paper_idx').on(t.paperId)]);
+  createdAt: integer('created_at'),
+}, (t) => [primaryKey({ columns: [t.userId, t.paperId] }), index('bookmarks_paper_idx').on(t.paperId), index('bookmarks_user_created_idx').on(t.userId,desc(t.createdAt),t.paperId)]);
 

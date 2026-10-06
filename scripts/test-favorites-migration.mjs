@@ -1,0 +1,10 @@
+import {DatabaseSync} from 'node:sqlite';
+import assert from 'node:assert/strict';
+import {migrateFavorites} from './migrate-favorites.mjs';
+const sql=new DatabaseSync(':memory:');
+sql.exec('CREATE TABLE research_papers(id INTEGER PRIMARY KEY,status TEXT,program_id INTEGER,year INTEGER); CREATE TABLE bookmarks(user_id TEXT,paper_id INTEGER,PRIMARY KEY(user_id,paper_id)); INSERT INTO bookmarks VALUES ("reader",1)'.replaceAll('"',"'"));
+const db={prepare(query){return {async all(){return {results:sql.prepare(query).all()};},query};},async batch(statements){sql.exec('BEGIN');try{for(const s of statements)sql.exec(s.query);sql.exec('COMMIT');}catch(e){sql.exec('ROLLBACK');throw e;}}};
+await migrateFavorites(db);await migrateFavorites(db);
+assert.deepEqual({...sql.prepare('SELECT * FROM bookmarks').get()},{user_id:'reader',paper_id:1,created_at:null});
+assert.equal(sql.prepare("SELECT COUNT(*) n FROM sqlite_master WHERE name IN ('bookmarks_user_created_idx','papers_review_queue_idx')").get().n,2);
+console.log('PASS: migration is repeatable, preserves bookmarks, and leaves unknown dates unknown');sql.close();
