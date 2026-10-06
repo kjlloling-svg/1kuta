@@ -10,15 +10,15 @@ type Program={id:number;slug:string;name:string;major:string|null};
 type Review={q:string;status:string;program:string;page:number};
 type Counts={statuses:{all:number;pending:number;verified:number};programs:{slug:string;label:string;count:number}[];total:number;pages:number;page:number};
 const readReview=():Review=>{const p=new URLSearchParams(window.location.search);return {q:p.get('q')||'',status:['all','verified'].includes(p.get('status')||'')?p.get('status')!:'pending',program:p.get('program')||'',page:Math.max(1,Number(p.get('page'))||1)};};
-type Row={id:number;slug:string;title:string;status:'pending'|'verified'|'demo';year:number;has_file:boolean;authors:string;program_id:string;program:string;keywords:string[]};
+type Row={id:number;slug:string;title:string;status:string;year:number;has_file:boolean;authors:string;program_id:string;program:string;keywords:string[]};
 type Form={title:string;authors:string;program_id:string;year:string;department:string;category:string;keywords:string;abstract:string;status:'pending'|'verified'|'demo'};
 const empty:Form={title:'',authors:'',program_id:'',year:'2026',department:'',category:'Research Paper',keywords:'',abstract:'',status:'pending'};
-export function AdminConsole(){
+export function AdminConsole({initialReview,initialResult,initialPrograms=[]}:{initialReview?:Review;initialResult?:Counts&{papers:Row[]};initialPrograms?:Program[]}={}){
   const fileInput=useRef<HTMLInputElement>(null);
-  const [programs,setPrograms]=useState<Program[]>([]),[rows,setRows]=useState<Row[]>([]),[form,setForm]=useState<Form>(empty);
-  const [editing,setEditing]=useState<number|null>(null),[busy,setBusy]=useState(false),[loading,setLoading]=useState(true),[notice,setNotice]=useState(''),[file,setFile]=useState<File|null>(null);
-  const [review,setReview]=useState<Review>({q:'',status:'pending',program:'',page:1}),[ready,setReady]=useState(false);
-  const [counts,setCounts]=useState<Counts|null>(null),[listError,setListError]=useState('');
+  const [programs,setPrograms]=useState<Program[]>(initialPrograms),[rows,setRows]=useState<Row[]>(initialResult?.papers||[]),[form,setForm]=useState<Form>(empty);
+  const [editing,setEditing]=useState<number|null>(null),[busy,setBusy]=useState(false),[loading,setLoading]=useState(!initialResult),[notice,setNotice]=useState(''),[file,setFile]=useState<File|null>(null);
+  const [review,setReview]=useState<Review>(initialReview||{q:'',status:'pending',program:'',page:1}),[ready,setReady]=useState(false);
+  const [counts,setCounts]=useState<Counts|null>(initialResult||null),[listError,setListError]=useState('');
   const sequence=useRef(0);
   useEffect(()=>{const sync=()=>{setReview(readReview());setReady(true);};sync();window.addEventListener('popstate',sync);return()=>window.removeEventListener('popstate',sync);},[]);
   const refresh=useCallback(async(signal?:AbortSignal)=>{

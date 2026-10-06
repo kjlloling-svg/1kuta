@@ -39,7 +39,7 @@ try{
  sqlite.prepare('DELETE FROM research_papers WHERE id=?').run(paper);
  sqlite.exec('ALTER TABLE research_papers RENAME TO year_failure_fixture');
  try{const r=await request('/api/year-counts');assert.equal(r.status,503);assert.deepEqual(await r.json(),{years:[]});}finally{sqlite.exec('ALTER TABLE year_failure_fixture RENAME TO research_papers');}
- const home=await(await request('/')).text();assert.ok(!home.includes('Year counts are temporarily unavailable'));assert.ok(!home.includes('Open the archive'));assert.ok(home.includes('Browse Papers by Year'));
+ const home=await(await request('/')).text();assert.ok(!home.includes('Year counts are temporarily unavailable'));assert.ok(!home.includes('Open the archive'));assert.ok(!home.includes('Browse Papers by Year'));assert.ok(home.includes('/browse-by-year'));
  console.log('PASS: year counts, immediate edits, verified-only counts, year filtering, empty database, sanitized query failures and homepage cleanup');
 
  const id=randomUUID();sqlite.prepare("INSERT INTO users(id,email,name,google_sub,password_hash,password_salt,role,created_at) VALUES(?,?,'Test Reader',?,'','','public',0)").run(id,'reader@example.com',id);
@@ -62,3 +62,4 @@ try{
  assert.ok(logs.includes('restricted_content_denied')&&logs.includes('auth_required')&&logs.includes('rate_limited'));
  console.log('PASS: built production server; public browsing, restricted abstract/citation 403 responses, private administrator access, anonymous rate limiting and audit logging, Google-only forms, static assets, authenticated pages, roles, removed routes, logout and expiry');
 }finally{server.kill();await new Promise(resolve=>server.once('exit',resolve));sqlite.close();for(const suffix of ['','-wal','-shm'])try{unlinkSync(process.env.DATABASE_PATH+suffix);}catch{}}
+
