@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from '@/components/native-link';
+import { stats } from '@/lib/archive';
+import { AboutNavigation } from './about-navigation';
 import './photos.css';
-export const metadata:Metadata={title:'About the Archive'};
+
+export const metadata: Metadata = { title: 'About the Archive' };
+export const dynamic = 'force-dynamic';
 const officials=[
   {
     "name": "Imelda A. Tangalin, DPM, PhD",
@@ -51,4 +56,75 @@ const team=[
     "image": "/images/about/researchers/KURT FORMAL.jpg"
   }
 ];
-export default function About(){return <main id="main" className="page-main"><div className="wrap"><div className="page-intro"><p className="eyebrow">OUR PURPOSE</p><h1>About the archive</h1><p>A student developed system for the organization and discovery of research from Southern Luzon State University – Gumaca Campus.</p></div><div className="about-layout"><div><section className="prose-section"><h2>Built to keep research discoverable</h2><p>The Research Paper Compiler & Digital Archive provides a structured home for campus research papers. Its goal is to preserve research metadata, make papers easier to find across years and programs, and help students and faculty discover work related to their own studies.</p><p>The archive is designed for papers from 2009 onward. Records will be shown only after their details have been verified and added to the database. This is a student research project and should not be understood as an officially launched university service.</p></section><section className="prose-section"><h2>People named in the project brief</h2><p className="section-note">The following roles were supplied for this project. Confirm current appointments before an institutional launch.</p><div className="people-grid">{officials.map(({name,role,image})=><div className={`person-card ${role==='Campus Director'?'director-card':''}`} key={name}><picture className="person-photo-frame"><source srcSet={`${image.split('/').map(encodeURIComponent).join('/')}.webp`} type="image/webp" /><Image src={image} alt={`${name}, Faculty Member`} width={800} height={800} loading="lazy" className="person-photo" unoptimized /></picture><h3>{name}</h3><p>{role}</p></div>)}</div></section></div><aside className="about-aside"><p className="eyebrow">PROJECT TEAM</p><h2>Researchers & developers</h2>{team.map(({name,image})=><div className="team-row" key={name}><picture className="person-photo-frame"><source srcSet={`${image.split('/').map(encodeURIComponent).join('/')}.webp`} type="image/webp" /><Image src={image} alt={`${name}, Researcher`} width={800} height={800} loading="lazy" className="person-photo" unoptimized /></picture><strong>{name}</strong></div>)}</aside></div></div></main>}
+
+type Person = { name: string; role: string; image: string };
+function PersonCard({ person, researcher = false }: { person: Person; researcher?: boolean }) {
+  return <li className="about-person">
+    <picture className="about-portrait">
+      <source srcSet={person.image.split('/').map(encodeURIComponent).join('/') + '.webp'} type="image/webp" />
+      <Image src={person.image} alt={person.name + (researcher ? ', Researcher' : ', Faculty Member')}
+        width={800} height={800} loading="lazy" unoptimized />
+    </picture>
+    <strong>{person.name}</strong>
+    <p>{person.role}</p>
+  </li>;
+}
+const values = [
+  ['Preservation', 'Keep research records organized for future discovery.'],
+  ['Accuracy', 'Check research details before marking a record as verified.'],
+  ['Discovery', 'Help people find relevant work through clear search and filters.'],
+  ['Clarity', 'Make available information and missing details easy to understand.'],
+];
+export default async function About() {
+  let counts: Awaited<ReturnType<typeof stats>> | null = null;
+  try { counts = await stats(); } catch { /* Unavailable counts must never appear as zero. */ }
+  return <main id="main" className="about-page">
+    <div className="about-content" id="about-top">
+      <AboutNavigation />
+      <section className="about-intro" aria-labelledby="about-title" data-about-section="intro">
+        <p className="about-label">ABOUT KUTA</p>
+        <h1 id="about-title">KUTA helps people find and preserve research from SLSU Gumaca.</h1>
+        <p>A student-developed archive that brings campus research together in one searchable place.</p>
+      </section>
+      <section id="story" className="about-section" aria-labelledby="story-title" data-about-section="story">
+        <p className="about-label">01 / OUR STORY</p>
+        <h2 id="story-title">Research worth keeping. Easier to find.</h2>
+        <p>Campus research is easier to use when people can find it. KUTA was created to organize research records by year, academic program, author, and keyword.</p>
+        <p>Our aim is to help students and faculty discover earlier work and build on it. This is a student research project, rather than an officially launched university service.</p>
+      </section>
+      <section id="team" className="about-section" aria-labelledby="team-title" data-about-section="team">
+        <p className="about-label">02 / THE PEOPLE</p>
+        <h2 id="team-title">We, the Researchers</h2>
+        <ul className="about-people about-researchers">{team.map(person => <PersonCard key={person.name} person={person} researcher />)}</ul>
+        <h3 className="about-group-title">Faculty and campus leadership</h3>
+        <p className="about-note">Roles supplied for this project; current appointments should be confirmed before an institutional launch.</p>
+        <ul className="about-people about-faculty">{officials.map(person => <PersonCard key={person.name} person={person} />)}</ul>
+      </section>
+      <section id="archive-facts" className="about-section" aria-labelledby="facts-title" data-about-section="facts">
+        <p className="about-label">03 / ARCHIVE FACTS</p>
+        <h2 id="facts-title">The collection at a glance.</h2>
+        {counts ? <>
+          <dl className="about-facts">
+            <div><dt>Verified papers</dt><dd>{counts.papers.toLocaleString('en-US')}</dd></div>
+            <div><dt>Research years represented</dt><dd>{counts.years.toLocaleString('en-US')}</dd></div>
+            <div><dt>Authors of verified papers</dt><dd>{counts.authors.toLocaleString('en-US')}</dd></div>
+          </dl>
+          <p className="about-note">Counts reflect verified records currently in the archive. Demo and pending records are excluded.{counts.papers === 0 ? ' No verified papers have been added yet.' : ''}</p>
+        </> : <p className="about-note" role="status">Archive statistics are currently unavailable. Please check again later.</p>}
+      </section>
+      <section id="values" className="about-section" aria-labelledby="values-title" data-about-section="values">
+        <p className="about-label">04 / OUR VALUES</p>
+        <h2 id="values-title">What guides this project.</h2>
+        <ol className="about-values">{values.map(([title,description]) => <li key={title}><h3>{title}</h3><p>{description}</p></li>)}</ol>
+      </section>
+      <section id="contact" className="about-section about-contact" aria-labelledby="contact-title" data-about-section="contact">
+        <p className="about-label">05 / EXPLORE & CONTACT</p>
+        <h2 id="contact-title">Explore the research.</h2>
+        <p>Find papers by title, author, program, keyword, or year.</p>
+        <div className="about-actions"><Link className="about-primary" href="/research-papers">Browse the archive <span aria-hidden="true">↗</span></Link><Link className="about-secondary" href="/faq">Read the FAQ</Link></div>
+        <p className="about-note">Contact details coming soon.</p>
+      </section>
+      <a className="about-back" href="#about-top">Back to top ↑</a>
+    </div>
+  </main>;
+}
