@@ -1,3 +1,4 @@
+import {FavoriteButton} from './favorite-button';
 import {departmentAccentFor} from '@/lib/departments';
 import {KeywordChips} from './keyword-chips';
 import Link from '@/components/native-link';
@@ -8,6 +9,7 @@ export function PaperCard({paper}: {paper: Paper}) { const program=programFor(pa
   <h3><Link href={`/research-papers/${encodeURIComponent(paper.slug)}`}>{paper.title}</Link></h3>
   <p className="card-authors">{paper.authors || 'Authors not recorded'}</p>
   <KeywordChips keywords={paper.keywords}/>
+  <FavoriteButton slug={paper.slug} status={paper.status}/>
   <div className="card-bottom"><Link href={`/research-papers/${encodeURIComponent(paper.slug)}`} aria-label={`View ${paper.title}`}>View details <span aria-hidden="true">↗</span></Link></div>
 </article>; }
 

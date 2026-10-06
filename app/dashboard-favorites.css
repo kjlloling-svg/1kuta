@@ -9,3 +9,17 @@ html .review-summary{min-height:1.6em;color:var(--muted)}
 html .review-authors{font-size:13px;color:var(--muted);margin:8px 0}
 html .admin-panel{min-width:0}html .admin-records li>div{min-width:0}html .admin-records strong{overflow-wrap:anywhere}
 @media(max-width:620px){html .review-selects{grid-template-columns:1fr}html .admin-records li{flex-direction:column;gap:16px}html .admin-record-actions{display:flex;gap:12px}}
+html .favorite-control{margin:12px 0;min-height:44px}
+html .favorite-button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:var(--surface);transition:transform 220ms ease}
+html .favorite-button[aria-pressed=true]{color:var(--green)}
+html .favorite-button:active{transform:scale(.97)}
+html .favorite-button svg{flex:none;transition:transform 220ms ease,opacity 220ms ease}
+html .favorite-button[aria-pressed=true] svg{transform:scale(1.08)}
+html .favorite-error{font-size:13px;color:var(--error);max-width:40ch}
+html .favorites-list{padding:0;list-style:none;display:grid;gap:16px}
+html .favorites-list li{display:flex;justify-content:space-between;align-items:start;gap:24px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+html .favorites-list h3{margin:0 0 12px;font-size:20px;overflow-wrap:anywhere}
+html .favorites-list p{color:var(--muted)}
+html .favorites-list .favorite-control{flex-shrink:0;margin:0}
+@media(max-width:620px){html .favorites-list li{flex-direction:column;padding:20px}}
+@media(prefers-reduced-motion:reduce){html .favorite-button,html .favorite-button svg{transition:none!important;transform:none!important}}
