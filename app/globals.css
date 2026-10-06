@@ -1,20 +1,22 @@
 @import "tailwindcss" source(none);
+@import "./design-refresh.css";
 @source "./";
 @source "../components";
 @source not "../components/ui";
 @source not "../components/connector-error.tsx";
 /* Color tokens: all light/dark colors live here. Content surfaces are opaque. */
 :root {
+ --gold:#E0A526;--teal:#1F7A74;
  --theme-duration:300ms;--year-gap:18px;--switch-width:68px;--switch-knob:32px;
- --bg:#eee9df;--surface:#f7f3eb;--soft:#e2e5dc;--ink:#293630;--muted:#526057;
- --green:#355b49;--green-deep:#294a3b;--accent:var(--green);--on-accent:#f7f3eb;
- --line:#737b70;--focus:#875317;--error:#8d342b;--error-bg:#f2e2dc;
- --logo-canvas:#ffffff;--veil:rgba(238,233,223,.86);--bokeh-color:#b3c2b0;
- --shadow-light:rgba(255,255,255,.48);--shadow-dark:rgba(41,54,48,.10);--scrim:rgba(25,34,31,.65);
+ --bg:#FBF7F2;--surface:#FFFFFF;--soft:#F1E8DF;--ink:#1F1A17;--muted:#66584F;
+ --green:#8B1E2D;--green-deep:#701724;--accent:var(--green);--on-accent:#FFFFFF;
+ --line:#8D7B6E;--focus:#946400;--error:#8d342b;--error-bg:#f2e2dc;
+ --logo-canvas:#ffffff;--veil:rgba(251,247,242,.90);--bokeh-color:#b3c2b0;
+ --shadow-light:rgba(255,255,255,.60);--shadow-dark:rgba(31,26,23,.10);--scrim:rgba(25,34,31,.65);
  --glass:var(--surface);--glass-border:var(--line);--glass-blur:6px;--glass-filter:blur(var(--glass-blur));--radius:18px;
  --shadow-raised:-3px -3px 9px var(--shadow-light),4px 5px 12px var(--shadow-dark);
  --shadow-pressed:inset 2px 2px 5px var(--shadow-dark),inset -2px -2px 5px var(--shadow-light);
- --shadow-hover:-4px -4px 12px var(--shadow-light),7px 9px 18px var(--shadow-dark);--shadow:var(--shadow-raised);color-scheme:light;--progress-h:4px;--header-h:80px;--header-offset:calc(var(--progress-h) + env(safe-area-inset-top,0px));--header-stack:calc(var(--header-offset) + var(--header-h));--surface-high:#fbf8f2;--surface-gradient:linear-gradient(145deg,var(--surface-high),var(--surface));
+ --shadow-hover:-4px -4px 12px var(--shadow-light),7px 9px 18px var(--shadow-dark);--shadow:var(--shadow-raised);color-scheme:light;--progress-h:4px;--header-h:80px;--header-offset:calc(var(--progress-h) + env(safe-area-inset-top,0px));--header-stack:calc(var(--header-offset) + var(--header-h));--surface-high:#FFFFFF;--surface-gradient:linear-gradient(145deg,var(--surface-high),var(--surface));
 --dept-gold-text:#76531c;--dept-gold-tint:#f1e7ce;--dept-gold-edge:#8a6b32;
 --dept-rose-text:#794b67;--dept-rose-tint:#eee1e8;--dept-rose-edge:#8c5d77;
 --dept-blue-text:#345d7c;--dept-blue-tint:#dde7ee;--dept-blue-edge:#557991;
@@ -23,10 +25,11 @@
 --dept-text:var(--muted);--dept-tint:var(--soft);--dept-edge:var(--line);--dept-gold-accent:#bf8a2d;--dept-rose-accent:#b06690;--dept-blue-accent:#498bc0;--dept-maroon-accent:#b97059;--dept-green-accent:#438978;--glow-strength:14%;--dept-accent:var(--line);
 }
 :root[data-theme="dark"] {
- --bg:#19221f;--surface:#232e29;--soft:#303f37;--ink:#e7e5dc;--muted:#c0c7be;
- --green:#a6c6b1;--green-deep:#b9d4c2;--on-accent:#19221f;--line:#8c9c8f;--focus:#e3ba73;
- --error:#f1ad9d;--error-bg:#382b27;--veil:rgba(25,34,31,.90);--bokeh-color:#63836d;
- --shadow-light:rgba(192,199,190,.04);--shadow-dark:rgba(0,0,0,.24);color-scheme:dark;--surface-high:#2b3831;
+ --gold:#F2BE4B;--teal:#4FC1B8;
+ --bg:#14110F;--surface:#1E1A17;--soft:#2B2420;--ink:#F3EDE6;--muted:#C9BDB3;
+ --green:#EA6073;--green-deep:#F07888;--on-accent:#14110F;--line:#948277;--focus:#F2BE4B;
+ --error:#f1ad9d;--error-bg:#382b27;--veil:rgba(20,17,15,.92);--bokeh-color:#63836d;
+ --shadow-light:rgba(243,237,230,.04);--shadow-dark:rgba(0,0,0,.30);color-scheme:dark;--surface-high:#29221E;
 --dept-gold-text:#dec48c;--dept-gold-tint:#3d3425;--dept-gold-edge:#c3a36c;
 --dept-rose-text:#e0b7cf;--dept-rose-tint:#392d35;--dept-rose-edge:#bd93ab;
 --dept-blue-text:#add1e6;--dept-blue-tint:#263845;--dept-blue-edge:#85abc2;

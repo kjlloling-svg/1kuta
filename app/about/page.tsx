@@ -103,14 +103,14 @@ export default async function About() {
       <section id="archive-facts" className="about-section" aria-labelledby="facts-title" data-about-section="facts">
         <p className="about-label">03 / ARCHIVE FACTS</p>
         <h2 id="facts-title">The collection at a glance.</h2>
-        {counts ? <>
+        {counts && counts.papers > 0 ? <>
           <dl className="about-facts">
             <div><dt>Verified papers</dt><dd>{counts.papers.toLocaleString('en-US')}</dd></div>
             <div><dt>Research years represented</dt><dd>{counts.years.toLocaleString('en-US')}</dd></div>
             <div><dt>Authors of verified papers</dt><dd>{counts.authors.toLocaleString('en-US')}</dd></div>
           </dl>
           <p className="about-note">Counts reflect verified records currently in the archive. Demo and pending records are excluded.{counts.papers === 0 ? ' No verified papers have been added yet.' : ''}</p>
-        </> : <p className="about-note" role="status">Archive statistics are currently unavailable. Please check again later.</p>}
+        </> : counts && counts.papers === 0 ? <p className="about-note">The archive is being built. Verified research will appear here.</p> : <p className="about-note" role="status">Archive statistics are currently unavailable. Please check again later.</p>}
       </section>
       <section id="values" className="about-section" aria-labelledby="values-title" data-about-section="values">
         <p className="about-label">04 / OUR VALUES</p>
@@ -128,3 +128,4 @@ export default async function About() {
     </div>
   </main>;
 }
+
