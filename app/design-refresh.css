@@ -1,0 +1,3 @@
+/* Campus Warm: presentation overrides, leaving application behavior intact. */
+html body,html .site-header,html .footer,html .page-main,html .about-page { transition:background-color 300ms ease,color 300ms ease; }
+@media(prefers-reduced-motion:reduce){html body,html .site-header,html .footer,html .page-main,html .about-page {transition:none!important}}
