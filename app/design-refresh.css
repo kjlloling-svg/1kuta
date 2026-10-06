@@ -1,3 +1,23 @@
 /* Campus Warm: presentation overrides, leaving application behavior intact. */
 html body,html .site-header,html .footer,html .page-main,html .about-page { transition:background-color 300ms ease,color 300ms ease; }
 @media(prefers-reduced-motion:reduce){html body,html .site-header,html .footer,html .page-main,html .about-page {transition:none!important}}
+
+/* One signature ambient motion; the foreground stays on readable opaque surfaces. */
+html .home-background.refresh-atmosphere { position:absolute;inset:var(--header-stack) 0 auto;height:800px;overflow:hidden;pointer-events:none;background:var(--bg); }
+html .refresh-atmosphere::before { content:"";position:absolute;inset:-18%;background:radial-gradient(ellipse at 75% 30%,var(--green) 0,transparent 48%),radial-gradient(ellipse at 28% 50%,var(--gold) 0,transparent 47%),radial-gradient(ellipse at 70% 90%,var(--teal) 0,transparent 48%);opacity:.13;animation:campus-drift 25s ease-in-out infinite alternate; }
+@keyframes campus-drift { from{transform:translate3d(-2%,0,0) scale(1)} to{transform:translate3d(3%,-3%,0) scale(1.06)} }
+html .kuta-welcome { padding:64px 0 48px; }
+html .welcome-layout { grid-template-columns:minmax(0,1.55fr) minmax(240px,.65fr);gap:64px; }
+html .welcome-content { padding:24px 0;background:transparent;border:0;box-shadow:none; }
+html .kuta-welcome h1 { font-size:clamp(76px,10vw,144px);animation:campus-enter 600ms both; }
+html .wordmark-dot { color:var(--green); }
+html .kuta-subtitle { animation:campus-enter 600ms 80ms both; }
+html .welcome-content .hero-search { margin-top:30px;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 36px var(--shadow-dark);animation:campus-enter 600ms 160ms both; }
+html .welcome-content .hero-search:focus-within { outline:2px solid var(--focus);outline-offset:3px;box-shadow:0 0 0 7px color-mix(in srgb,var(--gold) 18%,transparent);transform:none; }
+html .welcome-actions { margin-top:20px;animation:campus-enter 600ms 240ms both; }
+html .welcome-aside { padding:30px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:none; }
+html .welcome-aside h2 { font-size:clamp(28px,3vw,40px); }
+html .stats-strip { background:var(--surface);box-shadow:none;border-radius:16px; }
+@keyframes campus-enter { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@media(max-width:900px){html .welcome-layout{grid-template-columns:1fr}html .kuta-welcome{padding:30px 0}html .welcome-content{padding:16px 4px}}
+@media(prefers-reduced-motion:reduce){html .refresh-atmosphere::before,html .kuta-welcome h1,html .kuta-subtitle,html .welcome-content .hero-search,html .welcome-actions{animation:none!important;transform:none!important;opacity:1!important}}
