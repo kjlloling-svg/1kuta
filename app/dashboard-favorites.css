@@ -1,0 +1,11 @@
+html .review-controls{display:grid;gap:10px;margin:20px 0}
+html .review-search{display:flex;gap:8px;align-items:center}
+html .review-search input{min-width:0;flex:1}
+html .review-search button{min-width:44px;min-height:44px}
+html .review-selects{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+html .review-selects label{display:grid;gap:8px;min-width:0}
+html .review-selects select,html .review-search input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+html .review-summary{min-height:1.6em;color:var(--muted)}
+html .review-authors{font-size:13px;color:var(--muted);margin:8px 0}
+html .admin-panel{min-width:0}html .admin-records li>div{min-width:0}html .admin-records strong{overflow-wrap:anywhere}
+@media(max-width:620px){html .review-selects{grid-template-columns:1fr}html .admin-records li{flex-direction:column;gap:16px}html .admin-record-actions{display:flex;gap:12px}}
