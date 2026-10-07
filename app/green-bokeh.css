@@ -1,0 +1,17 @@
+/* Presentation-only tokens and surfaces. Existing semantic names stay compatible. */
+:root {
+ --primary-50:#F0FDF4;--primary-100:#DCFCE7;--primary-200:#BBF7D0;--primary-300:#86EFAC;--primary-400:#4ADE80;
+ --primary-500:#22C55E;--primary-600:#16A34A;--primary-700:#15803D;--primary-800:#166534;--primary-900:#14532D;
+ --mesh-green:#86C99C;--mesh-pink:#F472B6;--mesh-purple:#8B5CF6;--mesh-warm:#E2725B;
+}
+/* A solid reading plane means text contrast never depends on moving decoration. */
+html .welcome-content {background:var(--surface);padding:24px;border-radius:22px}
+html .page-intro,html .how-steps,html .favorites-panel {background:var(--surface);padding:24px;border-radius:18px}
+html .button-outline {background:var(--surface)}
+html .citation-dialog,html .archive-modal {background:var(--surface)}
+html .text-link,html .back-link,html .account-link,html .footer nav a,html .prose-section a {text-decoration:underline;text-underline-offset:.2em}
+html :is(input,select,textarea,button,a,summary):focus-visible {outline:3px solid var(--focus);outline-offset:3px}
+html :is(.field-error,.form-error,.favorite-error) {border-inline-start:3px solid currentColor;padding-inline-start:10px}
+html .keyword-chip[aria-pressed=true] {border-width:2px;text-decoration:underline;text-underline-offset:.2em}
+html .favorite-button[aria-pressed=true] {border-style:double;border-width:3px;padding:6px 10px}
+@media(max-width:620px){html .welcome-content,html .page-intro,html .how-steps,html .favorites-panel{padding:20px}}
