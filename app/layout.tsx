@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from 'next';
 import { Header, Footer } from '@/components/site-shell';
 import './globals.css';
 import {ScrollProgress} from '@/components/scroll-progress';
+import {AmbientBackground} from '@/components/ambient-background';
 // Every page header reflects the current local session.
 export const dynamic='force-dynamic';
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
@@ -36,5 +37,5 @@ function disableDevTools() {
 }
 disableDevTools();
 `;
-export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) { const stored=(await cookies()).get(themeConfig.cookie)?.value;const theme=stored==='dark'?'dark':'light';return <html lang="en" className={inter.variable} data-theme={theme} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header initialTheme={theme}/>{children}<Footer /></body></html>; }
+export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) { const stored=(await cookies()).get(themeConfig.cookie)?.value;const theme=stored==='dark'?'dark':'light';return <html lang="en" className={inter.variable} data-theme={theme} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><AmbientBackground/><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header initialTheme={theme}/>{children}<Footer /></body></html>; }
 
