@@ -1,4 +1,5 @@
 import {cookies} from 'next/headers';
+import {colorVisionBootstrapScript} from '@/lib/color-vision.mjs';
 import {themeConfig,themeBootstrapScript} from '@/lib/theme.mjs';
 import localFont from 'next/font/local';
 import type { Metadata, Viewport } from 'next';
@@ -35,5 +36,5 @@ function disableDevTools() {
 }
 disableDevTools();
 `;
-export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) { const stored=(await cookies()).get(themeConfig.cookie)?.value;const theme=stored==='dark'?'dark':'light';return <html lang="en" className={inter.variable} data-theme={theme} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/></head><body><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header initialTheme={theme}/>{children}<Footer /></body></html>; }
+export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) { const stored=(await cookies()).get(themeConfig.cookie)?.value;const theme=stored==='dark'?'dark':'light';return <html lang="en" className={inter.variable} data-theme={theme} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header initialTheme={theme}/>{children}<Footer /></body></html>; }
 
