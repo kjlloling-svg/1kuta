@@ -21,6 +21,6 @@ export async function themeTestServer(){
  const listener=net.createServer();await new Promise(r=>listener.listen(0,'127.0.0.1',r));const port=listener.address().port;await new Promise(r=>listener.close(r));const base='http://localhost:'+port;
  const server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','-p',String(port)],{env:{...process.env,NODE_ENV:'production'},windowsHide:true,stdio:['ignore','pipe','pipe']});let logs='';server.stdout.on('data',d=>logs+=d);server.stderr.on('data',d=>logs+=d);
  const close=async()=>{server.kill();if(server.exitCode===null)await new Promise(r=>server.once('exit',r));sqlite.close();for(const suffix of ['','-wal','-shm'])try{unlinkSync(process.env.DATABASE_PATH+suffix);}catch{}};
- for(let i=0;i<120;i++){try{if((await fetch(base+'/login')).ok)return {base,sessions,cookie:SESSION_COOKIE,close};}catch{}await delay(250);}
+ for(let i=0;i<120;i++){try{if((await fetch(base+'/login')).ok)return {base,sessions,cookie:SESSION_COOKIE,close,resetLimits:()=>sqlite.exec('DELETE FROM login_attempts')};}catch{}await delay(250);}
  await close();throw new Error('Presentation test server did not start: '+logs);
 }

@@ -9,6 +9,7 @@ html .welcome-content {background:var(--surface);padding:24px;border-radius:22px
 html .page-intro,html .how-steps,html .favorites-panel {background:var(--surface);padding:24px;border-radius:18px}
 html .button-outline {background:var(--surface)}
 html .citation-dialog,html .archive-modal {background:var(--surface)}
+html .locked-placeholder,html .google-sign-in-divider {opacity:1;color:var(--muted)}
 html .text-link,html .back-link,html .account-link,html .footer nav a,html .prose-section a {text-decoration:underline;text-underline-offset:.2em}
 html :is(input,select,textarea,button,a,summary):focus-visible {outline:3px solid var(--focus);outline-offset:3px}
 html :is(.field-error,.form-error,.favorite-error) {border-inline-start:3px solid currentColor;padding-inline-start:10px}
