@@ -10,7 +10,7 @@
     "sync:stop": "node scripts/sync.mjs --stop",
     "install:ci": "bash scripts/install-pnpm.sh",
     "dev": "node scripts/local-server.mjs",
-    "build": "next build",
+    "build": "node scripts/clean-build.mjs && next build",
     "start": "node scripts/local-server.mjs",
     "lint": "eslint app components hooks lib db --ignore-pattern backup-before-local-login-*",
     "db:generate": "drizzle-kit generate",

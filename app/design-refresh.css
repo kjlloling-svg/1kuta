@@ -47,7 +47,7 @@ html .marquee-window:is(:hover,:focus-within) .marquee-track,html .program-marqu
 @keyframes program-flow { from{transform:translate3d(0,0,0)} to{transform:translate3d(-50%,0,0)} }
 @media(max-width:900px){html .program-grid,html .program-directory{grid-template-columns:repeat(2,minmax(0,1fr))}html .program-tile:first-child,html .directory-card:first-child{grid-column:span 2;grid-row:auto;min-height:240px}}
 @media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .program-tile:first-child,html .directory-card:first-child{grid-column:auto;min-height:220px}html .program-tile,html .directory-card{min-height:210px}html .program-marquee{padding:14px}}
-@media(prefers-reduced-motion:reduce){html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none}html .marquee-track ul[aria-hidden],html .marquee-pause{display:none}}
+@media(prefers-reduced-motion:reduce){html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none}html .marquee-track ul[aria-hidden]{display:none}}
 /* Honest archive states and a short path into the existing reading flow. */
 html .how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
 html .how-steps li{padding:28px 0;border-top:1px solid var(--line)}
@@ -75,3 +75,13 @@ html .paper-skeleton::after{content:"";position:absolute;inset:0;background:line
 @media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .campus-reveal{opacity:1;transform:none}html .program-tile:hover,html .directory-card:hover,html .paper-card:hover,html .year-tile:hover,html .button:active,html .tile-arrow,html .year-prompt>span{transform:none!important}html .paper-skeleton::after{display:none}}
 /* Reduced motion keeps the same low-contrast decorative wash. */
 @media(prefers-reduced-motion:reduce){html .refresh-atmosphere::before{opacity:.13!important}}
+
+/* A deliberate Play click opts only this strip into motion, not the page effects. */
+@media(prefers-reduced-motion:reduce){
+ html .program-marquee[data-motion="enabled"] .marquee-track{animation:program-flow 65s linear infinite!important;width:max-content;will-change:transform}
+ html .program-marquee[data-motion="enabled"] .marquee-track ul{display:flex;flex:none;flex-wrap:nowrap;gap:32px;padding:0 32px 0 0}
+ html .program-marquee[data-motion="enabled"] .marquee-track li{white-space:nowrap;max-width:none;gap:32px}
+ html .program-marquee[data-motion="enabled"] .marquee-track li a{overflow-wrap:normal}
+ html .program-marquee[data-motion="enabled"][data-paused="true"] .marquee-track,
+ html .program-marquee[data-motion="enabled"] .marquee-window:is(:hover,:focus-within) .marquee-track{animation-play-state:paused!important}
+}
