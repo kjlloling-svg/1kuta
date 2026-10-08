@@ -66,9 +66,11 @@ export async function allPrograms(){
 }
 export async function ensurePrograms(){
   const db=database();
-  const count=await db.prepare('SELECT COUNT(*) AS n FROM programs').first<{n:number}>();
-  if((count?.n??0)>=catalog.length)return;
-  await db.batch(catalog.map(p=>db.prepare('INSERT OR IGNORE INTO programs (slug,name,major,description) VALUES (?,?,?,?)').bind(p.slug,p.name,p.major,`${p.label} research at SLSU Gumaca Campus`)));
+  const existing=await db.prepare('SELECT slug FROM programs').all<{slug:string}>();
+  const slugs=new Set(existing.results.map(p=>p.slug));
+  const missing=catalog.filter(p=>!slugs.has(p.slug));
+  if(!missing.length)return;
+  await db.batch(missing.map(p=>db.prepare('INSERT OR IGNORE INTO programs (slug,name,major,description) VALUES (?,?,?,?)').bind(p.slug,p.name,p.major,`${p.label} research at SLSU Gumaca Campus`)));
 }
 export async function allKeywords(){
   const rows=await database().prepare("SELECT keywords FROM research_papers WHERE status IN ('verified','demo')").all<{keywords:string|null}>();
@@ -78,7 +80,6 @@ export async function publicPaper(paper:Paper,access:PaperAccess='guest'){
   const authors=await getPaperAuthors(paper.id);
   return toPublicPaperDTO(paper,authors,keywordsOf(paper.keywords),access);
 }
-
 
 
 

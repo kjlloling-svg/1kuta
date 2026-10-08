@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import {programs as programCatalog} from '../lib/programs.ts';
 import assert from 'node:assert/strict';
 import {randomUUID,randomBytes} from 'node:crypto';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -20,7 +21,7 @@ function restricted(p,authenticated){for(const key of ['file_key','file_name','f
 try{
  const admin=await login('admin'),publicCookie=await login('public');defaultCookie=publicCookie;
  const programs=(await (await call('/api/programs')).json()).programs;
- await check('Five programs; Nursing/Midwifery appears once',async()=>{assert.equal(programs.length,5);assert.equal(programs.filter(p=>p.slug==='bs-nursing-midwifery').length,1);assert.equal(programs.some(p=>['bs-nursing','diploma-midwifery'].includes(p.slug)),false);});
+ await check('Catalog programs present; Nursing/Midwifery appears once',async()=>{for(const entry of programCatalog)assert.equal(programs.filter(p=>p.slug===entry.slug).length,1);assert.equal(programs.filter(p=>p.slug==='bs-nursing-midwifery').length,1);assert.equal(programs.some(p=>['bs-nursing','diploma-midwifery'].includes(p.slug)),false);});
  const program=programs.find(p=>p.slug==='bs-nursing-midwifery');
  const body={title:`DEMO QA ${marker}`,authors:[{given:'Ana Maria',family:'Dela Cruz'},{given:'Ben',family:'Reyes'}],program_id:program.id,year:2026,department:'Private department',category:'Research Paper',keywords:' Local QA, local qa, Archives, Design, Education, Campus, Technology ',abstract:'Public verification abstract.',status:'demo'};
  let id,slug;
