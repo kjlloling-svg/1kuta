@@ -2,6 +2,7 @@
 @import "./design-refresh.css";
 @import "./dashboard-favorites.css";
 @import "./green-bokeh.css";
+@import "./paper-cards.css";
 @source "./";
 @source "../components";
 @source not "../components/ui";

@@ -1,0 +1,60 @@
+/* Card-specific layout; shared dialogs keep their existing presentation. */
+html .paper-grid,html .results-grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+html .paper-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:440px;height:100%;padding:20px;gap:0;overflow:visible;container-type:inline-size;background:var(--surface)}
+html .paper-card:hover{transform:none;box-shadow:var(--shadow-raised)}
+html .paper-card:focus-within{z-index:2}
+html .paper-card .card-top{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:48px;min-height:44px;align-items:center;gap:8px}
+html .paper-card .tag{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0;max-width:100%;overflow-wrap:anywhere;font-size:11px;padding:3px 6px;line-height:1.4}
+html .paper-card .paper-year{font-size:12px;white-space:nowrap}
+html .paper-card h3{font-size:19px;line-height:1.35;min-height:2.7em;margin:12px 0 8px;overflow-wrap:anywhere}
+html .paper-card h3 a{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;box-shadow:none;line-height:inherit}
+html .paper-card h3 a:hover{box-shadow:none;transform:none}
+html .paper-card .card-authors{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 0 8px;color:var(--muted);font-size:13px;line-height:1.6;min-height:1.6em}
+html .paper-card .card-metadata{display:flex;flex-wrap:wrap;gap:4px 10px;color:var(--muted);font-size:11px;line-height:1.5;margin-bottom:8px}
+html .paper-card .card-metadata span{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html .paper-card .card-keywords-slot{min-height:48px}
+html .paper-card .card-keywords{display:flex;flex-wrap:nowrap;gap:6px;min-height:36px;margin:0 0 12px;min-width:0}
+html .paper-card .keyword-chip{display:block;min-width:0;max-width:45%;min-height:36px;padding:8px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:11px;border-radius:8px;box-shadow:none;line-height:18px;flex:0 1 auto}
+html .paper-card .keyword-chip:last-child{flex-shrink:0;max-width:40%}
+html .paper-card .keyword-chip:hover{transform:none;background:var(--soft)}
+html .paper-card .card-preview{min-width:0;height:72px;flex:none;margin:0}
+html .paper-card .card-excerpt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;overflow-wrap:anywhere;color:var(--muted);font-size:14px;line-height:24px;margin:0;white-space:normal}
+html .paper-card .locked-research-compact{border:0;padding:0;margin:0;border-radius:0;background:transparent}
+html .paper-card .locked-research-compact p{font-size:12px;line-height:16px;margin:0;max-height:32px;overflow-wrap:anywhere}
+html .paper-card .locked-research-compact p svg{vertical-align:middle;display:inline}
+html .paper-card .paper-sign-in{min-height:40px;padding:0 8px;margin:0;box-shadow:none;border:0;background:transparent;color:var(--green);font-size:12px;text-decoration:underline;transform:none}
+html .paper-card>.favorite-control,html .paper-card>.card-feedback-space{position:static;flex:none;height:44px;min-height:44px;margin:4px 0 8px}
+html .paper-card>.favorite-control>.favorite-button{position:absolute;top:20px;right:20px}
+html .paper-card>.favorite-control>.favorite-tooltip{top:66px;right:20px}
+html .paper-card>.favorite-control>.favorite-error{font-size:12px;line-height:20px;margin:0;max-height:44px;overflow:auto;overflow-wrap:anywhere}
+html .paper-card .paper-card-actions{display:flex;align-items:center;gap:6px;flex-wrap:nowrap;margin-top:auto;padding-top:12px;min-width:0;min-height:53px}
+html .paper-action{display:inline-flex;align-items:center;justify-content:center;flex:none;height:40px;min-height:40px;min-width:40px;padding:0 10px;gap:6px;border:1px solid var(--line);border-radius:10px;font-size:12px;line-height:1;font-weight:700;color:var(--ink);background:var(--surface);box-shadow:none;white-space:nowrap;transition:background-color 180ms ease,color 180ms ease,opacity 180ms ease}
+html .paper-card .paper-action-primary{flex:1 1 auto;min-width:0;background:var(--green);color:var(--on-accent);border-color:var(--green);text-decoration:none}
+html .paper-action svg{flex:none;width:18px;height:18px}
+html .paper-action-icon{padding:0;width:40px}
+html .paper-card-actions>.citation-entry,html .paper-card-actions>.detail-actions-compact{margin:0;flex:none;padding:0;border:0}
+html .paper-action:hover{transform:none;background:var(--soft);box-shadow:none}
+html .paper-card .paper-action-primary:hover{background:var(--green-deep);border-color:var(--green-deep)}
+html .paper-action:active{transform:none;box-shadow:var(--shadow-pressed)}
+html .paper-action:focus-visible,html .favorite-button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+html .paper-action:disabled{cursor:wait;opacity:.6;transform:none;box-shadow:none}
+html .detail-actions-compact details{position:relative}
+html .detail-actions-compact summary{list-style:none}
+html .detail-actions-compact summary::-webkit-details-marker{display:none}
+html .paper-overflow-actions{position:absolute;z-index:5;bottom:calc(100% + 8px);right:0;width:210px;padding:10px;display:grid;gap:8px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:var(--shadow-raised)}
+html .paper-overflow-actions :is(button,a){display:flex;align-items:center;gap:8px;min-height:44px;padding:8px;font-size:12px;white-space:normal;transform:none}
+html .paper-overflow-actions p{font-size:12px;margin:0;color:var(--error);overflow-wrap:anywhere}
+html .paper-skeleton{height:440px;min-height:440px;padding:20px;display:flex;flex-direction:column;gap:14px;border-radius:var(--radius)}
+html .paper-skeleton span{height:16px;border-radius:6px;background:var(--line);opacity:.25;width:65%}
+html .paper-skeleton span:nth-child(2){height:52px;width:100%}
+html .paper-skeleton span:nth-child(3){height:72px;width:100%}
+html .paper-skeleton span:last-child{height:44px;width:100%;margin-top:auto}
+html .results>.state-card,html .favorites-panel>.state-card{min-height:440px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow-wrap:anywhere}
+html .favorites-list li{position:relative;min-width:0;min-height:160px;padding:20px;gap:16px;flex-direction:row}
+html .favorites-list li>div:first-child{min-width:0;flex:1}
+html .favorites-list h3{font-size:18px;line-height:1.4;min-height:2.8em;margin-bottom:8px}
+html .favorites-list h3 a{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+html .favorites-list p{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:13px;margin:6px 0}
+html .favorites-list .favorite-error{position:absolute;right:20px;left:20px;bottom:0;white-space:normal;font-size:12px;background:var(--surface)}
+@media(max-width:620px),(pointer:coarse){html .paper-action{height:44px;min-height:44px;min-width:44px}html .paper-action-icon{width:44px}html .paper-card .card-keywords-slot{min-height:56px}html .paper-card .keyword-chip{min-height:44px;padding-block:12px}html .paper-card .paper-sign-in{min-height:44px}html .paper-card .card-preview{height:76px}html .paper-card,html .paper-skeleton{min-height:456px}html .paper-skeleton{height:456px}}
+@media(prefers-reduced-motion:reduce){html .paper-action{transition:none}}

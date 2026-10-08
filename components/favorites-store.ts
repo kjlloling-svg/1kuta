@@ -45,9 +45,11 @@ export async function toggleFavorite(slug:string){
   if(!response.ok){const data=await response.json() as {error?:string};throw new Error(data.error||'Unable to update Favorites. Please try again.');}
   try{localStorage.setItem('kuta-favorites-update',String(Date.now()));}catch{/* Storage can be disabled. */}
   window.dispatchEvent(new Event('favorites-changed'));
+  return true;
  }catch(error){
   const restored=new Set(state.slugs);if(was)restored.add(slug);else restored.delete(slug);
   emit({...state,slugs:restored,errors:{...state.errors,[slug]:(error as Error).message}});
+  return false;
  }finally{const remaining=new Set(state.busy);remaining.delete(slug);emit({...state,busy:remaining});}
 }
 
