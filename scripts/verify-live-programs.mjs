@@ -10,8 +10,8 @@ try {
   const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'no-preference',colorScheme:theme});
   await context.addInitScript(t=>localStorage.setItem('archive-theme',t),theme);
   const page=await context.newPage();
-  await page.goto('https://kutaslsu.vercel.app/',{waitUntil:'networkidle'});
-  const cards=page.locator('.program-tile');
+  await page.goto('https://kutaslsu.vercel.app/',{waitUntil:'domcontentloaded',timeout:60000});
+  const cards=page.locator('.program-tile'); await cards.last().waitFor();
   assert.equal(await cards.count(),7);
   const colors=await cards.evaluateAll(es=>es.slice(0,5).map(e=>getComputedStyle(e).getPropertyValue('--dept-text').trim()));
   assert.equal(new Set(colors).size,5,'live distinct accents');
