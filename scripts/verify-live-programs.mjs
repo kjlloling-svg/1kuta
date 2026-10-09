@@ -18,6 +18,16 @@ try {
   assert.equal(await cards.first().evaluate(e=>getComputedStyle(e,'::before').animationName),'department-pulse');
   assert.equal(await cards.first().evaluate(e=>getComputedStyle(e,'::before').borderRightWidth),'2px');
   const track=page.locator('.marquee-track');
+  const showcaseColors=await track.locator('ul').first().locator('li').evaluateAll(es=>es.map(e=>getComputedStyle(e).getPropertyValue('--dept-text').trim()));
+  assert.equal(new Set(showcaseColors).size,7,'seven live showcase accents');
+  assert.equal(await track.evaluate(e=>getComputedStyle(e).animationDuration),'36s');
+  assert.ok(await page.locator('.marquee-window').evaluate(e=>getComputedStyle(e).maskImage.includes('linear-gradient')));
+  await page.locator('.marquee-window').hover();
+  assert.equal(await track.evaluate(e=>getComputedStyle(e).animationPlayState),'running');
+  await track.locator('a').first().focus();
+  assert.equal(await track.evaluate(e=>getComputedStyle(e).animationPlayState),'running');
+  await track.locator('a').first().evaluate(e=>e.blur());
+  await page.mouse.move(0,0);
   for(const width of [320,375,768,1024,1280,1440]) {
    await page.setViewportSize({width,height:1000});
    const x=await track.evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).m41);
@@ -27,12 +37,10 @@ try {
   }
   await page.emulateMedia({reducedMotion:'reduce'});
   assert.equal(await track.evaluate(e=>getComputedStyle(e).animationName),'none');
-  await page.getByRole('button',{name:'Play program strip',exact:true}).click();
-  const x=await track.evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).m41);
-  await page.waitForTimeout(200);
-  assert.ok(await track.evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).m41)<x,'live opt-in moving left');
+  assert.equal(await page.locator('.program-marquee button').count(),0);
+  assert.equal(await track.locator('ul[aria-hidden]').isVisible(),false);
   await page.locator('.program-grid').screenshot({path:`verification/program-accents/live-${theme}.png`});
-  console.log('PASS live',theme,colors.join(', '),'six widths, fitted border, pulse, motion and reduced-motion Play');
+  console.log('PASS live',theme,colors.join(', '),'six widths, fitted border, pulse, automatic motion and static reduced-motion layout');
   await context.close();
  }
 } finally {await browser.close();}

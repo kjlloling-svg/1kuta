@@ -33,21 +33,22 @@ html .program-tile:first-child .program-symbol { width:48px;height:48px; }
 html .program-number { margin-bottom:40px; }
 html .program-tile strong { display:block;margin:0 0 12px;font-size:20px;line-height:1.3; }
 html .program-name { display:block;max-width:36ch;line-height:1.6; }
-html .program-marquee { display:flex;align-items:center;gap:20px;border-block:1px solid var(--line);padding:16px 24px;background:var(--surface);overflow:hidden; }
-html .marquee-window { overflow:hidden;flex:1;min-width:0;padding-block:10px; }
-html .marquee-track { display:flex;width:max-content;animation:program-flow 65s linear infinite;will-change:transform; }
-html .marquee-track ul { display:flex;flex:none;align-items:center;gap:32px;margin:0;padding:0 32px 0 0;list-style:none; }
-html .marquee-track li { display:flex;align-items:center;gap:32px;white-space:nowrap;font-size:14px;color:var(--dept-text); }
-html .marquee-track li a{color:var(--dept-text);text-decoration:none;line-height:1.6}
+html .program-marquee { --marquee-gap:48px;--marquee-duration:36s;border-block:1px solid var(--line);padding:16px 0;background:var(--surface);overflow:hidden; }
+html .marquee-window { overflow:hidden;min-width:0;padding-block:12px;mask-image:linear-gradient(to right,transparent,#000 32px,#000 calc(100% - 32px),transparent); }
+html .marquee-track { display:flex;width:max-content;animation:program-flow var(--marquee-duration) linear infinite;will-change:transform; }
+/* Equal trailing space closes the seam between the two identical groups. */
+html .marquee-track ul { display:flex;flex:none;align-items:center;gap:var(--marquee-gap);margin:0;padding:0 var(--marquee-gap) 0 0;list-style:none; }
+html .marquee-track li { display:flex;flex:none;align-items:center;gap:24px;min-height:44px;white-space:nowrap;font-size:16px;font-weight:500;color:var(--dept-text); }
+html .marquee-track li a{color:var(--dept-text);text-decoration:none;line-height:1.6;padding-block:8px}
+html .marquee-diploma-cpt{--dept-text:var(--teal);--dept-accent:var(--teal)}
+html .marquee-diploma-mech{--dept-text:var(--dept-copper-text);--dept-accent:var(--dept-copper-accent)}
 html .marquee-track li a:is(:hover,:focus-visible){text-decoration:underline;text-underline-offset:4px}
 html .marquee-track li span{color:var(--dept-accent);filter:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));animation:department-pulse 3.2s ease-in-out infinite}
-html .marquee-track li:is(:hover,:focus-within) span{animation:none;opacity:1;filter:drop-shadow(0 0 5px var(--dept-accent)) drop-shadow(0 0 12px var(--dept-accent))}
-html .marquee-pause { flex:none;width:84px;font-size:12px;background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:10px 14px;border-radius:999px;box-shadow:none; }
-html .marquee-window:is(:hover,:focus-within) .marquee-track,html .program-marquee[data-paused="true"] .marquee-track {animation-play-state:paused}
-@keyframes program-flow { from{transform:translate3d(0,0,0)} to{transform:translate3d(-50%,0,0)} }
+@keyframes program-flow { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@media(max-width:900px){html .program-marquee{--marquee-gap:40px;--marquee-duration:32s}html .marquee-track li{font-size:15px;gap:20px}}
 @media(max-width:900px){html .program-grid,html .program-directory{grid-template-columns:repeat(2,minmax(0,1fr))}html .program-tile:first-child,html .directory-card:first-child{grid-column:span 2;grid-row:auto;min-height:240px}}
-@media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .program-tile:first-child,html .directory-card:first-child{grid-column:auto;min-height:220px}html .program-tile,html .directory-card{min-height:210px}html .program-marquee{padding:14px}}
-@media(prefers-reduced-motion:reduce){html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none}html .marquee-track ul[aria-hidden]{display:none}}
+@media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .program-tile:first-child,html .directory-card:first-child{grid-column:auto;min-height:220px}html .program-tile,html .directory-card{min-height:210px}html .program-marquee{--marquee-gap:32px;--marquee-duration:28s;padding-block:14px}html .marquee-track li{font-size:14px;gap:16px}}
+@media(prefers-reduced-motion:reduce){html .marquee-window{mask-image:none;padding-inline:24px}html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none;animation:none!important;opacity:1}html .marquee-track ul[aria-hidden]{display:none}}
 /* Honest archive states and a short path into the existing reading flow. */
 html .how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
 html .how-steps li{padding:28px 0;border-top:1px solid var(--line)}
@@ -66,7 +67,7 @@ html .program-tile,html .directory-card,html .paper-card,html .year-tile{transit
 html .tile-arrow,html .year-prompt>span{display:inline-block;transition:transform 240ms ease}
 @media(hover:hover) and (pointer:fine){html .year-tile:hover{transform:translateY(-4px);box-shadow:0 14px 28px var(--shadow-dark)}html .program-tile:hover .tile-arrow,html .year-tile:hover .year-prompt>span{transform:translateX(3px)}}
 html .button{transition:transform 240ms ease}
-html .button:active,html .marquee-pause:active{transform:translateY(1px)}
+html .button:active{transform:translateY(1px)}
 html .theme-toggle{border:1px solid var(--line);box-shadow:none;background:var(--soft)}
 html .theme-knob{box-shadow:0 2px 5px var(--shadow-dark)}
 html .paper-skeleton{position:relative;overflow:hidden;background:var(--soft);animation:none}
@@ -75,13 +76,3 @@ html .paper-skeleton::after{content:"";position:absolute;inset:0;background:line
 @media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .campus-reveal{opacity:1;transform:none}html .program-tile:hover,html .directory-card:hover,html .paper-card:hover,html .year-tile:hover,html .button:active,html .tile-arrow,html .year-prompt>span{transform:none!important}html .paper-skeleton::after{display:none}}
 /* Reduced motion keeps the same low-contrast decorative wash. */
 @media(prefers-reduced-motion:reduce){html .refresh-atmosphere::before{opacity:.13!important}}
-
-/* A deliberate Play click opts only this strip into motion, not the page effects. */
-@media(prefers-reduced-motion:reduce){
- html .program-marquee[data-motion="enabled"] .marquee-track{animation:program-flow 65s linear infinite!important;width:max-content;will-change:transform}
- html .program-marquee[data-motion="enabled"] .marquee-track ul{display:flex;flex:none;flex-wrap:nowrap;gap:32px;padding:0 32px 0 0}
- html .program-marquee[data-motion="enabled"] .marquee-track li{white-space:nowrap;max-width:none;gap:32px}
- html .program-marquee[data-motion="enabled"] .marquee-track li a{overflow-wrap:normal}
- html .program-marquee[data-motion="enabled"][data-paused="true"] .marquee-track,
- html .program-marquee[data-motion="enabled"] .marquee-window:is(:hover,:focus-within) .marquee-track{animation-play-state:paused!important}
-}
