@@ -394,16 +394,37 @@ main{margin-top:0}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:0}
 .brand-mark{width:44px;height:44px;padding:3px;flex:none;background:var(--logo-canvas);border:1px solid var(--line);border-radius:50%;overflow:hidden;box-shadow:var(--shadow-raised)}
 .brand-mark img{display:block;width:100%;height:100%;object-fit:contain}
-.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-text{display:flex;flex-direction:column;line-height:1.2;min-width:0}
 .brand-text strong{font-size:18px;font-weight:700;letter-spacing:-.035em}
 .brand-text small{font-size:10px;max-width:155px;line-height:1.25;letter-spacing:.015em;color:var(--muted)}
 .desktop-nav{display:flex;align-items:center;gap:5px;margin-left:auto}
 .desktop-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;font-size:12px;white-space:nowrap;border:1px solid var(--line);border-radius:14px;background:var(--surface-gradient);color:var(--green);box-shadow:var(--shadow-raised)}
-.header-actions{display:flex;align-items:center;gap:7px}
+.header-actions{display:flex;align-items:center;gap:10px;flex:none}
 .header-actions form{margin:0}
 .header-search{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:14px;background:var(--green);color:var(--on-accent);font-size:12px;font-weight:700;white-space:nowrap;box-shadow:var(--shadow-raised)}
 .header-search:hover{background:var(--green-deep);color:var(--on-accent)}
-.account-name{font-size:12px;max-width:100px;line-height:1.3}
+.header-account-slot{display:flex;justify-content:flex-end;align-items:center;width:144px;flex:none}
+html .account-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;min-width:44px;max-width:100%;padding:4px 8px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);box-shadow:none;flex:none}
+html .account-trigger:hover{transform:none;background:var(--soft);box-shadow:none}
+.account-trigger>svg{flex:none}
+.account-first-name{display:none;min-width:0;max-width:76px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:700}
+.account-avatar{display:flex;width:34px;height:34px;flex:0 0 34px;border-radius:50%;overflow:hidden;background:var(--soft);color:var(--green);font-size:13px;font-weight:700}
+.account-avatar img{display:block;width:100%;height:100%;object-fit:cover}
+.account-avatar [data-slot="avatar-fallback"]{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
+html .account-dropdown{z-index:150;width:320px;max-width:calc(100vw - 32px);max-height:var(--radix-dropdown-menu-content-available-height);overflow-y:auto;overflow-x:hidden;padding:10px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-hover);animation:none}
+.account-identity{display:flex;align-items:center;gap:10px;padding:10px;min-width:0}
+.account-details{display:flex;flex-direction:column;gap:4px;min-width:0;line-height:1.5;overflow-wrap:anywhere}
+.account-details strong{font-size:14px;font-weight:700}
+.account-details>span{font-size:12px;color:var(--muted)}
+html :is(.account-dropdown,.mobile-user-account) :is(.account-menu-link,.account-link){display:flex;align-items:center;justify-content:flex-start;width:100%;min-height:44px;padding:10px 12px;margin:0;gap:10px;border:0;border-radius:8px;background:var(--surface);color:var(--ink);font-size:14px;font-weight:600;text-decoration:none;box-shadow:none;transform:none}
+html :is(.account-dropdown,.mobile-user-account) :is(.account-menu-link,.account-link):is(:hover,:focus-visible,[data-highlighted]){background:var(--soft);outline:2px solid var(--focus);outline-offset:-2px;box-shadow:none;transform:none}
+.account-divider{height:1px;margin:8px 0;border:0;background:var(--line)}
+:is(.account-dropdown,.mobile-user-account) .logout-control{display:block;min-width:0}
+:is(.account-dropdown,.mobile-user-account) .logout-control [role="alert"]{display:block;padding:8px 12px;color:var(--error);font-size:13px;overflow-wrap:anywhere}
+.mobile-user-account{min-width:0;display:grid;gap:8px}
+@media(min-width:1440px){.header-account-slot{width:160px}.account-first-name{display:block}}
+@media(max-width:1279px){html .account-dropdown{display:none}}
+@media(max-width:360px){.header-inner .brand-text{display:none}}
 .header-actions .account-link{font-size:12px;padding:8px 10px;white-space:nowrap}
 .mobile-navigation{display:none;margin-left:auto;position:static}
 .menu-trigger{min-height:44px;gap:12px;font-weight:700}
@@ -412,8 +433,7 @@ main{margin-top:0}
 .mobile-panel-inner{display:grid;gap:20px}
 .mobile-panel nav{display:grid;gap:10px}
 .mobile-panel nav a{display:flex;align-items:center;min-height:48px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;background:var(--surface-gradient);color:var(--ink);font-weight:600;box-shadow:var(--shadow-raised)}
-.mobile-account{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
-.mobile-account-name{width:100%;margin:0;font-weight:600;color:var(--ink)}
+.mobile-account{display:grid;align-content:start;min-width:0;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
 .mobile-account form{margin:0}
 .scroll-progress{top:0;height:var(--header-offset);padding-top:env(safe-area-inset-top,0px);z-index:130;background:var(--surface)}
 .scroll-progress span{height:var(--progress-h)}
@@ -542,7 +562,7 @@ html[data-restoring] body{visibility:hidden}
 @media(prefers-reduced-motion:reduce){body,.site-header,.footer,.page-main,.theme-toggle,.theme-knob,.theme-icon-light,.theme-icon-dark,.year-item,.year-tile,.year-number{transition:none!important;animation:none!important}.year-tile:hover{transform:none}}
 
 /* Google sign-in stays inside the existing login card. */
-.google-sign-in{margin-top:1rem;min-width:0}.google-sign-in-divider{text-align:center;margin-bottom:1rem;opacity:.65}.google-sign-in-status{font-size:.875rem;margin:.75rem 0;line-height:1.5}.account-avatar{display:inline-block;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:.5rem}
+.google-sign-in{margin-top:1rem;min-width:0}.google-sign-in-divider{text-align:center;margin-bottom:1rem;opacity:.65}.google-sign-in-status{font-size:.875rem;margin:.75rem 0;line-height:1.5}
 
 .header-theme{display:flex;flex-shrink:0}
 @media(max-width:1279px){.header-theme{margin-left:auto}.header-theme+.mobile-navigation{margin-left:0}}
