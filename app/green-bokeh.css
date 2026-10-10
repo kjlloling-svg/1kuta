@@ -6,6 +6,7 @@
 }
 /* A solid reading plane means text contrast never depends on moving decoration. */
 html .welcome-content {background:var(--surface);padding:24px;border-radius:22px}
+html .filters{background:var(--glass);box-shadow:none;backdrop-filter:var(--glass-filter);-webkit-backdrop-filter:var(--glass-filter)}
 html .page-intro,html .how-steps,html .favorites-panel {background:var(--surface);padding:24px;border-radius:18px}
 html .button-outline {background:var(--surface)}
 html .citation-dialog,html .archive-modal {background:var(--surface)}
@@ -15,7 +16,7 @@ html :is(input,select,textarea,button,a,summary):focus-visible {outline:3px soli
 html :is(.field-error,.form-error,.favorite-error) {border-inline-start:3px solid currentColor;padding-inline-start:10px}
 html .keyword-chip[aria-pressed=true] {border-width:2px;text-decoration:underline;text-underline-offset:.2em}
 html .favorite-button[aria-pressed=true] {border-style:double;border-width:3px;padding:6px 10px}
-@media(max-width:620px){html .welcome-content,html .page-intro,html .how-steps,html .favorites-panel{padding:20px}}
+@media(max-width:620px){html .welcome-content,html .how-steps{padding:24px}html .page-intro,html .favorites-panel{padding:20px}}
 
 html:root[data-cvd="red-green"]:not([data-theme="dark"]) {
  --bg:#F5FBF7;

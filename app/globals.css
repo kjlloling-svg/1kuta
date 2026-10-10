@@ -7,7 +7,7 @@
 @source "../components";
 @source not "../components/ui";
 @source not "../components/connector-error.tsx";
-/* Color tokens: all light/dark colors live here. Content surfaces are opaque. */
+/* Color tokens: reading surfaces are opaque; glass is reserved for control panels. */
 :root {
  --gold:#137A3B;--teal:#0F6658;
  --theme-duration:300ms;--year-gap:18px;--switch-width:68px;--switch-knob:32px;
@@ -16,7 +16,7 @@
  --line:#648371;--focus:#0F5132;--error:#A12635;--error-bg:#FFF0F1;
  --logo-canvas:#ffffff;--veil:rgba(245,251,247,.96);--bokeh-color:#86C99C;
  --shadow-light:rgba(255,255,255,.60);--shadow-dark:rgba(15,51,32,.10);--scrim:rgba(6,24,15,.68);
- --glass:var(--surface);--glass-border:var(--line);--glass-blur:6px;--glass-filter:blur(var(--glass-blur));--radius:18px;
+ --glass:color-mix(in srgb,var(--surface) 96%,transparent);--glass-border:var(--line);--glass-blur:6px;--glass-filter:blur(var(--glass-blur));--radius:18px;
  --shadow-raised:-3px -3px 9px var(--shadow-light),4px 5px 12px var(--shadow-dark);
  --shadow-pressed:inset 2px 2px 5px var(--shadow-dark),inset -2px -2px 5px var(--shadow-light);
  --shadow-hover:-4px -4px 12px var(--shadow-light),7px 9px 18px var(--shadow-dark);--shadow:var(--shadow-raised);color-scheme:light;--progress-h:4px;--header-h:80px;--header-offset:calc(var(--progress-h) + env(safe-area-inset-top,0px));--header-stack:calc(var(--header-offset) + var(--header-h));--surface-high:#FFFFFF;--surface-gradient:linear-gradient(145deg,var(--surface-high),var(--surface));
@@ -372,7 +372,7 @@ input[type="checkbox"]{accent-color:var(--green)}
 @keyframes kuta-float{to{transform:translate3d(18px,-24px,0)}}
 .card-abstract{display:grid;grid-template-rows:0fr;margin:0;transition:none}
 .paper-skeleton{height:280px;border-radius:var(--radius);background-size:220% 100%;border:1px solid var(--line);animation:none;background:var(--soft)}
-.recent-section,.section-intro,.footer{content-visibility:auto;contain-intrinsic-size:auto 500px}
+.footer{content-visibility:auto;contain-intrinsic-size:auto 500px}
 .scroll-progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;width:100%;height:4px;z-index:120;background:var(--surface);pointer-events:none}
 .scroll-progress[hidden]{display:none}
 .scroll-progress span{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 80ms linear}
@@ -388,7 +388,7 @@ main{margin-top:0}
 [id]{scroll-margin-top:var(--header-stack)}
 .skip-link{position:fixed;top:-120px;left:16px;z-index:140;min-height:44px;display:inline-flex;align-items:center;padding:10px 16px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px}
 .skip-link:focus{top:calc(var(--header-offset) + 8px)}
-.site-header{position:sticky;top:var(--header-offset);z-index:100;height:var(--header-h);margin:0;background:var(--surface);border-bottom:1px solid var(--line);isolation:isolate;backdrop-filter:none;-webkit-backdrop-filter:none}
+.site-header{position:sticky;top:var(--header-offset);z-index:100;height:var(--header-h);margin:0;background:var(--glass);border-bottom:1px solid var(--glass-border);isolation:isolate;backdrop-filter:var(--glass-filter);-webkit-backdrop-filter:var(--glass-filter)}
 .site-header::before{content:'';position:absolute;bottom:100%;inset-inline:0;height:var(--header-offset);background:var(--surface)}
 .header-inner{height:100%;display:flex;align-items:center;gap:18px;position:static}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:0}

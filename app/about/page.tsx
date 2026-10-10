@@ -1,18 +1,29 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from '@/components/native-link';
+import { PersonPortrait } from '@/components/person-portrait';
 import { stats } from '@/lib/archive';
 import { AboutNavigation } from './about-navigation';
 import './photos.css';
 
 export const metadata: Metadata = { title: 'About the Archive' };
 export const dynamic = 'force-dynamic';
-const officials=[
+const leadership=[
   {
-    "name": "Imelda A. Tangalin, DPM, PhD",
-    "role": "Campus Director",
-    "image": "/images/about/faculty/MAAM Imelda A. Tangalin, DPM, PhD.jpg"
+    "name": "Frederick T. Villa, DTech",
+    "role": "SLSU University President",
+    "image": "/images/about/faculty/frederick-t-villa.jpg",
+    "tier": "president"
   },
+  {
+    "name": "Imelda A. Tangalin",
+    "role": "SLSU Gumaca Campus Director",
+    "image": "/images/about/faculty/imelda-a-tangalin.jpg",
+    "webp": "/images/about/faculty/imelda-a-tangalin.jpg.webp",
+    "alt": "Imelda A. Tangalin, Campus Director",
+    "tier": "director"
+  }
+] as const;
+const officials=[
   {
     "name": "Harlene L. Dimailig",
     "role": "Program Chairperson, BSBA Human Resource Management",
@@ -37,6 +48,10 @@ const officials=[
     "name": "Felisicimo E. Santiago",
     "role": "Research and Extension Coordinator",
     "image": "/images/about/faculty/SIR Felicisimo E. Santiago.jpg"
+  },
+  {
+    "name": "Jhon Kenneth Aguado",
+    "role": "SLSU Gumaca University Librarian"
   }
 ];
 const team=[
@@ -57,16 +72,13 @@ const team=[
   }
 ];
 
-type Person = { name: string; role: string; image: string };
+type Person = { name: string; role: string; image?: string; webp?: string; alt?: string; tier?: 'president' | 'director' };
 function PersonCard({ person, researcher = false }: { person: Person; researcher?: boolean }) {
-  return <li className="about-person">
-    <picture className="about-portrait">
-      <source srcSet={person.image.split('/').map(encodeURIComponent).join('/') + '.webp'} type="image/webp" />
-      <Image src={person.image} alt={person.name + (researcher ? ', Researcher' : ', Faculty Member')}
-        width={800} height={800} loading="lazy" unoptimized />
-    </picture>
-    <strong>{person.name}</strong>
-    <p>{person.role}</p>
+  const Heading = researcher ? 'h3' : 'h4';
+  const webp = person.webp ?? (person.image && !person.tier ? `${person.image}.webp` : undefined);
+  return <li className={`about-person${person.tier ? ` about-person-${person.tier}` : ''}`}>
+    <PersonPortrait {...person} webp={webp} alt={person.alt ?? `${person.name}, ${researcher ? 'Researcher' : person.role}`} className="about-portrait" />
+    <div className="about-person-copy"><Heading>{person.name}</Heading><p>{person.role}</p></div>
   </li>;
 }
 const values = [
@@ -96,8 +108,9 @@ export default async function About() {
         <p className="about-label">02 / THE PEOPLE</p>
         <h2 id="team-title">We, the Researchers</h2>
         <ul className="about-people about-researchers">{team.map(person => <PersonCard key={person.name} person={person} researcher />)}</ul>
-        <h3 className="about-group-title">Faculty and campus leadership</h3>
+        <h3 className="about-group-title" id="officials-title">Faculty &amp; Campus Officials</h3>
         <p className="about-note">Roles supplied for this project; current appointments should be confirmed before an institutional launch.</p>
+        <ul className="about-people about-leadership" aria-labelledby="officials-title">{leadership.map(person => <PersonCard key={person.name} person={person} />)}</ul>
         <ul className="about-people about-faculty">{officials.map(person => <PersonCard key={person.name} person={person} />)}</ul>
       </section>
       <section id="archive-facts" className="about-section" aria-labelledby="facts-title" data-about-section="facts">
