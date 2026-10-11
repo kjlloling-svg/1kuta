@@ -109,8 +109,8 @@ try {
     assert.equal(new URL(await president.locator('img').getAttribute('src'),server.base).pathname,'/images/about/faculty/frederick-t-villa.jpg');
     assert.equal(await faculty.count(),6,'six equally sized Tier 3 cards');
     assert.equal(await librarian.locator('p').innerText(),'SLSU Gumaca University Librarian');
-    assert.equal(await librarian.locator('img').count(),0,'missing photo uses initials only');
-    assert.equal(await librarian.locator('.person-portrait-fallback').innerText(),'JA');
+    assert.equal(await librarian.locator('img').getAttribute('alt'),'Jhon Kenneth Aguado, SLSU Gumaca University Librarian');
+    assert.equal(new URL(await librarian.locator('img').getAttribute('src'),server.base).pathname,'/images/about/faculty/jhon-kenneth-aguado.jpg');
     assert.equal(await page.locator('.about-researchers>.about-person').count(),3,'researchers retained');
     assert.equal((await page.locator('main').innerText()).includes('DPM'),false,'old name removed');
     const tier3=await uniformGrid(faculty,'faculty grid');
@@ -127,9 +127,15 @@ try {
     assert.ok(presidentPortrait>directorPortrait&&directorPortrait>facultyPortrait,'portrait size hierarchy');
     const images=await page.locator('.about-portrait img').evaluateAll(es=>es.map(e=>({src:e.getAttribute('src'),alt:e.alt,loading:e.loading,width:Number(e.getAttribute('width')),height:Number(e.getAttribute('height')),objectFit:getComputedStyle(e).objectFit})));
     for(const image of images){assert.ok(image.alt.length>8,'descriptive portrait alt');assert.equal(image.loading,'lazy');assert.ok(image.width>0&&image.height>0,'explicit portrait dimensions');assert.equal(image.objectFit,'cover');}
-    for(const portrait of await rectangles(page.locator('.about-portrait')))closeTo(portrait.width,portrait.height,'portrait aspect ratio fixed square');
+    for(const portrait of await rectangles(page.locator('.about-leadership .about-portrait')))closeTo(portrait.width*1.25,portrait.height,'leadership portrait aspect ratio 4:5');
+    for(const portrait of await rectangles(page.locator('.about-faculty .about-portrait,.about-researchers .about-portrait')))closeTo(portrait.width,portrait.height,'other portrait aspect ratio stays square');
     await president.scrollIntoViewIfNeeded();await president.locator('img').evaluate(e=>e.decode());
     await director.scrollIntoViewIfNeeded();await director.locator('img').evaluate(e=>e.decode());
+    await librarian.scrollIntoViewIfNeeded();await librarian.locator('img').evaluate(e=>e.decode());
+    for(const [label,card] of [['president',president],['director',director],['librarian',librarian]]) {
+      assert.ok(await card.locator('img').evaluate(e=>e.currentSrc.endsWith('.webp')),'optimized portrait is selected');
+      if(width===375||width===1440)await card.locator('.about-portrait').screenshot({path:`${out}/${label}-${width}-${theme}.png`});
+    }
     await faculty.last().scrollIntoViewIfNeeded();
     await noOverflow(page,'about');
     await page.locator('#team').screenshot({path:`${out}/officials-${width}-${theme}.png`});
@@ -138,18 +144,22 @@ try {
     await context.close();console.log('PASS home and officials',width,theme);
   }
   // A delayed failed image must leave the portrait and card boxes unchanged.
-  const context=await browser.newContext({viewport:{width:375,height:1000},reducedMotion:'reduce'});
-  let failPortrait;
-  const failure=new Promise(resolve=>failPortrait=resolve);
-  await context.route('**/images/about/faculty/frederick-t-villa.jpg*',async route=>{await failure;await route.fulfill({status:404,body:''});});
-  const page=await context.newPage();await page.goto(server.base+'/about',{waitUntil:'domcontentloaded'});
-  const president=page.locator('.about-person-president');await president.scrollIntoViewIfNeeded();
-  const before=await rectangles(president.locator('.about-portrait'));
-  failPortrait();await president.locator('.person-portrait-fallback').waitFor();
-  assert.equal(await president.locator('.person-portrait-fallback').innerText(),'FV','failed image initials');
-  assert.deepEqual(await rectangles(president.locator('.about-portrait')),before,'failed photo has no layout shift');
-  assert.ok(await president.getByRole('img').getAttribute('aria-label'),'fallback keeps accessible identity');
-  await context.close();
+  for(const [file,name,initials] of [['frederick-t-villa','Frederick T. Villa, DTech','FV'],['jhon-kenneth-aguado','Jhon Kenneth Aguado','JA']]) {
+    const context=await browser.newContext({viewport:{width:375,height:1000},reducedMotion:'reduce'});
+    let failPortrait;
+    const failure=new Promise(resolve=>failPortrait=resolve);
+    await context.route(`**/images/about/faculty/${file}.*`,async route=>{await failure;await route.fulfill({status:404,body:''});});
+    const page=await context.newPage();await page.goto(server.base+'/about',{waitUntil:'domcontentloaded'});
+    const card=page.locator('.about-person').filter({hasText:name});await card.scrollIntoViewIfNeeded();
+    const before=await rectangles(card.locator('.about-portrait'));
+    const cardBefore=await rectangles(card);
+    failPortrait();await card.locator('.person-portrait-fallback').waitFor();
+    assert.equal(await card.locator('.person-portrait-fallback').innerText(),initials,'failed image initials');
+    assert.deepEqual(await rectangles(card.locator('.about-portrait')),before,'failed photo has no layout shift');
+    assert.deepEqual(await rectangles(card),cardBefore,'failed photo keeps card geometry');
+    assert.ok(await card.getByRole('img').getAttribute('aria-label'),'fallback keeps accessible identity');
+    await context.close();
+  }
   assert.deepEqual(errors,[],'no browser errors');
   fs.writeFileSync(out+'/matrix.json',JSON.stringify(matrix,null,2));
   console.log('PASS 12 viewport/theme combinations, varied paper data, header state, marquee, exact identities, tier geometry, contrast, lazy portraits and failed-image stability');

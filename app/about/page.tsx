@@ -12,6 +12,9 @@ const leadership=[
     "name": "Frederick T. Villa, DTech",
     "role": "SLSU University President",
     "image": "/images/about/faculty/frederick-t-villa.jpg",
+    "webp": "/images/about/faculty/frederick-t-villa.webp",
+    "imageWidth": 352,
+    "imageHeight": 440,
     "tier": "president"
   },
   {
@@ -51,7 +54,12 @@ const officials=[
   },
   {
     "name": "Jhon Kenneth Aguado",
-    "role": "SLSU Gumaca University Librarian"
+    "role": "SLSU Gumaca University Librarian",
+    "image": "/images/about/faculty/jhon-kenneth-aguado.jpg",
+    "webp": "/images/about/faculty/jhon-kenneth-aguado.webp",
+    "imageWidth": 208,
+    "imageHeight": 208,
+    "alt": "Jhon Kenneth Aguado, SLSU Gumaca University Librarian"
   }
 ];
 const team=[
@@ -72,7 +80,7 @@ const team=[
   }
 ];
 
-type Person = { name: string; role: string; image?: string; webp?: string; alt?: string; tier?: 'president' | 'director' };
+type Person = { name: string; role: string; image?: string; webp?: string; alt?: string; imageWidth?: number; imageHeight?: number; tier?: 'president' | 'director' };
 function PersonCard({ person, researcher = false }: { person: Person; researcher?: boolean }) {
   const Heading = researcher ? 'h3' : 'h4';
   const webp = person.webp ?? (person.image && !person.tier ? `${person.image}.webp` : undefined);
