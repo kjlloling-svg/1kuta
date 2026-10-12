@@ -21,7 +21,7 @@ try{
  for(const route of ['/api/papers/1/citation','/api/research-papers/test/abstract']){const r=await request(route);assert.equal(r.status,403);assert.deepEqual(await r.json(),{error:'Login required',type:'auth_required'});}
  for(const route of ['/api/bookmarks','/api/papers/1/download','/api/papers/1/sections','/api/auth/login','/api/auth/register','/api/auth/password-reset','/api/admin/setup'])assert.equal((await request(route)).status,401,route);
  for(const route of ['/login','/register']){const r=await request(route);assert.equal(r.status,200);const html=await r.text();assert.ok(!html.includes('type="password"'));assert.ok(!html.includes('Forgot password?'));}
- assert.equal((await request('/favicon.svg')).status,200);
+ for(const icon of ['/favicon.ico','/icon.png','/apple-icon.png'])assert.equal((await request(icon)).status,200);
  // Exercise real production handlers with disposable local records, including failures.
  const yearData=async()=>{const r=await request('/api/year-counts');assert.equal(r.status,200);return (await r.json()).years;};
  assert.ok((await yearData()).every(y=>y.count===0));

@@ -11,7 +11,7 @@ import {AmbientBackground} from '@/components/ambient-background';
 export const dynamic='force-dynamic';
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 const inter=localFont({src:[{path:'../public/assets/inter-2.woff2',weight:'400'},{path:'../public/assets/inter-4.woff2',weight:'600'},{path:'../public/assets/inter-5.woff2',weight:'700'}],variable:'--font-inter',display:'swap'});
-export const metadata: Metadata = { title: { default:'SLSU Gumaca Research Archive', template:'%s | SLSU Gumaca Research Archive' }, description:'Explore the SLSU Gumaca Campus Research Paper Compiler and Digital Archive. Search research records by title, author, program, keyword, and year.', robots:{index:false,follow:false}, icons:{icon:'/favicon.svg'} };
+export const metadata: Metadata = { title: { default:'SLSU Gumaca Research Archive', template:'%s | SLSU Gumaca Research Archive' }, description:'Explore the SLSU Gumaca Campus Research Paper Compiler and Digital Archive. Search research records by title, author, program, keyword, and year.', robots:{index:false,follow:false} };
 // Casual shortcut deterrent only; server-side permissions remain the security boundary.
 const browserShortcutScript = `
 function disableDevTools() {

@@ -10,7 +10,7 @@ server.disable('x-powered-by');
 // Next's development renderer otherwise replaces page headers with no-cache.
 // Keep session-dependent HTML/RSC/API responses out of browser/shared caches.
 server.use((req,res,next)=>{
- if(!/^\/(?:_next\/|assets\/|favicon\.svg)/.test(req.path)){
+ if(!/^\/(?:_next\/|assets\/|(?:favicon\.ico|icon\.png|apple-icon\.png)$)/.test(req.path)){
   const setHeader=res.setHeader.bind(res);
   res.setHeader=(name,value)=>{
    if(name.toLowerCase()==='cache-control')value='private, no-store';

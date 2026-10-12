@@ -5,7 +5,7 @@ import {clientIp} from './lib/client-ip.mjs';
 const authPaths=new Set(['/api/auth/google','/api/auth/logout','/api/auth/me']);
 export async function proxy(request:NextRequest){
  const path=request.nextUrl.pathname;
- if(authPaths.has(path)||(path.startsWith('/_next/static/')||path==='/_next/image')||path.startsWith('/assets/')||['/favicon.ico','/favicon.svg','/file.svg','/window.svg','/globe.svg'].includes(path))return NextResponse.next();
+ if(authPaths.has(path)||(path.startsWith('/_next/static/')||path==='/_next/image')||path.startsWith('/assets/')||['/favicon.ico','/icon.png','/apple-icon.png','/file.svg','/window.svg','/globe.svg'].includes(path))return NextResponse.next();
  try{
   const user=await sessionUser(request.cookies.get(SESSION_COOKIE)?.value);
   if(!user&&path!=='/login'&&path!=='/register'){
