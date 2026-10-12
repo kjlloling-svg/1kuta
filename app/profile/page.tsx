@@ -1,4 +1,6 @@
 import {redirect} from 'next/navigation';
+import {privateRobots} from '@/lib/seo';
+export const metadata = {robots:privateRobots};
 import {getCurrentUser} from '@/lib/auth';
 import {FavoritesPanel} from '@/components/favorites-panel';
 export const dynamic='force-dynamic';

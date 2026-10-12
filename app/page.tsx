@@ -1,4 +1,5 @@
 import {DesignMotion} from '@/components/design-motion';
+export const metadata = {alternates:{canonical:'/'}};
 import {ProgramMarquee} from '@/components/program-marquee';
 import {departmentAccentFor} from '@/lib/departments';
 import {HomeBackground} from '@/components/home-background';

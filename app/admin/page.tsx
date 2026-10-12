@@ -1,4 +1,6 @@
 import {adminRecords,reviewFilter} from '@/lib/admin-records';
+import {privateRobots} from '@/lib/seo';
+export const metadata = {robots:privateRobots};
 import {allPrograms} from '@/lib/archive';
 import Link from '@/components/native-link';
 import { getCurrentUser } from '@/lib/auth';

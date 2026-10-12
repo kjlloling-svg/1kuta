@@ -3,6 +3,7 @@ import {colorVisionBootstrapScript} from '@/lib/color-vision.mjs';
 import {themeConfig,themeBootstrapScript} from '@/lib/theme.mjs';
 import localFont from 'next/font/local';
 import type { Metadata, Viewport } from 'next';
+import {isSearchIndexable, siteUrl} from '@/lib/seo';
 import { Header, Footer } from '@/components/site-shell';
 import './globals.css';
 import {ScrollProgress} from '@/components/scroll-progress';
@@ -11,7 +12,7 @@ import {AmbientBackground} from '@/components/ambient-background';
 export const dynamic='force-dynamic';
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 const inter=localFont({src:[{path:'../public/assets/inter-2.woff2',weight:'400'},{path:'../public/assets/inter-4.woff2',weight:'600'},{path:'../public/assets/inter-5.woff2',weight:'700'}],variable:'--font-inter',display:'swap'});
-export const metadata: Metadata = { title: { default:'SLSU Gumaca Research Archive', template:'%s | SLSU Gumaca Research Archive' }, description:'Explore the SLSU Gumaca Campus Research Paper Compiler and Digital Archive. Search research records by title, author, program, keyword, and year.', robots:{index:false,follow:false} };
+export const metadata: Metadata = { metadataBase:new URL(siteUrl), title: { default:'KUTA | SLSU Gumaca Research Repository', template:'%s | KUTA SLSU Gumaca' }, description:'Explore KUTA, the SLSU Gumaca Campus Research Repository. Discover research by title, author, program, keyword, and year.', robots:{index:isSearchIndexable,follow:isSearchIndexable} };
 // Casual shortcut deterrent only; server-side permissions remain the security boundary.
 const browserShortcutScript = `
 function disableDevTools() {

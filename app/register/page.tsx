@@ -4,7 +4,7 @@ import {getCurrentUser,safeReturnTo} from '@/lib/auth';
 import {redirect} from 'next/navigation';
 import {GoogleCreateAccount} from '@/components/google-create-account';
 export const dynamic='force-dynamic';
-export const metadata:Metadata={title:'Create an Account'};
+export const metadata:Metadata={title:'Create an Account',robots:{index:false,follow:false}};
 export default async function Register({searchParams}:{searchParams:Promise<{return_to?:string}>}){
  const s=await searchParams,returnTo=safeReturnTo(s.return_to);
  if(await getCurrentUser())redirect(returnTo);
