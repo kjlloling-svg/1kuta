@@ -1,6 +1,7 @@
+import {currentResearchYear} from './record-validation.ts';
 import {canonicalProgram, programs} from './programs.ts';
 
-export const archivePeriod={from:2009,to:2026} as const;
+export const archivePeriod={from:2009,get to(){return currentResearchYear();}} as const;
 export type YearSummary={year:number;count:number;departments:{slug:string;name:string;count:number}[]};
 type YearRow={year:unknown;program_slug:unknown;count:unknown};
 

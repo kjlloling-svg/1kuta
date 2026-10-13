@@ -7,7 +7,7 @@ export type PaperAuthor=AuthorDTO;
 export type SearchFilters = {q?:string;author?:string;keyword?:string;program?:string;year?:number;page?:number;sort?:string;access?:PaperAccess};
 export const database = () => { if(!env.DB) throw new Error('Archive database is unavailable'); return env.DB as unknown as D1Database; };
 const from = 'FROM research_papers p JOIN programs g ON g.id=p.program_id';
-const baseFields = `p.id,p.slug,p.title,p.keywords,p.year,p.paper_type,p.created_at,p.status,p.department,g.slug AS program_slug,g.name AS program_name,g.major,
+const baseFields = `p.id,p.slug,p.title,p.keywords,p.year,p.paper_type,p.created_at,p.status,g.slug AS program_slug,g.name AS program_name,g.major,
   (SELECT group_concat(name, ', ') FROM (SELECT a.name FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id ORDER BY pa.position)) AS authors`;
 const fieldsFor=(access:PaperAccess)=>baseFields+((access==='public'||access==='admin')?',p.abstract':'')+(access==='admin'?',p.file_name':'');
 export {normalizeKeywords as keywordsOf} from './keywords.mjs';

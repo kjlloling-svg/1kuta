@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import {programs as programCatalog} from '../lib/programs.ts';
+import {currentResearchYear} from '../lib/record-validation.ts';
 import assert from 'node:assert/strict';
 import {randomUUID,randomBytes} from 'node:crypto';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -23,7 +24,7 @@ try{
  const programs=(await (await call('/api/programs')).json()).programs;
  await check('Catalog programs present; Nursing/Midwifery appears once',async()=>{for(const entry of programCatalog)assert.equal(programs.filter(p=>p.slug===entry.slug).length,1);assert.equal(programs.filter(p=>p.slug==='bs-nursing-midwifery').length,1);assert.equal(programs.some(p=>['bs-nursing','diploma-midwifery'].includes(p.slug)),false);});
  const program=programs.find(p=>p.slug==='bs-nursing-midwifery');
- const body={title:`DEMO QA ${marker}`,authors:[{given:'Ana Maria',family:'Dela Cruz'},{given:'Ben',family:'Reyes'}],program_id:program.id,year:2026,department:'Private department',category:'Research Paper',keywords:' Local QA, local qa, Archives, Design, Education, Campus, Technology ',abstract:'Public verification abstract.',status:'demo'};
+ const body={title:`QA ${marker}`,authors:[{given:'Ana Maria',family:'Dela Cruz'},{given:'Ben',family:'Reyes'}],program_id:program.id,year:currentResearchYear(),category:'Research Paper',keywords:' Local QA, local qa, Archives, Design, Education, Campus, Technology ',abstract:'Public verification abstract.',status:'verified'};
  let id,slug;
  await check('Admin adds paper',async()=>{const r=await call('/api/papers',{method:'POST',cookie:admin,body});assert.equal(r.status,201);id=(await r.json()).id;created.push(id);slug=sqlite.prepare('SELECT slug FROM research_papers WHERE id=?').get(id).slug;sqlite.prepare('UPDATE research_papers SET full_text=? WHERE id=?').run('PRIVATE_FULL_TEXT_SENTINEL',id);});
  await check('Comma keyword input is deduplicated, stored as JSON and searchable',async()=>{assert.equal(sqlite.prepare('SELECT keywords FROM research_papers WHERE id=?').get(id).keywords,'["Local QA","Archives","Design","Education","Campus","Technology"]');const r=await (await call('/api/papers?keyword=Campus&q='+marker)).json();assert.equal(r.papers.length,1);assert.deepEqual(r.papers[0].keywords,['Local QA','Archives','Design','Education','Campus','Technology']);const html=await (await call('/research-papers?q='+marker)).text();assert.ok(!html.includes('Keywords: ['));});

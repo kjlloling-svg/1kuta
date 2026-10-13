@@ -9,7 +9,7 @@ import {CitationPanel} from './citation-panel';
 import {LockedResearch} from './locked-research';
 import {DetailActions} from './detail-actions';
 import {KeywordChips} from './keyword-chips';
-export type PublicPaper={id:number;slug:string;title:string;authors:{name?:string;given:string;family:string;suffix?:string|null}[];year:number;program_id:string;program:string;abstract?:string|null;keywords:string[];status:'pending'|'verified'|'demo';department?:string|null;category?:string;created_at?:string;has_file?:boolean;views?:number};
+export type PublicPaper={id:number;slug:string;title:string;authors:{name?:string;given:string;family:string;suffix?:string|null}[];year:number;program_id:string;program:string;abstract?:string|null;keywords:string[];status:'pending'|'verified'|'demo';category?:string;created_at?:string;has_file?:boolean;views?:number};
 export function InteractivePaperCard({paper,onKeyword,admin=false,authenticated=false}:{paper:PublicPaper;authenticated?:boolean;admin?:boolean;onKeyword?:(keyword:string)=>void}){
  const [expanded,setExpanded]=useState(paper.abstract!==undefined),[expired,setExpired]=useState(false),[abstract,setAbstract]=useState<string|null>(paper.abstract??null),[busy,setBusy]=useState(false),[notice,setNotice]=useState('');
  async function readAbstract(){

@@ -1,7 +1,7 @@
 import {normalizeKeywords} from './keywords.mjs';
 import { ARCHIVE_NAME,ARCHIVE_PUBLISHER } from './site-info.mjs';
 export type CitationAuthor={name:string;given_name:string|null;family_name:string|null;suffix:string|null};
-export type CitationRecord={title:string;year:number|null;program?:string|null;department?:string|null;keywords?:string[];authors:CitationAuthor[]};
+export type CitationRecord={title:string;year:number|null;program?:string|null;keywords?:string[];authors:CitationAuthor[]};
 export type CitationStyle='apa'|'mla'|'chicago'|'harvard'|'ieee'|'vancouver'|'bibtex'|'ris';
 export const citationStyles:[CitationStyle,string][]=[['apa','APA 7th edition'],['mla','MLA 9th edition'],['chicago','Chicago'],['harvard','Harvard'],['ieee','IEEE'],['vancouver','Vancouver'],['bibtex','BibTeX'],['ris','RIS']];
 export type CitationPart={text:string;italic?:boolean};
@@ -29,7 +29,7 @@ function names(authors:CitationAuthor[],style:CitationStyle){
 }
 const tex=(value:string)=>clean(value).replace(/[\\{}%&_$#]/g,c=>c==='\\'?'\\textbackslash{}':`\\${c}`);
 export function citationParts(record:CitationRecord,style:CitationStyle,referenceNumber=1):CitationPart[]{
- const title=clean(record.title),year=record.year?String(record.year):'n.d.',people=names(record.authors,style),field=clean(record.program||record.department||''),descriptor=field?`Research paper, ${field}`:'Research paper';
+ const title=clean(record.title),year=record.year?String(record.year):'n.d.',people=names(record.authors,style),field=clean(record.program||''),descriptor=field?`Research paper, ${field}`:'Research paper';
  if(style==='bibtex'){
  const key=`${record.authors[0]?authorParts(record.authors[0]).family:'kuta'}${record.year||'nd'}`.normalize('NFKD').replace(/[^a-zA-Z0-9]/g,'')||'kuta';
  return [{text:`@misc{${key},\n${record.authors.length?`  author = {${record.authors.map(a=>{const p=authorParts(a);return tex(p.family)+(p.suffix?`, ${tex(p.suffix)}, ${tex(p.given)}`:p.given?`, ${tex(p.given)}`:'');}).join(' and ')}},\n`:''}  title = {${tex(title)}},\n${record.year?`  year = {${record.year}},\n`:''}  publisher = {${tex(ARCHIVE_PUBLISHER)}},\n  howpublished = {${tex(ARCHIVE_NAME)}},\n${normalizeKeywords(record.keywords).length?`  keywords = {${tex(normalizeKeywords(record.keywords).join(', '))}},\n`:''}  note = {${tex(descriptor)}}\n}`}];

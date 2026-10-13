@@ -1,3 +1,4 @@
+import {currentResearchYear} from '@/lib/record-validation';
 import { NextRequest } from 'next/server';
 import { ensurePrograms, publicPaper, searchPapers } from '@/lib/archive';
 import { adminMutation, fail, json } from '@/lib/api';
@@ -10,7 +11,7 @@ export async function GET(request:NextRequest){
     const year=Number(s.get('year')),page=Number(s.get('page'));
     const user=await getCurrentUser();
     const access=user?.role||'guest';
-    const result=await searchPapers({q:s.get('q')||'',author:s.get('author')||'',program:s.get('program')||'',year:Number.isInteger(year)&&year>=2009&&year<=2026?year:undefined,keyword:s.get('keyword')||'',page:Number.isInteger(page)?page:1,sort:s.get('sort')||'',access});
+    const result=await searchPapers({q:s.get('q')||'',author:s.get('author')||'',program:s.get('program')||'',year:Number.isInteger(year)&&year>=2009&&year<=currentResearchYear()?year:undefined,keyword:s.get('keyword')||'',page:Number.isInteger(page)?page:1,sort:s.get('sort')||'',access});
     return json({...result,papers:await Promise.all(result.papers.map(p=>publicPaper(p,access)))});
   }catch(e){return fail(e);}
 }
