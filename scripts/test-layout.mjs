@@ -7,6 +7,7 @@ import {randomUUID} from 'node:crypto';
 import {DatabaseSync} from 'node:sqlite';
 import postcss from 'postcss';
 import {normalizeKeywords} from '../lib/keywords.mjs';
+import {programs} from '../lib/programs.ts';
 import {departmentAccents,departmentAccentFor} from '../lib/departments.ts';
 import {toPaperDTO,toPublicPaperDTO,toCitationDTO} from '../lib/archive-dto.ts';
 import {citation} from '../lib/citations.ts';
@@ -28,8 +29,8 @@ const snapshot=new DatabaseSync(result.backup,{readOnly:true});assert.deepEqual(
 const after=db.prepare('SELECT * FROM research_papers').all();assert.equal(after.length,2);
 for(let i=0;i<2;i++){assert.equal(after[i].title,before[i].title);assert.equal(after[i].full_text,before[i].full_text);}assert.equal(after[0].keywords,'["A","B"]');assert.equal(after[1].keywords,'[]');assert.equal(migrateKeywords(db,fixture).alreadyApplied,true);db.close();
 console.log('PASS: backed-up, metadata-only, repeat-safe migration (isolated fixture retained)');
-assert.equal(Object.keys(departmentAccents).length,5);assert.equal(departmentAccentFor('unknown').className,'dept-fallback');assert.equal(departmentAccentFor('toString').className,'dept-fallback');
-const css=postcss.parse(fs.readFileSync('app/globals.css','utf8')),tokens={};css.walkRules(r=>{if(r.parent.type==='root'&&(r.selector===':root'||r.selector===':root[data-theme="dark"]')){tokens[r.selector]={};r.walkDecls(d=>tokens[r.selector][d.prop]=d.value);}});
+assert.deepEqual(Object.keys(departmentAccents).sort(),programs.map(p=>p.slug).sort());assert.equal(departmentAccentFor('unknown').className,'dept-fallback');assert.equal(departmentAccentFor('toString').className,'dept-fallback');
+const css=postcss.parse(fs.readFileSync('app/globals.css','utf8')),tokens={};css.walkRules(r=>{if(r.parent.type!=='root')return;for(const selector of r.selectors){if(selector===':root'||selector===':root[data-theme="dark"]'){tokens[selector]??={};r.walkDecls(d=>tokens[selector][d.prop]=d.value);}}});
 const linear=c=>[1,3,5].map(i=>{const v=parseInt(c.slice(i,i+2),16)/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});
 const lum=c=>linear(c).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0),ratio=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
 let report='# Department palette and contrast\n\nWCAG relative luminance; text/tint minimum 4.5:1; edge/surface minimum 3:1. Department names remain visible alongside every accent.\n\n| Department slug | Theme | Text | Tint | Edge | Bright accent | Text/tint | Edge/surface |\n|---|---|---|---|---|---|---|---|\n';

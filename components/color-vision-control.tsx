@@ -1,12 +1,15 @@
 'use client';
-import {useEffect,useId,useRef,useState} from 'react';
+import {useEffect,useId,useRef,useState,useSyncExternalStore} from 'react';
 import {changeColorVision} from '@/lib/color-vision.mjs';
 const choices=[['default','Default (normal vision)'],['red-green','Red-green color deficiency'],['blue-yellow','Blue-yellow color deficiency']] as const;
 type Mode=typeof choices[number][0];
+const subscribe=(notify:()=>void)=>{window.addEventListener('kuta-cvd-change',notify);return()=>window.removeEventListener('kuta-cvd-change',notify);};
+const snapshot=():Mode=>{const value=document.documentElement.dataset.cvd;return choices.some(([key])=>key===value)?value as Mode:'default';};
+const serverSnapshot=()=>null;
 export function ColorVisionControl(){
  const id=useId(),root=useRef<HTMLDivElement>(null),trigger=useRef<HTMLButtonElement>(null),items=useRef<(HTMLButtonElement|null)[]>([]);
- const [open,setOpen]=useState(false),[mode,setMode]=useState<Mode>('default'),[ready,setReady]=useState(false);
- useEffect(()=>{const sync=()=>{const value=document.documentElement.dataset.cvd;setMode(choices.some(([key])=>key===value)?value as Mode:'default');};sync();setReady(true);window.addEventListener('kuta-cvd-change',sync);return()=>window.removeEventListener('kuta-cvd-change',sync);},[]);
+ const [open,setOpen]=useState(false);
+ const selection=useSyncExternalStore(subscribe,snapshot,serverSnapshot),mode=selection??'default',ready=selection!==null;
  useEffect(()=>{
   if(!open)return;
   const frame=requestAnimationFrame(()=>items.current[choices.findIndex(([key])=>key===document.documentElement.dataset.cvd)]?.focus());

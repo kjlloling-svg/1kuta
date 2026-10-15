@@ -1,4 +1,4 @@
-PASS: Pre-paint theme: cookie, legacy storage, system dark and unavailable storage
+PASS: Pre-paint theme: storage precedes legacy cookie, system dark and unavailable storage
 PASS: Interactive theme changes persist and do not disable CSS transitions
 PASS: Guest mapper is fail-closed and never serializes abstract/file names
 PASS: guest: list/detail metadata and no-store session separation
@@ -12,6 +12,6 @@ PASS: admin: detail HTML/RSC payload and metadata obey access rules
 PASS: admin: abstract endpoint and all eight citation formats
 PASS: Guest search cannot search private abstracts
 PASS: Guest home/archive responses contain no protected text
-PASS: Dark cookie is in server HTML and blocking head script precedes body
+PASS: System CSS fallback and blocking head script precede body
 PASS: Expired/revoked sessions cannot read abstract or cite
 PASS: Researcher credit is correct on About and footer
