@@ -11,7 +11,7 @@
     "install:ci": "bash scripts/install-pnpm.sh",
     "dev": "node scripts/local-server.mjs",
     "build": "node scripts/clean-build.mjs && next build",
-    "start": "node scripts/local-server.mjs",
+    "start": "next start",
     "lint": "eslint app components hooks lib db --ignore-pattern backup-before-local-login-*",
     "db:generate": "drizzle-kit generate",
     "seed": "node scripts/seed-local.mjs",

@@ -5,6 +5,8 @@ import {clientIp} from './lib/client-ip.mjs';
 const authPaths=new Set(['/api/auth/google','/api/auth/logout','/api/auth/me']);
 export async function proxy(request:NextRequest){
  const path=request.nextUrl.pathname;
+ // Only public asset namespaces bypass auth/rate limits; dotted page/API paths do not.
+ if((request.method==='GET'||request.method==='HEAD')&&/^\/(?:images|fonts)\/.+\.(?:avif|gif|ico|jpe?g|png|svg|webp|woff2?|ttf|otf)$/i.test(path))return NextResponse.next();
  if(['/googlec3ee602b242e4012.html','/robots.txt','/sitemap.xml'].includes(path))return NextResponse.next();
  if(authPaths.has(path)||(path.startsWith('/_next/static/')||path==='/_next/image')||path.startsWith('/assets/')||['/favicon.ico','/icon.png','/apple-icon.png','/file.svg','/window.svg','/globe.svg'].includes(path))return NextResponse.next();
  try{
