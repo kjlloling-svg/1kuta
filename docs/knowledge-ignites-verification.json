@@ -1,0 +1,181 @@
+{
+  "branch": "codex/knowledge-ignites",
+  "deployment": "not deployed",
+  "sourceBytes": {
+    "components/space-background.css": 7467,
+    "components/space-background.tsx": 560,
+    "lib/supernova.ts": 5535
+  },
+  "backgroundTotalBytes": 8027,
+  "backgroundBudgetBytes": 20000,
+  "build": "passed",
+  "typescript": "passed",
+  "changedFileLint": "passed",
+  "focusedTests": "passed",
+  "reuse": {
+    "isolation": "isolate",
+    "layer": "-1",
+    "pointer": "none",
+    "position": "relative",
+    "withHeight": 182.40000915527344,
+    "withoutHeight": 182.40000915527344
+  },
+  "responsive": [
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 320
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 375
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 768
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 1024
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 1280
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "light",
+      "width": 1440
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 320
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 375
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1280
+    },
+    {
+      "buttonFits": true,
+      "heroFits": true,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    }
+  ],
+  "contrast": [
+    {
+      "theme": "dark",
+      "cvd": "red-green",
+      "body_on_brightest_orb": 8.64,
+      "muted_on_brightest_orb": 5.39,
+      "control_border": 3.76,
+      "focus": 6.53,
+      "button_text": 10.1
+    },
+    {
+      "theme": "light",
+      "cvd": "red-green",
+      "body_on_brightest_orb": 9.99,
+      "muted_on_brightest_orb": 4.91,
+      "control_border": 3.68,
+      "focus": 6.85,
+      "button_text": 6.61
+    },
+    {
+      "theme": "light",
+      "cvd": "blue-yellow",
+      "body_on_brightest_orb": 10.17,
+      "muted_on_brightest_orb": 5.0,
+      "control_border": 3.75,
+      "focus": 7.54,
+      "button_text": 6.42
+    },
+    {
+      "theme": "dark",
+      "cvd": "blue-yellow",
+      "body_on_brightest_orb": 8.71,
+      "muted_on_brightest_orb": 5.44,
+      "control_border": 3.8,
+      "focus": 7.08,
+      "button_text": 11.16
+    },
+    {
+      "theme": "dark",
+      "cvd": "default",
+      "body_on_brightest_orb": 8.95,
+      "muted_on_brightest_orb": 5.59,
+      "control_border": 3.9,
+      "focus": 5.84,
+      "button_text": 11.02
+    },
+    {
+      "theme": "light",
+      "cvd": "default",
+      "body_on_brightest_orb": 10.04,
+      "muted_on_brightest_orb": 4.93,
+      "control_border": 3.7,
+      "focus": 4.71,
+      "button_text": 6.27
+    }
+  ],
+  "noJavaScript": {
+    "themeAttribute": null,
+    "systemPreference": "dark",
+    "background": "#0b1a12",
+    "heroBackground": "#0a0d24",
+    "canvases": 0
+  },
+  "remainingVerification": [
+    "Real mid-tier mobile FPS and long tasks",
+    "Full-page CLS/LCP tracing",
+    "Throttled CPU/no-cache reload filmstrip",
+    "Lighthouse baseline comparison",
+    "Exhaustive overlapping-layer pixel contrast",
+    "OS-level reduced-motion browser test",
+    "Signed-in flows and contextual login dialogs"
+  ]
+}

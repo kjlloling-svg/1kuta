@@ -1,11 +1,8 @@
 /* Campus Warm: presentation overrides, leaving application behavior intact. */
-html body,html .site-header,html .footer,html .page-main,html .about-page { transition:background-color 300ms ease,color 300ms ease; }
+html body,html .site-header,html .footer,html .page-main,html .about-page { transition:background-color 500ms ease,color 500ms ease; }
 @media(prefers-reduced-motion:reduce){html body,html .site-header,html .footer,html .page-main,html .about-page {transition:none!important}}
 
 /* One signature ambient motion; the foreground stays on readable opaque surfaces. */
-html .home-background.refresh-atmosphere { position:absolute;inset:var(--header-stack) 0 auto;height:800px;overflow:hidden;pointer-events:none;background:var(--bg); }
-html .refresh-atmosphere::before { content:"";position:absolute;inset:-18%;background:radial-gradient(ellipse at 75% 30%,var(--green) 0,transparent 48%),radial-gradient(ellipse at 28% 50%,var(--gold) 0,transparent 47%),radial-gradient(ellipse at 70% 90%,var(--teal) 0,transparent 48%);opacity:.13;animation:campus-drift 25s ease-in-out infinite alternate; }
-@keyframes campus-drift { from{transform:translate3d(-2%,0,0) scale(1)} to{transform:translate3d(3%,-3%,0) scale(1.06)} }
 html .kuta-welcome { padding:64px 0; }
 html .welcome-layout { grid-template-columns:minmax(0,1.55fr) minmax(240px,.65fr);gap:40px; }
 html .welcome-content { padding:24px 0;background:transparent;border:0;box-shadow:none; }
@@ -21,7 +18,7 @@ html .welcome-aside h2 { font-size:clamp(28px,3vw,40px); }
 html .stats-strip { background:var(--surface);box-shadow:none;border-radius:16px;padding:16px 8px;margin-top:40px; }
 @keyframes campus-enter { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 @media(max-width:900px){html .welcome-layout{grid-template-columns:1fr}html .kuta-welcome{padding:40px 0}}
-@media(prefers-reduced-motion:reduce){html .refresh-atmosphere::before,html .kuta-welcome h1,html .kuta-subtitle,html .welcome-content .hero-search,html .welcome-actions{animation:none!important;transform:none!important;opacity:1!important}}
+@media(prefers-reduced-motion:reduce){html .kuta-welcome h1,html .kuta-subtitle,html .welcome-content .hero-search,html .welcome-actions{animation:none!important;transform:none!important;opacity:1!important}}
 
 /* Homepage sections share the existing content width and a single spacing rhythm. */
 html .home-page .section,html .home-page .purpose-band{padding:64px 0}
@@ -97,4 +94,3 @@ html .paper-skeleton::after{content:"";position:absolute;inset:0;background:line
 @keyframes campus-shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
 @media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .campus-reveal{opacity:1;transform:none}html .program-tile:hover,html .directory-card:hover,html .paper-card:hover,html .year-tile:hover,html .button:active,html .tile-arrow,html .year-prompt>span{transform:none!important}html .paper-skeleton::after{display:none}}
 /* Reduced motion keeps the same low-contrast decorative wash. */
-@media(prefers-reduced-motion:reduce){html .refresh-atmosphere::before{opacity:.13!important}}
