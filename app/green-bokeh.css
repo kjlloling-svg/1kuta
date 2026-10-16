@@ -11,10 +11,10 @@ html .page-intro,html .how-steps,html .favorites-panel {background:var(--surface
 html .button-outline {background:var(--surface)}
 html .citation-dialog,html .archive-modal {background:var(--surface)}
 html .locked-placeholder,html .google-sign-in-divider {opacity:1;color:var(--muted)}
-html .text-link,html .back-link,html .account-link,html .footer nav a,html .prose-section a {text-decoration:underline;text-underline-offset:.2em}
+html .prose-section p a:not(.button) {text-decoration:underline;text-underline-offset:.2em}
 html :is(input,select,textarea,button,a,summary):focus-visible {outline:3px solid var(--focus);outline-offset:3px}
 html :is(.field-error,.form-error,.favorite-error) {border-inline-start:3px solid currentColor;padding-inline-start:10px}
-html .keyword-chip[aria-pressed=true] {border-width:2px;text-decoration:underline;text-underline-offset:.2em}
+html .keyword-chip[aria-pressed=true] {border-width:2px}
 html .favorite-button[aria-pressed=true] {border-style:double;border-width:3px;padding:6px 10px}
 @media(max-width:620px){html .welcome-content,html .how-steps{padding:24px}html .page-intro,html .favorites-panel{padding:20px}}
 
@@ -203,7 +203,7 @@ html .color-vision-popover [aria-checked=true] {border-color:var(--line);backgro
 html .color-vision-popover [role=menuitemradio]:focus-visible {outline-offset:-3px}
 html .color-vision-check {display:inline-block;flex:0 0 20px;text-align:center;color:var(--green);font-size:20px}
 html .color-vision-popover p {font-size:12px;line-height:1.5;color:var(--muted);margin:10px 8px 4px}
-html[data-cvd]:not([data-cvd=default]) :is(.paper-card h3 a,.favorites-list h3 a,.desktop-nav a) {text-decoration:underline;text-underline-offset:.2em}
+
 html.theme-ready:not(.cvd-initializing) :is(.color-vision-trigger,.color-vision-popover,.color-vision-popover button,.page-intro,.favorites-panel) {transition:color 300ms ease,background-color 300ms ease,border-color 300ms ease}
 html.cvd-initializing *,html.cvd-initializing *::before,html.cvd-initializing *::after {transition:none!important}
 @media(max-width:620px){html .header-inner{gap:8px}html .header-inner .brand{flex:1;flex-shrink:1;gap:6px}html .header-inner .brand-text small{max-width:85px;font-size:9px}html .menu-trigger{padding-inline:10px}html .header-theme{margin-left:0;gap:6px}html .color-vision-popover{position:fixed;top:calc(var(--header-stack) + 10px);right:14px}}

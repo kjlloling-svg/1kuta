@@ -23,6 +23,8 @@ html .stats-strip { background:var(--surface);box-shadow:none;border-radius:16px
 /* Homepage sections share the existing content width and a single spacing rhythm. */
 html .home-page .section,html .home-page .purpose-band{padding:64px 0}
 html .home-page .section-heading{gap:24px;margin-bottom:24px;padding:0;background:transparent;box-shadow:none}
+html .home-page .section-intro .section-heading{display:flex;align-items:center}
+html .home-page .section-intro .section-heading .button{min-height:48px;padding:16px 24px;font-size:16px;gap:8px;flex-shrink:0}
 html .home-page .eyebrow{margin-bottom:16px}
 html .home-page .hero-note{margin:16px 0 0}
 html .home-page .purpose-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:24px}
@@ -34,7 +36,7 @@ html .home-page .stats-strip>div{padding:8px 24px;gap:16px}
  html .home-page .wrap{width:calc(100% - 32px)}
  html .home-page .section,html .home-page .purpose-band{padding:40px 0}
  html .home-page .section-heading{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
- html .home-page .section-heading .text-link{margin:0}
+ html .home-page .section-intro .section-heading{align-items:stretch}
  html .home-page .purpose-inner{grid-template-columns:minmax(0,1fr)}
  html .home-page .purpose-inner .button{grid-column:auto}
  html .home-page .stats-strip>div{padding:8px;gap:8px}
@@ -61,7 +63,7 @@ html .marquee-track li { display:flex;flex:none;align-items:center;gap:24px;min-
 html .marquee-track li a{color:var(--dept-text);text-decoration:none;line-height:1.6;padding-block:8px}
 html .marquee-diploma-cpt{--dept-text:var(--teal);--dept-accent:var(--teal)}
 html .marquee-diploma-mech{--dept-text:var(--dept-copper-text);--dept-accent:var(--dept-copper-accent)}
-html .marquee-track li a:is(:hover,:focus-visible){text-decoration:underline;text-underline-offset:4px}
+html .marquee-track li a:is(:hover,:focus-visible){opacity:.8}
 html .marquee-track li span{color:var(--dept-accent);filter:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));animation:department-pulse 3.2s ease-in-out infinite}
 @keyframes program-flow { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @media(max-width:900px){html .program-marquee{--marquee-gap:40px;--marquee-duration:32s}html .marquee-track li{font-size:15px;gap:20px}}
