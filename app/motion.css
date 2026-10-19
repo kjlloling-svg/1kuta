@@ -16,7 +16,8 @@
  --control-hover:-3px -3px 7px var(--shadow-light),4px 4px 9px var(--shadow-dark);
  --control-pressed:inset 2px 2px 4px var(--shadow-dark),inset -2px -2px 4px var(--shadow-light);
  --spotlight-size:300px;--spotlight-strength:8%;--spotlight-opacity:1;
- --bloom-alpha:.6;--bloom-start:.02;
+ --switch-ease:cubic-bezier(.2,.9,.3,1.15);
+ --theme-transition:background-color var(--motion-base) ease,color var(--motion-base) ease,border-color var(--motion-base) ease,fill var(--motion-base) ease,box-shadow var(--motion-base) ease;
 }
 @media(max-width:639px){:root{--glass-blur:8px;--motion-reveal-distance:12px;--motion-stagger:35ms;--spotlight-size:200px}}
 html[data-theme=dark]{--glass:color-mix(in srgb,var(--surface) 97%,transparent);--spotlight-strength:6%}
@@ -29,10 +30,9 @@ html[data-theme=dark]{--glass:color-mix(in srgb,var(--surface) 97%,transparent);
  --program-star-glow:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));
 }
 
-/* A fixed footprint keeps anchors, menus and content stable across the glass change. */
-html .site-header{background:transparent;border-bottom-color:transparent;box-shadow:none;backdrop-filter:none}
-html .site-header::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--glass);border-bottom:1px solid var(--glass-border);box-shadow:var(--floating-shadow);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);opacity:0;transition:opacity var(--motion-base) var(--motion-in-out)}
-html[data-scrolled=true] .site-header::after,html:not([data-scrolled]) .site-header::after{opacity:1}
+/* The header remains opaque at a fixed height in both themes. */
+html .site-header{background:var(--surface);border-bottom-color:var(--line);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html .site-header::after{content:none}
 .header-sentinel{position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none;opacity:0}
 html .site-header::before{background:var(--bg)}
 html .brand-mark{transform:none}
@@ -76,12 +76,14 @@ html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination butt
 
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination){scroll-snap-type:x proximity;overscroll-behavior-x:contain;scroll-padding-inline:8px}
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination)>*{scroll-snap-align:start}
-.theme-bloom{position:fixed;left:var(--bloom-x);top:var(--bloom-y);width:var(--bloom-size);height:var(--bloom-size);max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:50%;pointer-events:none;z-index:2147483647;background:radial-gradient(circle,var(--surface),color-mix(in srgb,var(--gold) 24%,var(--surface)),transparent 70%);animation:motion-bloom var(--motion-slow) var(--motion-out) both}
-.theme-bloom::backdrop{background:transparent;pointer-events:none}
-@keyframes motion-bloom{0%{transform:translate(-50%,-50%) scale(var(--bloom-start));opacity:0}50%{opacity:var(--bloom-alpha)}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+/* Only token-painted surfaces transition; existing hover transforms stay intact. */
+html,html body,html body::before,html .space-background,html body :is(.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.program-tile,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea){transition:var(--theme-transition),transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html body .theme-toggle{background:linear-gradient(115deg,transparent,color-mix(in srgb,var(--green) 12%,transparent)),var(--soft);text-decoration:none}
+html body .theme-knob{transition:transform var(--motion-base) var(--switch-ease),var(--theme-transition)}
+html:not(.theme-ready),html:not(.theme-ready) body::before,html:not(.theme-ready) .space-background,html:not(.theme-ready) :is(body,.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.program-tile,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea,.theme-knob,.theme-icon,.theme-rays,.theme-crescent){transition:none!important}
 
 @supports not (backdrop-filter:blur(1px)){html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface)}}
-@media(prefers-reduced-transparency:reduce),(forced-colors:active){html .site-header,html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}html .space-background,html .cursor-light,html .theme-bloom,html .card-spotlight{display:none}}
+@media(prefers-reduced-transparency:reduce),(forced-colors:active){html .site-header,html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}html .space-background,html .cursor-light,html .card-spotlight{display:none}}
 @media(forced-colors:active){html body{background:Canvas;color:CanvasText}html body :is(a,button,summary){border-color:ButtonText;box-shadow:none}html body :is(a,button,summary):focus-visible{outline-color:Highlight}html .site-header,html .site-header::after{background:Canvas}html .scroll-progress span{background:Highlight}html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::before,html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::after{display:none}}
-@media(prefers-reduced-motion:reduce){html body *,html body *::before,html body *::after{animation:none!important;transition:none!important;will-change:auto!important;scroll-behavior:auto!important}html [data-reveal]{transform:none!important;opacity:1}html body :is(a,button,summary,.paper-card){transform:none!important}html .theme-bloom{display:none}}
+@media(prefers-reduced-motion:reduce){html{transition:none!important}html body *,html body *::before,html body *::after{animation:none!important;transition:none!important;will-change:auto!important;scroll-behavior:auto!important}html [data-reveal]{transform:none!important;opacity:1}html body :is(a,button,summary,.paper-card){transform:none!important}}
 

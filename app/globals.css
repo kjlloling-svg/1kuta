@@ -534,16 +534,18 @@ button:disabled,.button[aria-disabled="true"]{transform:none;background:var(--so
 
 /* Pre-paint theme setup and clipped inset department edges. */
 html{background:var(--bg)}
-html:not(.theme-ready) *,html:not(.theme-ready) *::before,html:not(.theme-ready) *::after,html.theme-switching *,html.theme-switching *::before,html.theme-switching *::after{transition:none!important}
 body,.site-header,.footer,.page-main{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 .theme-toggle{position:relative;display:inline-flex;align-items:center;width:var(--switch-width);min-width:var(--switch-width);height:44px;min-height:44px;border-radius:999px;cursor:pointer;flex-shrink:0;background:var(--soft);transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 .theme-toggle:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.theme-knob{position:absolute;left:5px;width:var(--switch-knob);height:var(--switch-knob);border-radius:50%;background:var(--surface);color:var(--ink);box-shadow:none;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-.theme-icon-light,.theme-icon-dark{position:absolute;inset:0;display:grid;place-items:center;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-.theme-icon-dark{opacity:0;transform:rotate(-45deg)}
-html[data-theme="dark"] .theme-toggle .theme-knob{transform:translateX(24px)}
-html[data-theme="dark"] .theme-toggle .theme-knob .theme-icon-light{opacity:0;transform:rotate(45deg)}
-html[data-theme="dark"] .theme-toggle .theme-knob .theme-icon-dark{opacity:1;transform:rotate(0)}
+.theme-knob{position:absolute;left:5px;width:var(--switch-knob);height:var(--switch-knob);border-radius:50%;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-knob);display:grid;place-items:center;transition:transform var(--motion-base) var(--switch-ease),background-color var(--motion-base) ease,color var(--motion-base) ease}
+/* One SVG changes from sun to crescent; dimensions never change. */
+.theme-icon{display:block;margin:auto;transform:rotate(0) scale(1);transition:transform var(--motion-base) var(--switch-ease),fill var(--motion-base) ease}
+.theme-rays{transform-origin:12px 12px;transition:transform var(--motion-base) var(--switch-ease),opacity var(--motion-base) ease}
+.theme-crescent{transition:transform var(--motion-base) var(--switch-ease)}
+html[data-theme="dark"] .theme-knob{transform:translateX(calc(var(--switch-width) - var(--switch-knob) - 12px))}
+html[data-theme="dark"] .theme-icon{transform:rotate(-15deg) scale(1.08)}
+html[data-theme="dark"] .theme-rays{transform:scale(.3);opacity:0}
+html[data-theme="dark"] .theme-crescent{transform:translate(-9px,8px)}
 .gold,.rose,.blue,.maroon,.green,.dept-fallback{--dept-glow:color-mix(in srgb,var(--dept-accent) var(--glow-strength),transparent)}
 .program-tile,.directory-card,.paper-card,.detail-panel,.admin-records li{position:relative;overflow:hidden;border-top:1px solid var(--line);isolation:isolate}
 .program-tile::before,.directory-card::before,.paper-card::before,.detail-panel::before,.admin-records li::before{content:"";position:absolute;inset:0;border:2px solid var(--dept-accent);border-radius:inherit;background:none;box-shadow:var(--shadow-department-inset);opacity:.72;pointer-events:none;animation:department-pulse var(--motion-loop) var(--motion-in-out) infinite;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
@@ -589,14 +591,14 @@ html[data-restoring] body{visibility:hidden}
 .active-year-filter{display:flex;margin:0 0 14px}
 @media(min-width:768px) and (max-width:1023px){.year-bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:767px){.year-bento{grid-template-columns:minmax(0,1fr)}.year-featured,.year-medium{grid-column:span 1;grid-row:span 1}.year-featured{min-height:220px}}
-@media(prefers-reduced-motion:reduce){body,.site-header,.footer,.page-main,.theme-toggle,.theme-knob,.theme-icon-light,.theme-icon-dark,.year-item,.year-tile,.year-number{transition:none!important;animation:none!important}.year-tile:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){body,.site-header,.footer,.page-main,.theme-toggle,.theme-knob,.theme-icon,.theme-rays,.theme-crescent,.year-item,.year-tile,.year-number{transition:none!important;animation:none!important}.year-tile:hover{transform:none}}
 
 /* Google sign-in stays inside the existing login card. */
 .google-sign-in{margin-top:1rem;min-width:0}.google-sign-in-divider{text-align:center;margin-bottom:1rem;opacity:.65}.google-sign-in-status{font-size:.875rem;margin:.75rem 0;line-height:1.5}
 
 .header-theme{display:flex;flex-shrink:0}
 @media(max-width:1279px){.header-theme{margin-left:auto}.header-theme+.mobile-navigation{margin-left:0}}
-@media(max-width:620px){.header-theme .theme-toggle{--switch-width:60px;--switch-knob:28px}html[data-theme="dark"] .header-theme .theme-toggle .theme-knob{transform:translateX(20px)}.header-inner .brand-text small{max-width:110px}}
+@media(max-width:620px){.header-theme .theme-toggle{--switch-width:60px;--switch-knob:28px}.header-inner .brand-text small{max-width:110px}}
 
 /* The theme control keeps its original footprint and a visible border. */
 html .theme-toggle{padding:0;background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-raised)}
@@ -605,8 +607,7 @@ html .theme-toggle{padding:0;background:var(--soft);color:var(--ink);border:1px 
  }
 }
 html .theme-toggle:active{box-shadow:var(--shadow-pressed)}
-html .theme-toggle[aria-pressed=true]{box-shadow:var(--shadow-raised)}
+html .theme-toggle[aria-checked=true]{box-shadow:var(--shadow-raised)}
 html .theme-toggle:disabled{opacity:.6}
-canvas[data-supernova]::backdrop{background:transparent;pointer-events:none}
 
-@media(prefers-color-scheme:dark){html:not([data-theme]) .theme-knob{transform:translateX(calc(var(--switch-width) - var(--switch-knob) - 12px))}html:not([data-theme]) .theme-icon-light{opacity:0}html:not([data-theme]) .theme-icon-dark{opacity:1;transform:none}}
+@media(prefers-color-scheme:dark){html:not([data-theme]) .theme-knob{transform:translateX(calc(var(--switch-width) - var(--switch-knob) - 12px))}html:not([data-theme]) .theme-rays{transform:scale(.3);opacity:0}html:not([data-theme]) .theme-crescent{transform:translate(-9px,8px)}}

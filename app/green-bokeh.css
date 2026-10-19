@@ -204,7 +204,7 @@ html .color-vision-popover [role=menuitemradio]:focus-visible {outline-offset:-3
 html .color-vision-check {display:inline-block;flex:0 0 20px;text-align:center;color:var(--green);font-size:20px}
 html .color-vision-popover p {font-size:12px;line-height:1.5;color:var(--muted);margin:10px 8px 4px}
 
-html.theme-ready:not(.cvd-initializing) :is(.color-vision-trigger,.color-vision-popover,.color-vision-popover button,.page-intro,.favorites-panel) {transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html.theme-ready:not(.cvd-initializing) :is(.color-vision-trigger,.color-vision-popover,.color-vision-popover button,.page-intro,.favorites-panel) {transition:var(--theme-transition),transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 html.cvd-initializing *,html.cvd-initializing *::before,html.cvd-initializing *::after {transition:none!important}
 @media(max-width:620px){html .header-inner{gap:8px}html .header-inner .brand{flex:1;flex-shrink:1;gap:6px}html .header-inner .brand-text small{max-width:85px;font-size:9px}html .menu-trigger{padding-inline:10px}html .header-theme{margin-left:0;gap:6px}html .color-vision-popover{position:fixed;top:calc(var(--header-stack) + 10px);right:14px}}
 @media(prefers-reduced-motion:reduce){html.theme-ready :is(.color-vision-trigger,.color-vision-popover,.color-vision-popover button,.page-intro,.favorites-panel){transition:none!important}}
@@ -214,5 +214,5 @@ html body::before {content:"";position:fixed;inset:0;z-index:-2;pointer-events:n
 html .about-content {background:var(--surface);border-radius:18px;padding-inline:24px}
 html .page-main {background:transparent}
 html .how-it-works,html .section-intro,html .recent-section {background:transparent}
-html.theme-ready:not(.theme-switching):not(.cvd-initializing) :is(.paper-card,.program-tile,.directory-card,.tag,.keyword-chip,.admin-panel,input,select,textarea,.button,.text-link) {transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html.theme-ready:not(.cvd-initializing) :is(.paper-card,.program-tile,.directory-card,.tag,.keyword-chip,.admin-panel,input,select,textarea,.button,.text-link) {transition:var(--theme-transition),transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 @media(prefers-reduced-motion:reduce){html.theme-ready *{transition:none!important}}

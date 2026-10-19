@@ -3,15 +3,14 @@
  --sb-ink:var(--ink);--sb-muted:var(--muted);--sb-glass:color-mix(in srgb,var(--surface) 94%,transparent);--sb-glass-b:var(--line);
  --sb-n-hi:var(--shadow-light);--sb-n-lo:var(--shadow-dark);--sb-base:var(--surface);--sb-line:var(--line);
 }
-.space-background{position:fixed;inset:-24px;z-index:-1;pointer-events:none;contain:paint;background:
- radial-gradient(ellipse at 12% 18%,color-mix(in srgb,var(--effect-accent) 7%,transparent),transparent 48%),
- linear-gradient(var(--bg),var(--bg));}
-.space-background[data-variant=full]{background:
+.space-background{position:fixed;inset:-24px;z-index:-1;pointer-events:none;contain:paint;background-color:var(--bg);background-image:
+ radial-gradient(ellipse at 12% 18%,color-mix(in srgb,var(--effect-accent) 7%,transparent),transparent 48%);}
+.space-background[data-variant=full]{background-image:
  radial-gradient(circle at 12% 20%,color-mix(in srgb,var(--bokeh-color) 22%,transparent),transparent 27%),
  radial-gradient(circle at 83% 28%,color-mix(in srgb,var(--teal) 12%,transparent),transparent 30%),
  radial-gradient(circle at 62% 76%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 29%),
  radial-gradient(ellipse at 10% 92%,color-mix(in srgb,var(--green) 12%,transparent),transparent 35%),
- linear-gradient(150deg,var(--bg),var(--soft));}
+ linear-gradient(150deg,transparent,var(--soft));}
 .cursor-light{position:fixed;top:0;left:0;width:0;height:0;z-index:90;pointer-events:none;opacity:0;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 .cursor-light::before{content:"";position:absolute;width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--effect-accent) 6%,transparent),transparent 70%)}
 .cursor-light[data-variant=full]::before{width:360px;height:360px;background:radial-gradient(circle,color-mix(in srgb,var(--bokeh-color) 12%,transparent),transparent 70%)}
