@@ -1,0 +1,126 @@
+/* Page-local identity system: identical reading slots, accent-only illustration stages. */
+.programs-showcase{position:relative;isolation:isolate;--program-loop:4s;--program-slow:12s;--program-enter:600ms;--program-stagger:70ms;--program-gap:24px;--program-radius:24px;--section-progress:0}
+.programs-showcase>.wrap{position:relative;padding-block:48px 64px}
+.programs-intro{max-width:720px;margin:0 0 32px;transform:translateY(var(--intro-shift,0px))}
+.programs-intro h1{font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-.045em;margin:12px 0 16px}
+.programs-intro>p:last-child{color:var(--muted);max-width:620px;line-height:1.7;margin:0}
+.programs-decoration{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 90% 4%,color-mix(in srgb,var(--green) 8%,transparent),transparent 50%)}
+.programs-decoration::before{content:"";position:absolute;width:44vw;height:44vw;right:-20vw;top:80px;border:1px solid var(--line);border-radius:50%;opacity:.12;transform:translateY(calc(var(--section-progress)*80px))}
+.programs-section-progress{height:2px;background:var(--line);opacity:.6;margin-bottom:32px;overflow:hidden}
+.programs-section-progress>span{display:block;height:100%;background:var(--green);transform-origin:left;transform:scaleX(var(--section-progress));}
+.programs-showcase-grid{container-type:inline-size;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--program-gap);align-items:stretch}
+html body .program-showcase-card{grid-column:span 2;width:calc((100cqw - var(--program-gap)*2)/3);position:relative;display:flex;flex-direction:column;min-width:0;aspect-ratio:2/3;min-height:560px;padding:12px;background:var(--surface);color:var(--ink);border:1px solid var(--program-edge);border-radius:var(--program-radius);box-shadow:0 6px 20px var(--shadow-dark);text-decoration:none;isolation:isolate;contain:style;--pointer-x:0;--pointer-y:0;--progress:0;--mx:150px;--my:100px;--tilt-x:0deg;--tilt-y:0deg;transition:transform var(--motion-base) var(--motion-out)}
+.program-showcase-card:last-child:nth-child(3n+1){grid-column:3/span 2}
+.program-showcase-card:nth-last-child(2):nth-child(3n+1){grid-column:2/span 2}
+.program-showcase-card:last-child:nth-child(3n+2){grid-column:4/span 2}
+html body .program-showcase-card:focus-visible{outline:3px solid var(--focus);outline-offset:5px}
+.program-art-stage{position:relative;flex:none;height:200px;border-radius:16px;background:var(--program-tint);color:var(--program-text);overflow:hidden;contain:paint}
+.program-art{display:block;width:100%;height:100%;overflow:hidden}
+.program-card-copy{padding:20px 12px 12px;display:flex;flex-direction:column;flex:1;min-height:0}
+.program-card-copy h2{height:84px;flex:none;margin:0 0 12px;font-size:21px;line-height:28px;letter-spacing:-.025em;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow-wrap:anywhere;color:var(--ink)}
+.program-card-meta{display:flex;align-items:flex-start;gap:10px;min-height:48px;flex:none}
+.program-code{font-size:10px;letter-spacing:.07em;font-weight:700;line-height:22px;border:1px solid var(--program-edge);padding:0 7px;border-radius:6px;color:var(--program-text);background:var(--program-tint);white-space:nowrap}
+.program-discipline{font-size:12px;line-height:18px;color:var(--muted);min-width:0;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow-wrap:anywhere}
+.program-learn{font-size:12px;line-height:20px;color:var(--muted);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;margin:8px 0 12px}
+.program-count{font-size:12px;line-height:18px;color:var(--muted);margin:auto 0 16px;min-height:18px}
+.program-explore{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;font-size:13px;font-weight:700;color:var(--program-text);line-height:20px}
+.program-explore>span{font-size:22px;transition:transform var(--motion-fast) var(--motion-out)}
+.program-showcase-card:is(:hover,:focus-visible) .program-explore>span{transform:translate(2px,-2px)}
+.program-spotlight{position:absolute;left:-140px;top:-140px;width:280px;height:280px;transform:translate(var(--mx),var(--my));pointer-events:none;opacity:0;background:radial-gradient(circle,color-mix(in srgb,var(--program-accent) 18%,transparent),transparent 62%);transition:opacity var(--motion-base) ease;mix-blend-mode:normal}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .program-spotlight{opacity:.7}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-moving=true]{will-change:transform}
+@media(hover:hover) and (pointer:fine){html body .programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true]{transform:perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-3px)}}
+html body .program-showcase-card:is(:active,[data-state=pressed]){transform:scale(.985);transition-duration:var(--motion-fast)}
+.art-surface{fill:var(--surface)}.art-chip{fill:var(--program-tint)}.art-screen{fill:var(--soft)}.art-wash{fill:currentColor;stroke:none;opacity:.06}.art-grid{opacity:.1;stroke-width:.7}.art-type{font-size:9px;fill:currentColor;stroke:none;font-family:monospace}.art-window{overflow:hidden}.art-trace{opacity:.65}.art-spark{opacity:.4}.build-ok,.bpm-active,.hire-node{opacity:0}
+.art-depth{transform-origin:160px 100px}
+.programs-showcase[data-program-motion=full] .art-back{transform:translate(calc(var(--pointer-x)*-2px),calc((var(--progress) - .5)*-5px))}
+.programs-showcase[data-program-motion=full] .art-mid{transform:translate(calc(var(--pointer-x)*3px),calc(var(--pointer-y)*2px + (var(--progress) - .5)*-8px))}
+.programs-showcase[data-program-motion=full] .art-front{transform:translate(calc(var(--pointer-x)*7px),calc(var(--pointer-y)*5px + (var(--progress) - .5)*-12px))}
+.programs-showcase[data-program-motion] .program-showcase-card[data-enter=running]{animation:program-enter var(--program-enter) var(--motion-out) both;animation-delay:calc(var(--entry-order)*var(--program-stagger))}
+.program-showcase-card[data-enter=running] :is(.trace-reveal,.timeline,.math-axes,.ecg-window){animation:program-assemble var(--program-enter) var(--motion-out) both;transform-origin:left center}
+.program-showcase-card[data-enter=running] :is(.org-node,.map-pins,.medical-cross){animation:program-appear var(--program-enter) var(--motion-out) both}
+@keyframes program-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes program-assemble{from{opacity:0;transform:scaleX(.05)}to{opacity:1;transform:scaleX(1)}}
+@keyframes program-appear{from{opacity:0}to{opacity:1}}
+/* Loops only start after enhancement. Offscreen and hidden-tab gates pause all of them. */
+.programs-showcase[data-program-motion=full] :is(.art-spark,.board-led,.pcb-node,.org-lines,.timeline-dot){animation:program-pulse var(--program-loop) ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .code-lines{animation:program-code var(--program-loop) steps(5,end) infinite;transform-origin:left}
+.programs-showcase[data-program-motion=full] .code-caret{animation:program-blink 1.2s steps(2,end) infinite}
+.programs-showcase[data-program-motion=full] .data-pulse{animation:program-data var(--program-loop) linear infinite}
+.programs-showcase[data-program-motion=full] .wifi-arcs{animation:program-wifi var(--program-loop) ease-in-out infinite;transform-origin:247px 71px}
+.programs-showcase[data-program-motion=full] .ecg-line{animation:program-ecg 3s linear infinite}
+.programs-showcase[data-program-motion=full] .heart-beat{animation:program-heart 3s ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .iv-drop{animation:program-drop 3s linear infinite}
+.programs-showcase[data-program-motion=full] .check-tick{animation:program-check var(--program-loop) ease-in-out infinite}
+.check-1{animation-delay:.5s!important}.check-2{animation-delay:1s!important}
+.programs-showcase[data-program-motion=full] :is(.chart-bars,.paper-stack){animation:program-breathe var(--program-loop) ease-in-out infinite;transform-origin:90px 145px}
+.programs-showcase[data-program-motion=full] .globe-turn{animation:program-globe var(--program-slow) ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .compass-needle{animation:program-compass var(--program-slow) ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .sine-wave{animation:program-wave var(--program-loop) linear infinite}
+.programs-showcase[data-program-motion=full] .math-symbol{animation:program-drift 6s ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .compass-sweep{animation:program-sweep 6s ease-in-out infinite;transform-origin:0 12px}
+.programs-showcase[data-program-motion=full] .gear-large{animation:program-gear 16s linear infinite}
+.programs-showcase[data-program-motion=full] .gear-small{animation:program-gear 10s linear infinite reverse}
+.programs-showcase[data-program-motion=full] .piston{animation:program-piston var(--program-loop) ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .gear-scroll{transform:rotate(calc(var(--progress)*180deg))}
+.programs-showcase[data-program-motion=full] .gear-scroll-small{transform:rotate(calc(var(--progress)*-288deg))}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] :is(.board-led,.pcb-node,.ecg-line,.heart-beat,.org-lines){animation-duration:1.5s}
+.program-showcase-card[data-active=true] :is(.build-ok,.bpm-active,.hire-node){opacity:1;transition:opacity var(--motion-base) ease}.program-showcase-card[data-active=true] .bpm-rest{opacity:0}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .art-monitor{transform:rotate(calc(var(--pointer-x)*2deg));transform-origin:120px 132px}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .stethoscope-head{transform:translate(calc(var(--pointer-x)*6px),calc(var(--pointer-y)*4px))}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .care-ripple{animation:program-care 1.5s ease-out infinite}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .badge-swing{animation:program-badge 2s ease-in-out infinite;transform-origin:194px 121px}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .book-page{animation:program-page 2s ease-in-out infinite;transform-origin:left}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .map-pins{transform:translateY(-3px)}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .graph-react{transform:translateX(calc(var(--pointer-x)*16px)) scaleY(calc(1 + var(--pointer-y)*.28));transform-origin:76px 40px}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .math-symbols{transform:translate(calc(var(--pointer-x)*4px),calc(var(--pointer-y)*4px))}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .hardware-chip{animation:program-breathe 2s ease-in-out infinite;transform-origin:116px 110px}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .meter-needle{transform:rotate(35deg);transition:transform var(--motion-base) ease}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .wrench-turn{animation:program-compass 2s ease-in-out infinite}
+@keyframes program-pulse{0%,100%{opacity:.4}45%,60%{opacity:1}}
+@keyframes program-code{0%{transform:scaleX(.08);opacity:.4}70%,95%{transform:scaleX(1);opacity:1}100%{transform:scaleX(.08);opacity:.4}}
+@keyframes program-blink{0%,100%{opacity:0}50%{opacity:1}}
+@keyframes program-data{from{transform:translateX(-25px);opacity:0}30%,70%{opacity:1}to{transform:translateX(22px);opacity:0}}
+@keyframes program-wifi{0%,100%{transform:scale(.85);opacity:.4}50%{transform:scale(1.07);opacity:1}}
+@keyframes program-ecg{to{transform:translateX(-128px)}}
+@keyframes program-heart{0%,28%,65%,100%{transform:scale(1)}35%,48%{transform:scale(1.2)}}
+@keyframes program-drop{0%{transform:translateY(0);opacity:0}20%,80%{opacity:1}100%{transform:translateY(27px);opacity:0}}
+@keyframes program-check{0%,15%{opacity:0}30%,80%{opacity:1}100%{opacity:0}}
+@keyframes program-breathe{0%,100%{transform:scaleY(.92)}50%{transform:scaleY(1.04)}}
+@keyframes program-globe{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.7)}}
+@keyframes program-compass{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@keyframes program-wave{to{transform:translateX(-80px)}}
+@keyframes program-drift{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+@keyframes program-sweep{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(25deg)}}
+@keyframes program-gear{to{transform:rotate(360deg)}}
+@keyframes program-piston{0%,100%{transform:translateY(-5px)}50%{transform:translateY(8px)}}
+@keyframes program-care{from{transform:scale(.5);opacity:.6}to{transform:scale(1.7);opacity:0}}
+@keyframes program-badge{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes program-page{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.3)}}
+.programs-showcase :is(.program-showcase-card:not([data-visible=true]),.program-showcase-card:not([data-visible=true]) *){animation-play-state:paused!important}
+.programs-showcase[data-programs-hidden=true],.programs-showcase[data-programs-hidden=true] *{animation-play-state:paused!important}
+.programs-showcase[data-program-motion=low] :is(.art-spark,.art-grid,.program-spotlight){display:none}
+@supports(animation-timeline:view()){@media(prefers-reduced-motion:no-preference){.programs-showcase[data-program-motion=full] .program-showcase-card{view-timeline-name:--program-card;view-timeline-axis:block}.programs-showcase[data-program-motion=full] .gear-scroll{animation:program-scroll-gear 1s linear both;animation-timeline:--program-card;animation-range:entry 0% exit 100%}.programs-showcase[data-program-motion=full] .gear-scroll-small{animation-name:program-scroll-small}}}
+@keyframes program-scroll-gear{from{transform:rotate(0)}to{transform:rotate(180deg)}}
+@keyframes program-scroll-small{from{transform:rotate(0)}to{transform:rotate(-288deg)}}
+@media(max-width:1023px) and (min-width:640px){.programs-showcase-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.program-showcase-card{width:calc((100cqw - var(--program-gap))/2)!important}.program-showcase-card:last-child:nth-child(n),.program-showcase-card:nth-last-child(2):nth-child(n){grid-column:span 2}.program-showcase-card:last-child:nth-child(odd){grid-column:2/span 2}}
+@media(max-width:639px){.programs-showcase>.wrap{padding-block:32px 40px}.programs-showcase-grid{grid-template-columns:minmax(0,1fr);gap:24px}.programs-showcase-grid>.program-showcase-card:nth-child(n){grid-column:1;width:100%;aspect-ratio:auto;height:560px;min-height:560px}.program-art-stage{height:190px}.program-card-copy{padding:20px 8px 12px}.program-card-copy h2{font-size:20px}.programs-intro{margin-bottom:24px}}
+@media(hover:none),(pointer:coarse){html body .program-showcase-card:hover{transform:none}.program-spotlight{display:none}}
+@media(prefers-reduced-motion:reduce){html body .programs-showcase,html body .programs-showcase *,html body .programs-showcase *::before{animation:none!important;will-change:auto!important;scroll-behavior:auto!important}.programs-showcase :is(.programs-intro,.programs-decoration::before,.programs-section-progress>span,.art-depth,.gear-scroll,.program-showcase-card){transform:none!important}.program-spotlight{display:none}.programs-showcase .program-showcase-card{opacity:1!important}.programs-showcase .art-depth{opacity:1}.programs-showcase .program-explore>span{transform:none}}
+@media(forced-colors:active){html body .program-showcase-card{background:Canvas;color:CanvasText;border:1px solid CanvasText;box-shadow:none}.program-art-stage{background:Canvas;color:CanvasText}.programs-showcase :is(.art-surface,.art-chip,.art-screen){fill:Canvas}.programs-showcase :is(.program-card-copy h2,.program-code,.program-discipline,.program-learn,.program-count,.program-explore){color:CanvasText;background:Canvas}.programs-showcase *{animation:none!important}.program-spotlight,.programs-decoration{display:none}html body .program-showcase-card:focus-visible{outline-color:Highlight}}
+@media print{.programs-showcase *{animation:none!important;transition:none!important;transform:none!important;box-shadow:none!important}.programs-showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.programs-showcase-grid>.program-showcase-card:nth-child(n){grid-column:auto;width:100%!important;break-inside:avoid;min-height:0;height:auto;aspect-ratio:auto;border:1px solid currentColor}.program-art-stage{height:130px}.programs-decoration,.programs-section-progress,.program-spotlight{display:none}.programs-showcase .program-showcase-card{opacity:1!important}}
+
+/* Detail responses stay on nested layers so SVG positioning is never overwritten. */
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .globe-react{transform:rotate(calc(var(--pointer-x)*12deg))}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .pythagoras{transform:skewY(calc(var(--pointer-x)*8deg)) scaleX(calc(1 + var(--pointer-y)*.1))}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .driver-turn{animation:program-compass 2s ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .wifi-arcs{animation-duration:2s}
+.program-showcase-card[data-active=true] .check-tick{animation:none!important;opacity:1}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .chart-bars{animation:program-chart 2s ease-in-out infinite}
+.program-showcase-card[data-enter=running] .gear{animation:program-gear-enter var(--program-enter) var(--motion-out) both}
+@keyframes program-chart{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.18)}}
+@keyframes program-gear-enter{from{opacity:0;transform:translateY(-12px) rotate(-20deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+
+.programs-showcase[data-program-motion=full] .board-led{animation:program-heart-led 3s ease-in-out infinite}
+.programs-showcase[data-program-motion=full] .program-showcase-card[data-active=true] .build-ok{animation:program-pulse 2s ease-in-out infinite}
+@keyframes program-heart-led{0%,25%,45%,100%{opacity:.3}30%,40%{opacity:1}}
