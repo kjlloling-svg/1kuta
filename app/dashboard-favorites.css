@@ -10,13 +10,15 @@ html .review-authors{font-size:13px;color:var(--muted);margin:8px 0}
 html .admin-panel{min-width:0}html .admin-records li>div{min-width:0}html .admin-records strong{overflow-wrap:anywhere}
 @media(max-width:620px){html .review-selects{grid-template-columns:1fr}html .admin-records li{flex-direction:column;gap:16px}html .admin-record-actions{display:flex;gap:12px}}
 html .favorite-control{position:relative;margin:12px 0;min-height:44px}
-html .favorite-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:3px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:var(--surface);box-shadow:none;transition:background-color 180ms ease,color 180ms ease}
+html .favorite-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:3px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:var(--surface);box-shadow:none;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 html .favorite-button[aria-pressed=true]{color:var(--green);background:var(--soft)}
-html .favorite-button:hover{transform:none;background:var(--soft);box-shadow:none}
-html .favorite-button:active{transform:none;box-shadow:var(--shadow-pressed)}
+html .favorite-button:hover{background:var(--soft)}
+@media (hover:hover) and (pointer:fine){
+html .favorite-button:hover{transform:none}}
+html .favorite-button:active{box-shadow:var(--shadow-pressed)}
 html .favorite-button:disabled{opacity:.6;cursor:wait;transform:none}
-html .favorite-button svg{flex:none;transition:fill 180ms ease,color 180ms ease}
-html .favorite-loading{animation:favorite-spin .8s linear infinite}
+html .favorite-button svg{flex:none;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .favorite-loading{animation:favorite-spin var(--motion-loading) linear infinite}
 html .favorite-tooltip{position:absolute;z-index:6;right:0;top:48px;max-width:220px;width:max-content;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-size:12px;line-height:1.4;opacity:0;visibility:hidden}
 html .favorite-button:is(:hover,:focus-visible)+.favorite-tooltip:not([data-dismissed=true]),html .favorite-tooltip:not([data-dismissed=true]):hover{opacity:1;visibility:visible}
 html .favorite-tooltip::before{content:"";position:absolute;inset:-6px 0 100%}

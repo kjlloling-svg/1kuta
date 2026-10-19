@@ -1,0 +1,87 @@
+/* Shared interaction tokens. No layout properties are animated. */
+:root{
+ --shadow-knob:0 2px 5px var(--shadow-dark);
+ --shadow-popover:0 12px 30px var(--shadow-dark);
+ --ambient-blur:blur(6px);
+ --placeholder-blur:blur(3px);
+
+ --motion-fast:150ms;--motion-base:250ms;--motion-slow:500ms;
+ --motion-out:cubic-bezier(.2,.8,.2,1);--motion-in-out:cubic-bezier(.4,0,.2,1);--motion-stagger:70ms;
+ --motion-reveal-distance:20px;--motion-lift:4px;--motion-press:.97;
+ --motion-loop:3.2s;--motion-loading:1s;--motion-shimmer:1.8s;--motion-marquee:36s;--motion-float:18s;
+ --motion-panel-distance:8px;--motion-nudge:3px;--motion-small-lift:2px;--motion-press-nudge:1px;--motion-parallax-full:18;--motion-parallax-accent:5;
+ --glass-blur:12px;--glass-filter:blur(var(--glass-blur));--glass:color-mix(in srgb,var(--surface) 97%,transparent);
+ --glass-border:color-mix(in srgb,var(--line) 65%,transparent);--floating-shadow:0 8px 24px var(--shadow-dark);
+ --control-rest:-2px -2px 5px var(--shadow-light),3px 3px 6px var(--shadow-dark);
+ --control-hover:-3px -3px 7px var(--shadow-light),4px 4px 9px var(--shadow-dark);
+ --control-pressed:inset 2px 2px 4px var(--shadow-dark),inset -2px -2px 4px var(--shadow-light);
+ --spotlight-size:300px;--spotlight-strength:8%;--spotlight-opacity:1;
+ --bloom-alpha:.6;--bloom-start:.02;
+}
+@media(max-width:639px){:root{--glass-blur:8px;--motion-reveal-distance:12px;--motion-stagger:35ms;--spotlight-size:200px}}
+html[data-theme=dark]{--glass:color-mix(in srgb,var(--surface) 97%,transparent);--spotlight-strength:6%}
+
+:root,:is(.gold,.rose,.blue,.maroon,.green,.dept-fallback,.marquee-diploma-cpt,.marquee-diploma-mech){
+ --shadow-department-inset:inset 0 0 8px var(--dept-glow);
+ --shadow-department-soft:0 0 4px var(--dept-glow),0 0 9px var(--dept-glow);
+ --shadow-program:0 0 5px var(--dept-glow);
+ --shadow-directory:0 0 5px var(--dept-glow),0 0 16px var(--dept-glow);
+ --program-star-glow:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));
+}
+
+/* A fixed footprint keeps anchors, menus and content stable across the glass change. */
+html .site-header{background:transparent;border-bottom-color:transparent;box-shadow:none;backdrop-filter:none}
+html .site-header::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--glass);border-bottom:1px solid var(--glass-border);box-shadow:var(--floating-shadow);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);opacity:0;transition:opacity var(--motion-base) var(--motion-in-out)}
+html[data-scrolled=true] .site-header::after,html:not([data-scrolled]) .site-header::after{opacity:1}
+.header-sentinel{position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none;opacity:0}
+html .site-header::before{background:var(--bg)}
+html .brand-mark{transform:none}
+html .filters,html .kuta-welcome .welcome-content{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--glass);border:1px solid var(--glass-border);box-shadow:var(--floating-shadow);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);color:var(--ink)}
+html .account-dropdown,html .mobile-panel:not([hidden]),html .color-vision-popover:not([hidden]),html .citation-dialog[open],html .archive-modal[open],html .paper-overflow[open] .paper-overflow-actions{animation:motion-panel var(--motion-base) var(--motion-out) both}
+@keyframes motion-panel{from{opacity:0;transform:translateY(var(--motion-panel-distance))}to{opacity:1;transform:none}}
+html .citation-dialog .hero-search,html .archive-modal .hero-search{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* Each observer-triggered animation releases its layer on animationend. */
+html [data-reveal=running]{animation:motion-reveal var(--motion-base) var(--motion-out) both;animation-delay:calc(var(--reveal-index,0)*var(--motion-stagger));will-change:transform,opacity}
+@keyframes motion-reveal{from{opacity:0;transform:translateY(var(--motion-reveal-distance))}to{opacity:1;transform:none}}
+
+/* The highlight is a fixed radial texture translated by pointer coordinates. */
+.card-spotlight{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:-1}.card-spotlight::before{content:"";position:absolute;left:0;top:0;width:var(--spotlight-size);height:var(--spotlight-size);border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,color-mix(in srgb,var(--dept-accent,var(--green)) var(--spotlight-strength),transparent),transparent 70%);transform:translate(calc(var(--mx,50%) - 50%),calc(var(--my,50%) - 50%));opacity:0;transition:opacity var(--motion-fast) var(--motion-out)}
+html body :is(.program-tile,.directory-card,.paper-card){transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html body :is(.program-tile,.directory-card,.paper-card)[data-spotlight=true]>.card-spotlight::before,html body :is(.program-tile,.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{opacity:var(--spotlight-opacity)}
+html body :is(.program-tile,.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{left:50%;top:50%;transform:translate(-50%,-50%)}
+@media(hover:hover) and (pointer:fine){html body :is(.program-tile,.directory-card,.paper-card):hover{transform:translateY(calc(-1*var(--motion-lift)))} }
+
+html body :is(a,button,summary){touch-action:manipulation;min-width:44px;min-height:44px}
+html body :is(.paper-action,.paper-sign-in,.paper-card .keyword-chip){min-height:44px;min-width:44px}
+html .footer a,html .marquee-track li a,html .about-nav a{display:inline-flex;align-items:center;min-height:44px}
+html body p>a:not(.button){display:inline-flex;align-items:center;min-height:44px}
+html body :is(button,.button,.paper-action,.program-tile,.directory-card,.year-tile,.text-link,.account-link){transition:transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html body :is(button,a,summary,.button,.keyword-chip,.paper-action):active,html body :is(.program-tile,.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press));transition-duration:var(--motion-fast);outline:1px solid var(--focus);outline-offset:1px}
+html body :is(button:disabled,[aria-disabled=true]){box-shadow:none;transform:none;opacity:.6;cursor:not-allowed}
+html body :is(a,button,summary):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+@media(hover:none),(pointer:coarse){html body :is(button,a,.paper-card):hover{transform:none}html body :is(button,a):active,html body :is(.program-tile,.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press))}}
+
+/* Two fixed shadow layers crossfade; only compact controls use raised/inset depth. */
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button){position:relative;isolation:isolate;box-shadow:var(--control-rest);border-color:var(--line);animation:none}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::before,html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity var(--motion-fast) var(--motion-out)}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::before{box-shadow:var(--control-pressed)}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::after{box-shadow:var(--control-hover)}
+@media(hover:hover) and (pointer:fine){html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button):not(:disabled):hover::after{opacity:1}}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button):is(:active,[aria-pressed=true],[aria-expanded=true]){border-color:var(--focus)}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button):is(:active,[aria-pressed=true],[aria-expanded=true])::before{opacity:1}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button):is(:active,[aria-pressed=true],[aria-expanded=true],:disabled)::after{opacity:0}
+html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button):disabled::before{opacity:0}
+
+html :is(.about-nav,.keyword-filter,.card-keywords,.pagination){scroll-snap-type:x proximity;overscroll-behavior-x:contain;scroll-padding-inline:8px}
+html :is(.about-nav,.keyword-filter,.card-keywords,.pagination)>*{scroll-snap-align:start}
+.theme-bloom{position:fixed;left:var(--bloom-x);top:var(--bloom-y);width:var(--bloom-size);height:var(--bloom-size);max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:50%;pointer-events:none;z-index:2147483647;background:radial-gradient(circle,var(--surface),color-mix(in srgb,var(--gold) 24%,var(--surface)),transparent 70%);animation:motion-bloom var(--motion-slow) var(--motion-out) both}
+.theme-bloom::backdrop{background:transparent;pointer-events:none}
+@keyframes motion-bloom{0%{transform:translate(-50%,-50%) scale(var(--bloom-start));opacity:0}50%{opacity:var(--bloom-alpha)}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+
+@supports not (backdrop-filter:blur(1px)){html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface)}}
+@media(prefers-reduced-transparency:reduce),(forced-colors:active){html .site-header,html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}html .space-background,html .cursor-light,html .theme-bloom,html .card-spotlight{display:none}}
+@media(forced-colors:active){html body{background:Canvas;color:CanvasText}html body :is(a,button,summary){border-color:ButtonText;box-shadow:none}html body :is(a,button,summary):focus-visible{outline-color:Highlight}html .site-header,html .site-header::after{background:Canvas}html .scroll-progress span{background:Highlight}html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::before,html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button)::after{display:none}}
+@media(prefers-reduced-motion:reduce){html body *,html body *::before,html body *::after{animation:none!important;transition:none!important;will-change:auto!important;scroll-behavior:auto!important}html [data-reveal]{transform:none!important;opacity:1}html body :is(a,button,summary,.paper-card){transform:none!important}html .theme-bloom{display:none}}
+

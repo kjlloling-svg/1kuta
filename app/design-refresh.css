@@ -1,22 +1,21 @@
 /* Campus Warm: presentation overrides, leaving application behavior intact. */
-html body,html .site-header,html .footer,html .page-main,html .about-page { transition:background-color 500ms ease,color 500ms ease; }
+html body,html .site-header,html .footer,html .page-main,html .about-page { transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out); }
 @media(prefers-reduced-motion:reduce){html body,html .site-header,html .footer,html .page-main,html .about-page {transition:none!important}}
 
 /* One signature ambient motion; the foreground stays on readable opaque surfaces. */
 html .kuta-welcome { padding:64px 0; }
 html .welcome-layout { grid-template-columns:minmax(0,1.55fr) minmax(240px,.65fr);gap:40px; }
 html .welcome-content { padding:24px 0;background:transparent;border:0;box-shadow:none; }
-html .kuta-welcome h1 { font-size:clamp(76px,10vw,144px);animation:campus-enter 240ms both; }
+html .kuta-welcome h1 { font-size:clamp(76px,10vw,144px);animation:none; }
 html .wordmark-dot { color:var(--green); }
-html .kuta-subtitle { margin:24px 0 16px;animation:campus-enter 240ms 40ms both; }
-html .kuta-line{margin:0 0 24px;animation:campus-enter 240ms 80ms both}
-html .welcome-content .hero-search { margin-top:24px;padding:8px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;box-shadow:none;backdrop-filter:var(--glass-filter);-webkit-backdrop-filter:var(--glass-filter);animation:campus-enter 240ms 80ms both; }
-html .welcome-content .hero-search:focus-within { outline:2px solid var(--focus);outline-offset:3px;box-shadow:0 0 0 7px color-mix(in srgb,var(--gold) 18%,transparent);transform:none; }
-html .welcome-actions { margin:24px 0;gap:16px;animation:campus-enter 240ms 120ms both; }
+html .kuta-subtitle { margin:24px 0 16px;animation:none; }
+html .kuta-line{margin:0 0 24px;animation:none}
+html .welcome-content .hero-search { margin-top:24px;padding:8px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;box-shadow:none;backdrop-filter:var(--glass-filter);-webkit-backdrop-filter:var(--glass-filter);animation:none; }
+html .welcome-content .hero-search:focus-within { outline:2px solid var(--focus);outline-offset:3px;transform:none; }
+html .welcome-actions { margin:24px 0;gap:16px;animation:none; }
 html .welcome-aside { padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-raised); }
 html .welcome-aside h2 { font-size:clamp(28px,3vw,40px); }
 html .stats-strip { background:var(--surface);box-shadow:none;border-radius:16px;padding:16px 8px;margin-top:40px; }
-@keyframes campus-enter { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 @media(max-width:900px){html .welcome-layout{grid-template-columns:1fr}html .kuta-welcome{padding:40px 0}}
 @media(prefers-reduced-motion:reduce){html .kuta-welcome h1,html .kuta-subtitle,html .welcome-content .hero-search,html .welcome-actions{animation:none!important;transform:none!important;opacity:1!important}}
 
@@ -45,16 +44,14 @@ html .home-page .stats-strip>div{padding:8px 24px;gap:16px}
 /* Program hierarchy preserves the catalog order and every existing filter URL. */
 html .program-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:24px; }
 html .program-directory { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
-html .program-tile { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:var(--shadow-raised),0 0 5px var(--dept-glow);border-color:var(--dept-edge);border-radius:20px;padding:24px;min-height:240px; }
-html .directory-card { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:0 0 5px var(--dept-glow),0 0 16px var(--dept-glow);border-color:var(--dept-edge);border-radius:20px;padding:28px;min-height:210px; }
+html .program-tile { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:var(--shadow-program);border-color:var(--dept-edge);border-radius:20px;padding:24px;min-height:240px; }
+html .directory-card { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:var(--shadow-directory);border-color:var(--dept-edge);border-radius:20px;padding:28px;min-height:210px; }
 html .directory-card:first-child { grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:440px;background:color-mix(in srgb,var(--dept-tint) 55%,var(--surface)); }
-html .program-tile:is(:hover,:focus-visible){transform:none;box-shadow:var(--shadow-hover),0 0 8px var(--dept-glow)}
-html .directory-card:is(:hover,:focus-visible){transform:none;box-shadow:0 0 0 1px var(--dept-edge),0 0 16px var(--dept-glow),0 0 30px var(--dept-glow)}
 html .program-tile .program-symbol { color:var(--dept-text);position:absolute;right:24px;top:24px; }
 html .program-number { margin-bottom:24px; }
 html .program-tile strong { display:block;margin:0 0 8px;font-size:20px;line-height:1.3; }
 html .program-name { display:block;max-width:36ch;line-height:1.6;margin:0 0 24px; }
-html .program-marquee { --marquee-gap:48px;--marquee-duration:36s;border-block:1px solid var(--line);padding:16px 0;background:var(--surface);overflow:hidden; }
+html .program-marquee { --marquee-gap:48px;--marquee-duration:var(--motion-marquee);border-block:1px solid var(--line);padding:16px 0;background:var(--surface);overflow:hidden; }
 html .marquee-window { overflow:hidden;min-width:0;padding-block:12px;mask-image:linear-gradient(to right,transparent,#000 32px,#000 calc(100% - 32px),transparent); }
 html .marquee-track { display:flex;width:max-content;animation:program-flow var(--marquee-duration) linear infinite;will-change:transform; }
 /* Equal trailing space closes the seam between the two identical groups. */
@@ -64,11 +61,11 @@ html .marquee-track li a{color:var(--dept-text);text-decoration:none;line-height
 html .marquee-diploma-cpt{--dept-text:var(--teal);--dept-accent:var(--teal)}
 html .marquee-diploma-mech{--dept-text:var(--dept-copper-text);--dept-accent:var(--dept-copper-accent)}
 html .marquee-track li a:is(:hover,:focus-visible){opacity:.8}
-html .marquee-track li span{color:var(--dept-accent);filter:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));animation:department-pulse 3.2s ease-in-out infinite}
+html .marquee-track li span{color:var(--dept-accent);filter:var(--program-star-glow);animation:department-pulse var(--motion-loop) var(--motion-in-out) infinite}
 @keyframes program-flow { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@media(max-width:900px){html .program-marquee{--marquee-gap:40px;--marquee-duration:32s}html .marquee-track li{font-size:15px;gap:20px}}
+@media(max-width:900px){html .program-marquee{--marquee-gap:40px;--marquee-duration:calc(var(--motion-marquee) * .89)}html .marquee-track li{font-size:15px;gap:20px}}
 @media(max-width:900px){html .program-directory{grid-template-columns:repeat(2,minmax(0,1fr))}html .directory-card:first-child{grid-column:span 2;grid-row:auto;min-height:240px}}
-@media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .directory-card:first-child{grid-column:auto;min-height:220px}html .directory-card{min-height:210px}html .program-marquee{--marquee-gap:32px;--marquee-duration:28s;padding-block:14px}html .marquee-track li{font-size:14px;gap:16px}}
+@media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .directory-card:first-child{grid-column:auto;min-height:220px}html .directory-card{min-height:210px}html .program-marquee{--marquee-gap:32px;--marquee-duration:calc(var(--motion-marquee) * .78);padding-block:14px}html .marquee-track li{font-size:14px;gap:16px}}
 @media(prefers-reduced-motion:reduce){html .marquee-window{mask-image:none;padding-inline:24px}html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none;animation:none!important;opacity:1}html .marquee-track ul[aria-hidden]{display:none}}
 /* Honest archive states and a short path into the existing reading flow. */
 html .how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
@@ -81,18 +78,18 @@ html .state-symbol{color:var(--green);background:var(--soft)}
 html .year-tile.year-zero{background:var(--soft);color:var(--muted);box-shadow:none}
 html .year-zero .year-number,html .year-zero .year-count{color:var(--muted)}
 @media(max-width:620px){html .how-steps{grid-template-columns:1fr;gap:0}html .how-steps li{padding:24px 0}html .how-steps h3{margin-top:12px}}
-/* Supporting motion changes transform/opacity only; theme colors are the 300ms exception. */
-html .campus-reveal{animation:campus-enter 240ms ease-out both}
+/* Supporting motion uses the shared transform/opacity tokens. */
+html .campus-reveal{animation:none}
 html .scroll-progress span{background:var(--gold);transition:none}
-html .program-tile,html .directory-card,html .paper-card,html .year-tile{transition:transform 240ms ease}
-html .tile-arrow,html .year-prompt>span{display:inline-block;transition:transform 240ms ease}
-@media(hover:hover) and (pointer:fine){html .year-tile:hover{transform:translateY(-4px);box-shadow:0 14px 28px var(--shadow-dark)}html .home-page .program-tile:hover,html .home-page .paper-card:hover{transform:translateY(-2px)}html .program-tile:hover .tile-arrow,html .year-tile:hover .year-prompt>span{transform:translateX(3px)}}
-html .button{transition:transform 240ms ease}
-html .button:active{transform:translateY(1px)}
+html .program-tile,html .directory-card,html .paper-card,html .year-tile{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .tile-arrow,html .year-prompt>span{display:inline-block;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+@media(hover:hover) and (pointer:fine){html .year-tile:hover{transform:translateY(calc(-1*var(--motion-lift)))}}
+html .button{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .button:active{}
 html .theme-toggle{border:1px solid var(--line);box-shadow:none;background:var(--soft)}
-html .theme-knob{box-shadow:0 2px 5px var(--shadow-dark)}
+html .theme-knob{box-shadow:var(--shadow-knob)}
 html .paper-skeleton{position:relative;overflow:hidden;background:var(--soft);animation:none}
-html .paper-skeleton::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--surface) 70%,transparent),transparent);animation:campus-shimmer 1.8s ease-in-out infinite}
+html .paper-skeleton::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--surface) 70%,transparent),transparent);animation:campus-shimmer var(--motion-shimmer) var(--motion-in-out) infinite}
 @keyframes campus-shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
-@media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .campus-reveal{opacity:1;transform:none}html .program-tile:hover,html .directory-card:hover,html .paper-card:hover,html .year-tile:hover,html .button:active,html .tile-arrow,html .year-prompt>span{transform:none!important}html .paper-skeleton::after{display:none}}
+@media(prefers-reduced-motion:reduce){html *,html *::before,html *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html .campus-reveal{opacity:1;transform:none}html .paper-skeleton::after{display:none}}
 /* Reduced motion keeps the same low-contrast decorative wash. */

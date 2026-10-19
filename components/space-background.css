@@ -12,28 +12,25 @@
  radial-gradient(circle at 62% 76%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 29%),
  radial-gradient(ellipse at 10% 92%,color-mix(in srgb,var(--green) 12%,transparent),transparent 35%),
  linear-gradient(150deg,var(--bg),var(--soft));}
-.cursor-light{position:fixed;top:0;left:0;width:0;height:0;z-index:90;pointer-events:none;opacity:0;will-change:transform;transition:opacity 160ms ease-out}
+.cursor-light{position:fixed;top:0;left:0;width:0;height:0;z-index:90;pointer-events:none;opacity:0;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 .cursor-light::before{content:"";position:absolute;width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--effect-accent) 6%,transparent),transparent 70%)}
 .cursor-light[data-variant=full]::before{width:360px;height:360px;background:radial-gradient(circle,color-mix(in srgb,var(--bokeh-color) 12%,transparent),transparent 70%)}
 .cursor-light::after{content:"";position:absolute;width:6px;height:6px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,var(--effect-accent),transparent 72%)}
 html body:has(.space-background[data-variant=full]) :is(.kuta-welcome,.purpose-band,.footer){background:transparent}
 html .kuta-welcome>.wrap{position:relative;z-index:1}
-html .kuta-welcome .welcome-content{color:var(--sb-ink);background:var(--sb-glass);border:1px solid var(--sb-glass-b);box-shadow:inset 0 1px 0 var(--sb-glass-b);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);padding:32px;border-radius:24px}
+html .kuta-welcome .welcome-content{color:var(--sb-ink);background:var(--surface);border:1px solid var(--sb-glass-b);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:32px;border-radius:24px}
 html .kuta-welcome .welcome-content :is(.kuta-line,.hero-note){color:var(--sb-muted)}
 html .kuta-welcome :is(.eyebrow,.wordmark-dot){color:var(--accent)}
-html .kuta-welcome,html .kuta-welcome *,html .kuta-welcome *::before,html .kuta-welcome *::after{transition:none!important}
-html .kuta-welcome :is(.welcome-content,.hero-search,.hero-search input,.hero-search button,.button,.eyebrow,.wordmark-dot){transition:none!important;animation:none!important}
-html .kuta-welcome :is(.hero-search,.button,.hero-search button){border:1px solid var(--sb-line);background:var(--sb-base);color:var(--sb-ink);box-shadow:6px 6px 14px var(--sb-n-lo),-6px -6px 14px var(--sb-n-hi);backdrop-filter:none;-webkit-backdrop-filter:none}
+html .kuta-welcome :is(.hero-search,.button,.hero-search button){border:1px solid var(--sb-line);background:var(--sb-base);color:var(--sb-ink);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 html .kuta-welcome .hero-search{padding:8px 8px 8px 16px;gap:8px;border-radius:16px}
 html .kuta-welcome .hero-search input{min-width:0;background:transparent;color:var(--sb-ink);box-shadow:none}
 html .kuta-welcome .hero-search input::placeholder{color:var(--sb-muted);opacity:1}
 html .kuta-welcome .hero-search button{background:var(--accent);color:var(--on-accent);border-color:var(--focus);box-shadow:none;min-height:44px}
 html .kuta-welcome .welcome-actions .button-primary{background:linear-gradient(130deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--ink)));color:var(--on-accent);border-color:var(--focus)}
-html .kuta-welcome :is(.button,.hero-search button):active{box-shadow:inset 6px 6px 14px var(--sb-n-lo),inset -6px -6px 14px var(--sb-n-hi);transform:none}
-html .kuta-welcome .hero-search:focus-within{outline:3px solid var(--focus);outline-offset:3px;box-shadow:inset 6px 6px 14px var(--sb-n-lo),inset -6px -6px 14px var(--sb-n-hi)}
+html .kuta-welcome :is(.button,.hero-search button):active{box-shadow:none}
+html .kuta-welcome .hero-search:focus-within{outline:3px solid var(--focus);outline-offset:3px}
 html .kuta-welcome :is(button,a,input):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 html .kuta-welcome h1{animation:none!important}
 @supports not (backdrop-filter:blur(1px)){html .kuta-welcome .welcome-content{background:var(--surface)}}
 @media(max-width:640px){html .kuta-welcome .welcome-content{padding:24px 16px}html .kuta-welcome .hero-search{padding:8px}}
-@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.space-background{will-change:transform}}
 @media(prefers-reduced-motion:reduce),(pointer:coarse),(hover:none){.cursor-light{display:none}.space-background{transform:none!important;will-change:auto}}

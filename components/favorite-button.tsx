@@ -10,7 +10,7 @@ export function FavoriteButton({slug,status='verified'}:{slug:string;status?:str
  const active=saved.slugs.has(slug),busy=saved.busy.has(slug),message=saved.errors[slug]||saved.errors.load;
  const label=active?'Remove from favorites':'Save to favorites';
  return <div className="favorite-control">
-  <button ref={trigger} type="button" className="favorite-button" onFocus={()=>setTipHidden(false)} onMouseEnter={()=>setTipHidden(false)} onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();setTipHidden(true);}}} aria-pressed={active} aria-label={label} aria-describedby={message?id+'-error':id+'-tip'} aria-busy={busy} disabled={!saved.ready||busy} onClick={async e=>{
+  <button ref={trigger} type="button" className="favorite-button" onFocus={()=>setTipHidden(false)} onPointerEnter={()=>setTipHidden(false)} onKeyDown={e=>{if(e.key==='Escape'){e.stopPropagation();setTipHidden(true);}}} aria-pressed={active} aria-label={label} aria-describedby={message?id+'-error':id+'-tip'} aria-busy={busy} disabled={!saved.ready||busy} onClick={async e=>{
    e.stopPropagation();
    if(saved.role==='guest'){setReturnTo(window.location.pathname+window.location.search+window.location.hash);setOpen(true);dialog.current?.showModal();}
    else{setAnnouncement('Updating favorites…');const ok=await toggleFavorite(slug);setAnnouncement(ok?(active?'Removed from favorites.':'Saved to favorites.'):'Favorites update failed. Previous state restored.');}

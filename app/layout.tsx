@@ -5,6 +5,8 @@ import type { Metadata, Viewport } from 'next';
 import {isSearchIndexable, siteUrl} from '@/lib/seo';
 import { Header, Footer } from '@/components/site-shell';
 import './globals.css';
+import './motion.css';
+import {DesignMotion} from '@/components/design-motion';
 import {ScrollProgress} from '@/components/scroll-progress';
 // Every page header reflects the current local session.
 export const dynamic='force-dynamic';
@@ -36,5 +38,5 @@ function disableDevTools() {
 }
 disableDevTools();
 `;
-export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) {return <html lang="en" className={inter.variable} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header/>{children}<Footer /></body></html>; }
+export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) {return <html lang="en" className={inter.variable} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><DesignMotion/><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header/>{children}<Footer /></body></html>; }
 
