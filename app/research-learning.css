@@ -1,0 +1,84 @@
+/* Panels share a grid cell so switching lessons never moves the surrounding page. */
+.research-learning .learning-surface{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);overflow:clip}
+.research-learning h3{font-size:clamp(1.2rem,2vw,1.5rem);margin:0 0 8px}
+.research-learning h4{font-size:1rem;margin:0 0 12px}
+.research-learning p{line-height:1.65}
+.learning-block,.learning-static{padding:32px;min-width:0}
+.learning-block-heading{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.learning-block-heading p{margin:0;color:var(--muted)}
+.learning-step{color:var(--accent);font-size:14px;font-weight:800;padding-top:5px}
+.learning-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.learning-tabs button{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:600;transition:transform 180ms ease,opacity 180ms ease}
+.learning-tabs button[aria-selected=true]{background:var(--soft);border-color:var(--accent);color:var(--accent);box-shadow:inset 0 -2px var(--accent)}
+.learning-tabs button:is(:hover,:focus-visible){transform:translateY(-2px)}
+.learning-tabs button:active{transform:translateY(0)}
+.learning-panel:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:8px}
+.learning-anatomy-layout{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:40px;align-items:center}
+.learning-paper{position:relative;isolation:isolate;width:min(100%,260px);margin-inline:auto;overflow:clip;aspect-ratio:13/16;color:var(--accent)}
+.learning-paper svg{display:block;width:100%;height:100%;position:relative;z-index:1}
+.learning-sheet{fill:var(--soft);stroke:var(--line);stroke-width:1.5}
+.learning-fold{stroke:var(--line);stroke-width:1.5}
+.learning-paper-part{transform-box:fill-box;transform-origin:center;transition:transform 200ms ease;color:var(--muted)}
+.learning-paper-part text{fill:currentColor;font-size:9px;font-weight:600}
+.learning-paper-part path{stroke:currentColor;stroke-opacity:.35}
+.learning-region{fill:var(--surface);stroke:transparent}
+.learning-paper-part[data-current=true]{color:var(--accent);transform:translateX(4px)}
+.learning-paper-part[data-current=true] .learning-region{stroke:currentColor;animation:learning-pulse 3s ease-in-out infinite}
+.learning-scan{stroke:var(--accent);stroke-width:2;opacity:.35;animation:learning-scan 7s linear infinite}
+.learning-pointer{position:absolute;left:0;top:0;width:200px;height:200px;z-index:2;pointer-events:none;opacity:0;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 14%,transparent),transparent 70%);transform:translate(calc(var(--learn-x,0px) - 100px),calc(var(--learn-y,0px) - 100px))}
+.learning-paper[data-pointer=true] .learning-pointer{opacity:1}
+.learning-panel-stack{display:grid;min-width:0}
+.learning-panel{grid-area:1/1;min-width:0;visibility:hidden;opacity:0;pointer-events:none;transition:opacity 200ms ease;overflow-wrap:anywhere}
+.learning-panel[data-active=true]{visibility:visible;opacity:1;pointer-events:auto}
+.learning-connector{display:block;width:64px;height:2px;background:var(--accent);margin-bottom:20px;transform:scaleX(0);transform-origin:left;transition:transform 240ms ease}
+.learning-panel[data-active=true] .learning-connector{transform:scaleX(1)}
+.learning-explanation{margin:0}
+.learning-explanation dt{font-size:12px;color:var(--muted);font-weight:700;margin-top:16px}
+.learning-explanation dd{margin:4px 0 0;line-height:1.65}
+.learning-access{border-left:2px solid var(--accent);padding:12px 16px;background:var(--soft);font-size:13px;margin:24px 0 0}
+.learning-access strong{display:block;margin-bottom:4px}
+.learning-pair{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.learning-cite{border-left:1px solid var(--line)}
+.learning-caption,.learning-sample-label{font-size:12px;color:var(--muted);margin:0 0 16px}
+.learning-sample-label{font-weight:700}
+.learning-results{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.learning-results>div{min-width:0;border-top:2px solid var(--line);padding-top:16px}
+.learning-results>div:last-child{border-color:var(--accent)}
+.learning-results p,.learning-results li{font-size:13px;line-height:1.6}
+.learning-results p{min-height:64px}
+.learning-results ul{list-style:none;margin:16px 0 0;padding:0}
+.learning-results li{padding:10px 0;border-bottom:1px solid var(--line)}
+.learning-panel[data-active=true] .learning-results li{animation:learning-arrive 240ms ease both}
+.learning-panel[data-active=true] .learning-results li:nth-child(2){animation-delay:40ms}
+.learning-panel[data-active=true] .learning-results li:nth-child(3){animation-delay:80ms}
+.learning-chips{display:flex;flex-wrap:wrap;gap:4px}
+.learning-chips span{border-radius:6px;background:var(--soft);padding:4px 8px;font-size:12px}
+.learning-key{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;font-weight:700;margin-bottom:16px;text-transform:capitalize}
+.learning-key span:before{content:'';display:inline-block;width:6px;height:6px;background:currentColor;border-radius:50%;margin-right:5px}
+.learning-surface [data-kind=author]{color:var(--dept-blue-text)}
+.learning-surface [data-kind=year]{color:var(--dept-rose-text)}
+.learning-surface [data-kind=title]{color:var(--dept-green-text)}
+.learning-surface [data-kind=publisher]{color:var(--dept-maroon-text)}
+.learning-citations{padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);margin-bottom:16px}
+.learning-citation{white-space:pre-wrap;line-height:1.7;font-size:14px;user-select:text}
+.learning-citation[data-format=bibtex],.learning-citation[data-format=ris]{font-family:monospace;font-size:12px}
+.learning-copy{min-height:44px;width:auto}
+.learning-copy:disabled{opacity:.6;cursor:wait}
+.learning-notice{min-height:64px;font-size:13px;margin:8px 0}
+.learning-link{display:inline-block;min-height:44px;padding-block:10px;font-size:14px;font-weight:700;overflow-wrap:anywhere}
+.learning-footer{border-top:1px solid var(--line);padding:16px 32px}
+.learning-static>div{margin-block:24px}
+.learning-block[data-learning-entered=true]>.learning-block-heading{animation:learning-arrive 280ms ease both}
+.learning-search[data-learning-entered=true]>.learning-block-heading{animation-delay:50ms}
+.learning-cite[data-learning-entered=true]>.learning-block-heading{animation-delay:100ms}
+.learning-block:not([data-learning-visible=true]) .learning-scan,.learning-block:not([data-learning-visible=true]) .learning-region,[data-learning-hidden=true] .learning-scan,[data-learning-hidden=true] .learning-region{animation-play-state:paused}
+@keyframes learning-scan{from{transform:translateY(0)}to{transform:translateY(248px)}}
+@keyframes learning-pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes learning-arrive{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){.learning-pair{grid-template-columns:1fr}.learning-cite{border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:540px){.learning-block,.learning-static{padding:24px 16px}.learning-anatomy-layout{grid-template-columns:1fr;gap:24px}.learning-paper{width:190px}.learning-results{gap:12px}.learning-results p{min-height:104px}.learning-footer{padding:16px}.learning-tabs{gap:6px}.learning-tabs button{padding-inline:10px}.learning-notice{min-height:88px}}
+@media(prefers-reduced-motion:reduce){.research-learning .learning-block *{animation:none!important;transition:none!important}.learning-pointer{display:none}.learning-tabs button:is(:hover,:focus-visible){transform:none}}
+@media(forced-colors:active){.learning-surface [data-kind],.learning-paper-part{color:CanvasText}.learning-region{fill:Canvas;stroke:CanvasText}.learning-paper-part[data-current=true]{color:Highlight}.learning-tabs button[aria-selected=true]{outline:2px solid Highlight}.learning-pointer{display:none}}
+@media print{.research-learning *{animation:none!important;transition:none!important}.learning-pointer,.learning-scan{display:none}.learning-tabs{display:none}.learning-panel[aria-hidden=true]{display:none}}
+.learning-static .learning-region{animation:none}
+.learning-static .learning-scan{display:none}

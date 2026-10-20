@@ -52,25 +52,23 @@ try {
     await context.addInitScript(t=>localStorage.setItem('archive-theme',t),theme);
     const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
     await page.goto(server.base,{waitUntil:'load'});
-    await page.locator('.program-tile').last().waitFor();
+    await page.locator('.research-learning').waitFor();
     assert.equal(await page.locator('h1').count(),1,'one homepage h1');
-    assert.equal(await page.locator('.program-tile').count(),7,'all program links retained');
+    assert.equal(await page.locator('.program-tile').count(),0,'old home program grid removed');
     assert.equal(await page.locator('.recent-section .paper-card').count(),3,'recent collection retained');
-    const homeGrid=await uniformGrid(page.locator('.program-grid .program-tile'),'program grid');
     const papers=await uniformGrid(page.locator('.recent-section .paper-card'),'recent paper grid');
-    assert.ok(homeGrid.columns<4,'fewer competing program cards');
     assert.ok(papers.columns<=2,'recent papers have spacious columns');
-    if(width<=375){assert.equal(homeGrid.columns,1);assert.equal(papers.columns,1);}
+    if(width<=375){assert.equal(papers.columns,1);}
     const wrappers=await rectangles(page.locator('main>.section>.wrap,main>.kuta-welcome>.wrap,main>.purpose-band>.wrap'));
     assert.ok(wrappers.length>=5,'section containers found');
     for(const wrap of wrappers){closeTo(wrap.x,wrappers[0].x,'section left edges align');closeTo(wrap.width,wrappers[0].width,'section widths align');}
-    const surfaces=await page.locator('.program-tile,.recent-section .paper-card').evaluateAll(es=>es.map(e=>({depth:getComputedStyle(e).boxShadow,glass:getComputedStyle(e).backdropFilter})));
+    const surfaces=await page.locator('.recent-section .paper-card').evaluateAll(es=>es.map(e=>({depth:getComputedStyle(e).boxShadow,glass:getComputedStyle(e).backdropFilter})));
     for(const surface of surfaces){assert.notEqual(surface.depth,'none','cards retain soft depth');assert.equal(surface.glass,'none','cards do not stack glass and soft depth');}
     const oldName=await page.locator('main').innerText();assert.equal(oldName.includes('Imelda A. Tangalin, DPM, PhD'),false);
     await noOverflow(page,'home');
     const header=await headerGeometry(page);
     closeTo(header[0].height,width<1280?72:80,'header height preserved');
-    await page.locator('.program-grid').screenshot({path:`${out}/home-programs-${width}-${theme}.png`});
+    await page.locator('.research-learning').screenshot({path:`${out}/home-learning-${width}-${theme}.png`});
     if(width===375||width===1440) {
       await page.screenshot({path:`${out}/home-${width}-${theme}.png`,fullPage:true});
       await axeCheck(page,['main'],`home-${width}-${theme}`);
@@ -140,7 +138,7 @@ try {
     await noOverflow(page,'about');
     await page.locator('#team').screenshot({path:`${out}/officials-${width}-${theme}.png`});
     if(width===375||width===1440)await axeCheck(page,['#team'],`officials-${width}-${theme}`);
-    matrix.push({width,theme,programColumns:homeGrid.columns,paperColumns:papers.columns,facultyColumns:tier3.columns,presidentPortrait,directorPortrait,facultyPortrait,passed:true});
+    matrix.push({width,theme,paperColumns:papers.columns,facultyColumns:tier3.columns,presidentPortrait,directorPortrait,facultyPortrait,passed:true});
     await context.close();console.log('PASS home and officials',width,theme);
   }
   // A delayed failed image must leave the portrait and card boxes unchanged.

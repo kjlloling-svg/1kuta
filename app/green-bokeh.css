@@ -213,6 +213,6 @@ html body {isolation:isolate;background:transparent}
 html body::before {content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:var(--bg)}
 html .about-content {background:var(--surface);border-radius:18px;padding-inline:24px}
 html .page-main {background:transparent}
-html .how-it-works,html .section-intro,html .recent-section {background:transparent}
-html.theme-ready:not(.cvd-initializing) :is(.paper-card,.program-tile,.directory-card,.tag,.keyword-chip,.admin-panel,input,select,textarea,.button,.text-link) {transition:var(--theme-transition),transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .how-it-works,html .recent-section {background:transparent}
+html.theme-ready:not(.cvd-initializing) :is(.paper-card,.directory-card,.tag,.keyword-chip,.admin-panel,input,select,textarea,.button,.text-link) {transition:var(--theme-transition),transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 @media(prefers-reduced-motion:reduce){html.theme-ready *{transition:none!important}}

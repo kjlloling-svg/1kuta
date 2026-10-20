@@ -48,20 +48,20 @@ html [data-reveal=running]{animation:motion-reveal var(--motion-base) var(--moti
 
 /* The highlight is a fixed radial texture translated by pointer coordinates. */
 .card-spotlight{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:-1}.card-spotlight::before{content:"";position:absolute;left:0;top:0;width:var(--spotlight-size);height:var(--spotlight-size);border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,color-mix(in srgb,var(--dept-accent,var(--green)) var(--spotlight-strength),transparent),transparent 70%);transform:translate(calc(var(--mx,50%) - 50%),calc(var(--my,50%) - 50%));opacity:0;transition:opacity var(--motion-fast) var(--motion-out)}
-html body :is(.program-tile,.directory-card,.paper-card){transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-html body :is(.program-tile,.directory-card,.paper-card)[data-spotlight=true]>.card-spotlight::before,html body :is(.program-tile,.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{opacity:var(--spotlight-opacity)}
-html body :is(.program-tile,.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{left:50%;top:50%;transform:translate(-50%,-50%)}
-@media(hover:hover) and (pointer:fine){html body :is(.program-tile,.directory-card,.paper-card):hover{transform:translateY(calc(-1*var(--motion-lift)))} }
+html body :is(.directory-card,.paper-card){transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html body :is(.directory-card,.paper-card)[data-spotlight=true]>.card-spotlight::before,html body :is(.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{opacity:var(--spotlight-opacity)}
+html body :is(.directory-card,.paper-card):is(:focus-visible,:has(:focus-visible))>.card-spotlight::before{left:50%;top:50%;transform:translate(-50%,-50%)}
+@media(hover:hover) and (pointer:fine){html body :is(.directory-card,.paper-card):hover{transform:translateY(calc(-1*var(--motion-lift)))} }
 
 html body :is(a,button,summary){touch-action:manipulation;min-width:44px;min-height:44px}
 html body :is(.paper-action,.paper-sign-in,.paper-card .keyword-chip){min-height:44px;min-width:44px}
 html .footer a,html .marquee-track li a,html .about-nav a{display:inline-flex;align-items:center;min-height:44px}
 html body p>a:not(.button){display:inline-flex;align-items:center;min-height:44px}
-html body :is(button,.button,.paper-action,.program-tile,.directory-card,.year-tile,.text-link,.account-link){transition:transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-html body :is(button,a,summary,.button,.keyword-chip,.paper-action):active,html body :is(.program-tile,.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press));transition-duration:var(--motion-fast);outline:1px solid var(--focus);outline-offset:1px}
+html body :is(button,.button,.paper-action,.directory-card,.year-tile,.text-link,.account-link){transition:transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html body :is(button,a,summary,.button,.keyword-chip,.paper-action):active,html body :is(.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press));transition-duration:var(--motion-fast);outline:1px solid var(--focus);outline-offset:1px}
 html body :is(button:disabled,[aria-disabled=true]){box-shadow:none;transform:none;opacity:.6;cursor:not-allowed}
 html body :is(a,button,summary):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-@media(hover:none),(pointer:coarse){html body :is(button,a,.paper-card):hover{transform:none}html body :is(button,a):active,html body :is(.program-tile,.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press))}}
+@media(hover:none),(pointer:coarse){html body :is(button,a,.paper-card):hover{transform:none}html body :is(button,a):active,html body :is(.directory-card,.paper-card)[data-pressed=true]{transform:scale(var(--motion-press))}}
 
 /* Two fixed shadow layers crossfade; only compact controls use raised/inset depth. */
 html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination button,.pagination a,.favorite-button){position:relative;isolation:isolate;box-shadow:var(--control-rest);border-color:var(--line);animation:none}
@@ -77,10 +77,10 @@ html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination butt
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination){scroll-snap-type:x proximity;overscroll-behavior-x:contain;scroll-padding-inline:8px}
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination)>*{scroll-snap-align:start}
 /* Only token-painted surfaces transition; existing hover transforms stay intact. */
-html,html body,html body::before,html .space-background,html body :is(.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.program-tile,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea){transition:var(--theme-transition),transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html,html body,html body::before,html .space-background,html body :is(.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea){transition:var(--theme-transition),transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 html body .theme-toggle{background:linear-gradient(115deg,transparent,color-mix(in srgb,var(--green) 12%,transparent)),var(--soft);text-decoration:none}
 html body .theme-knob{transition:transform var(--motion-base) var(--switch-ease),var(--theme-transition)}
-html:not(.theme-ready),html:not(.theme-ready) body::before,html:not(.theme-ready) .space-background,html:not(.theme-ready) :is(body,.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.program-tile,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea,.theme-knob,.theme-icon,.theme-rays,.theme-crescent){transition:none!important}
+html:not(.theme-ready),html:not(.theme-ready) body::before,html:not(.theme-ready) .space-background,html:not(.theme-ready) :is(body,.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea,.theme-knob,.theme-icon,.theme-rays,.theme-crescent){transition:none!important}
 
 @supports not (backdrop-filter:blur(1px)){html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface)}}
 @media(prefers-reduced-transparency:reduce),(forced-colors:active){html .site-header,html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}html .space-background,html .cursor-light,html .card-spotlight{display:none}}

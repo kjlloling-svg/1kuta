@@ -75,18 +75,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .hero-search button{background:var(--green);color:var(--on-accent);border:0;border-radius:7px;padding:13px 20px;font-weight:700;font-size:14px;white-space:nowrap;min-height:44px}
 .hero-note{font-size:13px;color:var(--muted);margin-top:14px}
 .section{padding:80px 0}
-.section-intro{background:var(--surface)}
 .section-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
 .section-heading h2,.purpose-band h2,.prose-section h2,.about-aside h2{font:500 clamp(30px,3vw,42px)/1.14 var(--font-inter),system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 8px}
 .section-heading p:not(.eyebrow){margin:0;color:var(--muted)}
 .text-link{color:var(--green);font-size:14px;font-weight:800;white-space:nowrap}
 .text-link span{padding-left:6px}
-.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.program-tile{position:relative;min-height:189px;display:flex;flex-direction:column;padding:23px;border:1px solid var(--line);background:var(--surface);border-radius:10px}
-.program-number,.directory-index{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.12em}
-.program-tile strong{font-size:17px;line-height:1.25;margin-top:31px;padding-right:20px}
-.program-name{font-size:12px;line-height:1.4;color:var(--muted);margin-top:7px;max-width:250px}
-.tile-arrow{position:absolute;bottom:23px;right:24px;font-size:22px;color:var(--green)}
+.directory-index{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.12em}
 .recent-section{background:var(--surface)}
 .paper-grid,.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .paper-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;min-height:306px;box-shadow:var(--shadow-raised);min-width:0}
@@ -186,7 +180,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .purpose-inner .button{justify-self:start}
 }
 @media(max-width:840px){
-.program-grid,.paper-grid{grid-template-columns:repeat(2,1fr)}
+.paper-grid{grid-template-columns:repeat(2,1fr)}
 .archive-layout{grid-template-columns:1fr}
 .filters{position:static}
 .filters form{display:block}
@@ -200,8 +194,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .section{padding:57px 0}
 .section-heading{display:block}
 .section-heading .text-link{display:inline-block;margin-top:18px}
-.program-grid,.paper-grid,.results-grid,.program-directory,.people-grid{grid-template-columns:1fr}
-.program-tile{min-height:160px}
+.paper-grid,.results-grid,.program-directory,.people-grid{grid-template-columns:1fr}
 .purpose-inner{grid-template-columns:1fr;gap:10px}
 .page-main{padding:35px 0 65px}
 .page-intro{margin-bottom:29px}
@@ -250,17 +243,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .citation-dialog{padding:21px}
 .director-card{grid-column:auto}
 }
-body,button,input,textarea,select,dialog,summary,h1,h2,h3,h4,h5,h6,.section-heading h2,.paper-card h3,.page-intro h1,.detail-panel h1,.auth-card h1,.dialog-head h2,.state-card h2,.program-tile strong,.directory-card h2,.detail-body h2{font-family:var(--font-inter),system-ui,-apple-system,sans-serif!important}
+body,button,input,textarea,select,dialog,summary,h1,h2,h3,h4,h5,h6,.section-heading h2,.paper-card h3,.page-intro h1,.detail-panel h1,.auth-card h1,.dialog-head h2,.state-card h2,.directory-card h2,.detail-body h2{font-family:var(--font-inter),system-ui,-apple-system,sans-serif!important}
 main,.footer{position:relative;z-index:1}
-.section-intro,.recent-section{background:var(--surface)}
+.recent-section{background:var(--surface)}
 .section-heading h2,.purpose-band h2,.prose-section h2,.about-aside h2,.page-intro h1,.detail-panel h1,.auth-card h1,.dialog-head h2{font-weight:600!important}
-.hero-search,.program-tile,.directory-card,.paper-card,.filters,.detail-panel,.metadata,.person-card,.about-aside,.state-card,.auth-card,.citation-dialog,.archive-modal,.admin-panel,.faq-list details,.faq-cta{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-raised)}
+.hero-search,.directory-card,.paper-card,.filters,.detail-panel,.metadata,.person-card,.about-aside,.state-card,.auth-card,.citation-dialog,.archive-modal,.admin-panel,.faq-list details,.faq-cta{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-raised)}
 button,.button,.account-link,.text-link,.back-link,.pagination a,.pagination button,.paper-card h3 a,.filter-head a,.filter-head button,.keyword-chip,.card-actions button,.admin-record-actions button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow-raised);padding:9px 15px;color:var(--ink);text-decoration:none;cursor:pointer}
 @media (hover:hover) and (pointer:fine){
  button:hover,.button:hover,.account-link:hover,.text-link:hover,.back-link:hover,.pagination a:hover,.pagination button:hover,.keyword-chip:hover,.card-actions button:hover,.admin-record-actions button:hover{transform:translateY(calc(-1*var(--motion-nudge)));
  }
 }
-button:active,button[aria-pressed="true"],.button:active,.keyword-chip[aria-pressed="true"],.program-tile:active,.directory-card:active{box-shadow:var(--shadow-pressed)}
+button:active,button[aria-pressed="true"],.button:active,.keyword-chip[aria-pressed="true"],.directory-card:active{box-shadow:var(--shadow-pressed)}
 button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .hero-search input,.filters input,.filters select,.auth-card input,.citation-dialog select,.admin-form input,.admin-form select,.admin-form textarea{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-pressed);min-height:44px}
 .hero-search input:focus{outline:2px solid var(--focus);outline-offset:2px}
@@ -341,7 +334,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .admin-records li{align-items:flex-start;flex-direction:column}
 .card-actions button{flex:1 1 calc(50% - 8px)}
 .citation-dialog{padding:20px}
-.program-tile{min-height:175px}
 }
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{scroll-behavior:auto!important}
@@ -363,9 +355,9 @@ button:disabled{cursor:wait}
 
 /* Shared surfaces and controls, with blur limited to three overlay surfaces. */
 body{margin:0;color:var(--ink);font-size:16px;line-height:1.55;overflow-x:hidden;background:var(--bg);font-family:var(--font-inter),system-ui,sans-serif}
-.purpose-band,.section-intro,.recent-section{background:transparent;color:var(--ink)}
+.purpose-band,.recent-section{background:transparent;color:var(--ink)}
 .section-heading,.purpose-inner{background:var(--surface);border-radius:var(--radius);padding:28px}
-.paper-card,.program-tile,.directory-card,.filters,.detail-panel,.metadata,.person-card,.about-aside,.state-card,.auth-card,.admin-panel,.faq-list details,.faq-cta{background:var(--surface)}
+.paper-card,.directory-card,.filters,.detail-panel,.metadata,.person-card,.about-aside,.state-card,.auth-card,.admin-panel,.faq-list details,.faq-cta{background:var(--surface)}
 .purpose-band .eyebrow{color:var(--green)}
 .hero-note,.purpose-inner>p{color:var(--muted)}
 .hero-search input{flex:1;min-width:0;outline:0;font-size:15px;background:var(--surface);color:var(--ink);border:0;box-shadow:none}
@@ -501,7 +493,7 @@ html :is(.account-dropdown,.mobile-user-account) :is(.account-menu-link,.account
 .maroon{--dept-text:var(--dept-maroon-text);--dept-tint:var(--dept-maroon-tint);--dept-edge:var(--dept-maroon-edge);--dept-accent:var(--dept-maroon-accent)}
 .green{--dept-text:var(--dept-green-text);--dept-tint:var(--dept-green-tint);--dept-edge:var(--dept-green-edge);--dept-accent:var(--dept-green-accent)}
 .dept-fallback{--dept-text:var(--muted);--dept-tint:var(--soft);--dept-edge:var(--line);--dept-accent:var(--line)}
-.program-number,.directory-index,.tile-arrow,.directory-cta{color:var(--dept-text)}
+.directory-index,.directory-cta{color:var(--dept-text)}
 .tag{color:var(--dept-text);background:var(--dept-tint);border:1px solid var(--dept-edge);border-left-width:3px;max-width:100%;overflow-wrap:anywhere}
 .keyword-chip{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 .paper-card .keyword-chip,.detail-panel .keyword-chip,.admin-records .keyword-chip,.keyword-filter .keyword-chip{color:var(--dept-text);background:var(--dept-tint);border-color:var(--dept-edge)}
@@ -511,9 +503,9 @@ html :is(.account-dropdown,.mobile-user-account) :is(.account-menu-link,.account
 .card-keywords{gap:8px;margin-block:12px 18px}
 .card-top{align-items:flex-start}
 /* Refined, shared raised / hover / pressed states. */
-button,.button,.keyword-chip,.theme-toggle,.paper-card,.program-tile,.directory-card,.citation-dialog,.mobile-panel,.admin-panel{box-shadow:var(--shadow-raised);transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+button,.button,.keyword-chip,.theme-toggle,.paper-card,.directory-card,.citation-dialog,.mobile-panel,.admin-panel{box-shadow:var(--shadow-raised);transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 button,.button,.keyword-chip,.theme-toggle{background:var(--surface-gradient)}
-button:active,.button:active,.keyword-chip:active,.program-tile:active,.directory-card:active,[aria-pressed="true"],.menu-trigger[aria-expanded="true"]{box-shadow:var(--shadow-pressed)}
+button:active,.button:active,.keyword-chip:active,.directory-card:active,[aria-pressed="true"],.menu-trigger[aria-expanded="true"]{box-shadow:var(--shadow-pressed)}
 input,textarea,select{box-shadow:var(--shadow-pressed)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .button-primary,.header-search,.hero-search button{background:var(--green);color:var(--on-accent);border-color:var(--green)}
@@ -547,9 +539,9 @@ html[data-theme="dark"] .theme-icon{transform:rotate(-15deg) scale(1.08)}
 html[data-theme="dark"] .theme-rays{transform:scale(.3);opacity:0}
 html[data-theme="dark"] .theme-crescent{transform:translate(-9px,8px)}
 .gold,.rose,.blue,.maroon,.green,.dept-fallback{--dept-glow:color-mix(in srgb,var(--dept-accent) var(--glow-strength),transparent)}
-.program-tile,.directory-card,.paper-card,.detail-panel,.admin-records li{position:relative;overflow:hidden;border-top:1px solid var(--line);isolation:isolate}
-.program-tile::before,.directory-card::before,.paper-card::before,.detail-panel::before,.admin-records li::before{content:"";position:absolute;inset:0;border:2px solid var(--dept-accent);border-radius:inherit;background:none;box-shadow:var(--shadow-department-inset);opacity:.72;pointer-events:none;animation:department-pulse var(--motion-loop) var(--motion-in-out) infinite;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-.program-tile:is(:hover,:focus-visible)::before,.directory-card:is(:hover,:focus-visible)::before,.paper-card:is(:hover,:focus-within)::before,.detail-panel:focus-within::before,.admin-records li:is(:hover,:focus-within)::before{animation:none;opacity:1}
+.directory-card,.paper-card,.detail-panel,.admin-records li{position:relative;overflow:hidden;border-top:1px solid var(--line);isolation:isolate}
+.directory-card::before,.paper-card::before,.detail-panel::before,.admin-records li::before{content:"";position:absolute;inset:0;border:2px solid var(--dept-accent);border-radius:inherit;background:none;box-shadow:var(--shadow-department-inset);opacity:.72;pointer-events:none;animation:department-pulse var(--motion-loop) var(--motion-in-out) infinite;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+.directory-card:is(:hover,:focus-visible)::before,.paper-card:is(:hover,:focus-within)::before,.detail-panel:focus-within::before,.admin-records li:is(:hover,:focus-within)::before{animation:none;opacity:1}
 html .tag,html :is(.paper-card,.detail-panel,.admin-records,.keyword-filter) .keyword-chip,html .filters select{box-shadow:var(--shadow-department-soft);animation:none}
 .tag{border-left:4px solid var(--dept-accent)}
 html :is(.tag,.keyword-chip,.filters select):is(:hover,:focus-visible){animation:none}
@@ -558,7 +550,7 @@ html :is(.tag,.keyword-chip,.filters select):is(:hover,:focus-visible){animation
 .locked-research p{font-size:13px;line-height:1.65;margin:12px 0}
 .locked-placeholder{font-size:13px;line-height:1.7;filter:var(--placeholder-blur);opacity:.65;user-select:none;pointer-events:none}
 .unlock-toast{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--soft);color:var(--ink)}
-@media(prefers-reduced-motion:reduce){.program-tile::before,.directory-card::before,.paper-card::before,.detail-panel::before,.admin-records li::before{transition:none}}
+@media(prefers-reduced-motion:reduce){.directory-card::before,.paper-card::before,.detail-panel::before,.admin-records li::before{transition:none}}
 
 /* Do not restore authenticated content from a stale back/forward snapshot. */
 html[data-restoring] body{visibility:hidden}

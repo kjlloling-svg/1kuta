@@ -22,8 +22,6 @@ html .stats-strip { background:var(--surface);box-shadow:none;border-radius:16px
 /* Homepage sections share the existing content width and a single spacing rhythm. */
 html .home-page .section,html .home-page .purpose-band{padding:64px 0}
 html .home-page .section-heading{gap:24px;margin-bottom:24px;padding:0;background:transparent;box-shadow:none}
-html .home-page .section-intro .section-heading{display:flex;align-items:center}
-html .home-page .section-intro .section-heading .button{min-height:48px;padding:16px 24px;font-size:16px;gap:8px;flex-shrink:0}
 html .home-page .eyebrow{margin-bottom:16px}
 html .home-page .hero-note{margin:16px 0 0}
 html .home-page .purpose-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:24px}
@@ -35,22 +33,15 @@ html .home-page .stats-strip>div{padding:8px 24px;gap:16px}
  html .home-page .wrap{width:calc(100% - 32px)}
  html .home-page .section,html .home-page .purpose-band{padding:40px 0}
  html .home-page .section-heading{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
- html .home-page .section-intro .section-heading{align-items:stretch}
  html .home-page .purpose-inner{grid-template-columns:minmax(0,1fr)}
  html .home-page .purpose-inner .button{grid-column:auto}
  html .home-page .stats-strip>div{padding:8px;gap:8px}
 }
 
 /* Program hierarchy preserves the catalog order and every existing filter URL. */
-html .program-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:24px; }
 html .program-directory { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
-html .program-tile { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:var(--shadow-program);border-color:var(--dept-edge);border-radius:20px;padding:24px;min-height:240px; }
 html .directory-card { background:color-mix(in srgb,var(--dept-tint) 38%,var(--surface));box-shadow:var(--shadow-directory);border-color:var(--dept-edge);border-radius:20px;padding:28px;min-height:210px; }
 html .directory-card:first-child { grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;min-height:440px;background:color-mix(in srgb,var(--dept-tint) 55%,var(--surface)); }
-html .program-tile .program-symbol { color:var(--dept-text);position:absolute;right:24px;top:24px; }
-html .program-number { margin-bottom:24px; }
-html .program-tile strong { display:block;margin:0 0 8px;font-size:20px;line-height:1.3; }
-html .program-name { display:block;max-width:36ch;line-height:1.6;margin:0 0 24px; }
 html .program-marquee { --marquee-gap:48px;--marquee-duration:var(--motion-marquee);border-block:1px solid var(--line);padding:16px 0;background:var(--surface);overflow:hidden; }
 html .marquee-window { overflow:hidden;min-width:0;padding-block:12px;mask-image:linear-gradient(to right,transparent,#000 32px,#000 calc(100% - 32px),transparent); }
 html .marquee-track { display:flex;width:max-content;animation:program-flow var(--marquee-duration) linear infinite;will-change:transform; }
@@ -65,7 +56,7 @@ html .marquee-track li span{color:var(--dept-accent);filter:var(--program-star-g
 @keyframes program-flow { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @media(max-width:900px){html .program-marquee{--marquee-gap:40px;--marquee-duration:calc(var(--motion-marquee) * .89)}html .marquee-track li{font-size:15px;gap:20px}}
 @media(max-width:900px){html .program-directory{grid-template-columns:repeat(2,minmax(0,1fr))}html .directory-card:first-child{grid-column:span 2;grid-row:auto;min-height:240px}}
-@media(max-width:620px){html .program-grid,html .program-directory{grid-template-columns:1fr}html .directory-card:first-child{grid-column:auto;min-height:220px}html .directory-card{min-height:210px}html .program-marquee{--marquee-gap:32px;--marquee-duration:calc(var(--motion-marquee) * .78);padding-block:14px}html .marquee-track li{font-size:14px;gap:16px}}
+@media(max-width:620px){html .program-directory{grid-template-columns:1fr}html .directory-card:first-child{grid-column:auto;min-height:220px}html .directory-card{min-height:210px}html .program-marquee{--marquee-gap:32px;--marquee-duration:calc(var(--motion-marquee) * .78);padding-block:14px}html .marquee-track li{font-size:14px;gap:16px}}
 @media(prefers-reduced-motion:reduce){html .marquee-window{mask-image:none;padding-inline:24px}html .marquee-track{animation:none!important;width:100%;will-change:auto;transform:none}html .marquee-track ul{flex:1;min-width:0;flex-wrap:wrap;gap:12px 24px;padding:0}html .marquee-track li{white-space:normal;min-width:0;max-width:100%;gap:12px}html .marquee-track li a{overflow-wrap:anywhere}html .marquee-track li span{flex:none;animation:none!important;opacity:1}html .marquee-track ul[aria-hidden]{display:none}}
 /* Honest archive states and a short path into the existing reading flow. */
 html .how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
@@ -81,8 +72,8 @@ html .year-zero .year-number,html .year-zero .year-count{color:var(--muted)}
 /* Supporting motion uses the shared transform/opacity tokens. */
 html .campus-reveal{animation:none}
 html .scroll-progress span{background:var(--gold);transition:none}
-html .program-tile,html .directory-card,html .paper-card,html .year-tile{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
-html .tile-arrow,html .year-prompt>span{display:inline-block;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .directory-card,html .paper-card,html .year-tile{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+html .year-prompt>span{display:inline-block;transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 @media(hover:hover) and (pointer:fine){html .year-tile:hover{transform:translateY(calc(-1*var(--motion-lift)))}}
 html .button{transition:transform var(--motion-base) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 html .button:active{}
