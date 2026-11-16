@@ -1,5 +1,5 @@
-import {SESSION_COOKIE,SESSION_SECONDS,sessionUser,newSession,deleteSession} from './google-session.mjs';
-import {limited} from './google-challenge.mjs';
+import {SESSION_COOKIE,SESSION_SECONDS,sessionUser,deleteSession} from './school-session.mjs';
+import {limited} from './rate-limit.mjs';
 import { createHmac } from 'node:crypto';
 import { cookies } from 'next/headers';
 
@@ -12,7 +12,7 @@ export function normalizeEmail(value: string) { return value.trim().toLowerCase(
 export function validEmail(value: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length<=254; }
 export function safeReturnTo(value: unknown) {
   if (typeof value!=='string' || !value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return '/';
-  try { const url=new URL(value,'https://archive.invalid'); return url.origin==='https://archive.invalid' && !/^\/(?:api|login|register)(?:\/|$)/.test(url.pathname) ? `${url.pathname}${url.search}${url.hash}` : '/'; }
+  try { const url=new URL(value,'https://archive.invalid'); return url.origin==='https://archive.invalid' && !/^\/(?:api|login|register|forgot-password)(?:\/|$)/.test(url.pathname) ? `${url.pathname}${url.search}${url.hash}` : '/'; }
   catch { return '/'; }
 }
 export function sameOrigin(request: Request) {
@@ -25,6 +25,6 @@ export async function getCurrentUser() {
  return await sessionUser((await cookies()).get(SESSION_COOKIE)?.value) as {id:string;email:string;role:'admin'|'public';name:string;picture:string|null}|null;
 }
 export async function requireAdmin(){const user=await getCurrentUser();return user?.role==='admin'?user:null;}
-export const createSession=newSession;
+
 export async function clearSession(){await deleteSession((await cookies()).get(SESSION_COOKIE)?.value);}
 export const rateLimited=limited;

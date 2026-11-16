@@ -5,8 +5,8 @@ import fs from 'node:fs';import net from 'node:net';import {setTimeout as delay}
 process.env.TURSO_DATABASE_URL='';process.env.TURSO_AUTH_TOKEN='';process.env.VERCEL='';process.env.BLOB_READ_WRITE_TOKEN='';
 process.env.DATABASE_PATH='data/favorites-test-'+randomUUID()+'.sqlite';process.env.SESSION_SECRET=randomBytes(48).toString('hex');process.env.GOOGLE_CLIENT_ID='test-client';
 const {sqlite,localDatabase}=await import('./local-database.mjs');const {migrateFavorites}=await import('./migrate-favorites.mjs');await migrateFavorites(localDatabase);
-const {newSession,SESSION_COOKIE,digest}=await import('../lib/google-session.mjs');
-const users={};for(const role of ['admin','public','other']){const id=randomUUID();sqlite.prepare("INSERT INTO users(id,email,name,google_sub,password_hash,password_salt,role,created_at) VALUES(?,?,?,?,?,?,?,0)").run(id,role+'@example.com',role+' Reader',id,'','',role==='admin'?'admin':'public');users[role]={id,token:await newSession(id)};}
+const {newSession,SESSION_COOKIE,digest}=await import('./fixture-session.mjs');
+const users={};for(const role of ['admin','public','other']){const id=randomUUID();sqlite.prepare("INSERT INTO users(id,email,name,google_sub,password_hash,password_salt,role,created_at) VALUES(?,?,?,?,?,?,?,0)").run(id,role+'@slsu.edu.ph',role+' Reader',id,'','',role==='admin'?'admin':'public');users[role]={id,token:await newSession(id)};}
 const {programs:catalog}=await import('../lib/programs.ts');for(const p of catalog)sqlite.prepare('INSERT OR IGNORE INTO programs(slug,name,major) VALUES(?,?,?)').run(p.slug,p.name,p.major);
 const programs=sqlite.prepare('SELECT * FROM programs ORDER BY id').all();const nursing=programs.find(p=>p.slug==='bs-nursing-midwifery'),math=programs.find(p=>p.slug==='bsed-mathematics');
 const author=Number(sqlite.prepare("INSERT INTO authors(name,given_name,family_name) VALUES('Maria Santos','Maria','Santos')").run().lastInsertRowid);

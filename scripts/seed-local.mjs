@@ -5,4 +5,4 @@ if(!existsSync('.env'))writeFileSync('.env',`SESSION_SECRET=${randomBytes(48).to
 dotenv.config({quiet:true});
 if(!process.env.SESSION_SECRET){appendFileSync('.env',`\nSESSION_SECRET=${randomBytes(48).toString('hex')}\n`);dotenv.config({override:true,quiet:true});}
 await import('./local-database.mjs');
-console.log('Local database ready. Configure GOOGLE_CLIENT_ID in .env, sign in with Google, then run npm run admin:google -- --local if you need administrator access.');
+console.log('Local database ready. See INSTITUTIONAL-ACCESS.md for verification email and administrator setup.');

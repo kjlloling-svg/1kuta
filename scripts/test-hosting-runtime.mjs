@@ -31,6 +31,6 @@ try{
  if(!ready)throw new Error('Production server did not start: '+log);
  await run('scripts/test-local-auth.mjs');
  await run('scripts/test-archive.mjs');
- await run('scripts/test-google-auth.mjs');
- console.log('PASS: production Next runtime, login, sessions, page refresh, archive permissions, PDF upload/download and Google token verification');
+ await run('scripts/test-institutional-auth.mjs');
+ console.log('PASS: production Next runtime, login, sessions, page refresh, archive permissions, PDF upload/download and institutional account verification');
 }finally{server.kill();await once(server,'exit').catch(()=>{});}

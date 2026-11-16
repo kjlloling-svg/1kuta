@@ -1,7 +1,7 @@
 'use client';
 import {useId,useRef,useState} from 'react';
 import {Bookmark,LoaderCircle} from 'lucide-react';
-import {GoogleSignIn} from './google-sign-in';
+
 import {useFavorites,toggleFavorite,retryFavorites} from './favorites-store';
 export function FavoriteButton({slug,status='verified'}:{slug:string;status?:string}){
  const saved=useFavorites(),dialog=useRef<HTMLDialogElement>(null),trigger=useRef<HTMLButtonElement>(null),id=useId();
@@ -18,6 +18,6 @@ export function FavoriteButton({slug,status='verified'}:{slug:string;status?:str
   <span id={id+'-tip'} className="favorite-tooltip" role="tooltip" data-dismissed={tipHidden}>{label}</span>
   <span className="sr-only" role="status" aria-live="polite">{announcement}</span>
   {message&&<p id={id+'-error'} role="status" className="favorite-error">{message}{saved.errors.load&&<button type="button" onClick={e=>{e.stopPropagation();void retryFavorites();}}>Retry Favorites</button>}</p>}
-  <dialog ref={dialog} className="citation-dialog" aria-labelledby={id} onClose={()=>{setOpen(false);trigger.current?.focus();}} onClick={e=>{e.stopPropagation();if(e.target===dialog.current)dialog.current?.close();}}><div className="dialog-head"><h2 id={id}>Sign in to save favorites</h2><button type="button" className="dialog-close" aria-label="Close sign-in" onClick={()=>dialog.current?.close()}>×</button></div>{open&&<GoogleSignIn returnTo={returnTo}/>}</dialog>
+  <dialog ref={dialog} className="citation-dialog" aria-labelledby={id} onClose={()=>{setOpen(false);trigger.current?.focus();}} onClick={e=>{e.stopPropagation();if(e.target===dialog.current)dialog.current?.close();}}><div className="dialog-head"><h2 id={id}>Sign in to save favorites</h2><button type="button" className="dialog-close" aria-label="Close sign-in" onClick={()=>dialog.current?.close()}>×</button></div>{open&&<a className="button button-primary" href={'/login?return_to='+encodeURIComponent(returnTo)}>Sign in</a>}</dialog>
  </div>;
 }

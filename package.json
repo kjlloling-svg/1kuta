@@ -15,7 +15,7 @@
     "lint": "eslint app components hooks lib db --ignore-pattern backup-before-local-login-*",
     "db:generate": "drizzle-kit generate",
     "seed": "node scripts/seed-local.mjs",
-    "test:auth": "node scripts/test-google-auth.mjs && node scripts/test-google-session.mjs && node scripts/test-google-routes.mjs",
+    "test:auth": "node scripts/test-institutional-auth.mjs",
     "db:migrate": "node scripts/run-migrations.mjs",
     "test:archive": "node --experimental-strip-types scripts/test-archive.mjs",
     "test:record-import": "node --experimental-strip-types scripts/test-record-import.mjs",
@@ -23,8 +23,8 @@
     "test:ui": "node --experimental-strip-types scripts/test-ui.mjs",
     "test:layout": "node --experimental-strip-types scripts/test-layout.mjs",
     "test:access": "node --experimental-strip-types scripts/test-theme-access.mjs",
-    "admin:google": "node scripts/admin-google.mjs",
-    "test:auth:http": "node scripts/test-google-http.mjs"
+    "test:auth:http": "node scripts/test-institutional-http.mjs",
+    "admin:grant": "node scripts/admin-grant.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

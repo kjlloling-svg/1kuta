@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({path:'.env.gmail.local',quiet:true});
 import express from 'express';
 import next from 'next';
 if(!process.env.SESSION_SECRET||process.env.SESSION_SECRET.length<32)throw new Error('Run npm run seed first to create .env');

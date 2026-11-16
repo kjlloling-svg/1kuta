@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import assert from 'node:assert/strict';
 import {randomUUID,randomBytes} from 'node:crypto';
-import {newSession,SESSION_COOKIE} from '../lib/google-session.mjs';
+import {newSession,SESSION_COOKIE} from './fixture-session.mjs';
 import {sqlite} from './local-database.mjs';
 import {toAuthorDTO,toPaperDTO,toPublicPaperDTO,toCitationDTO} from '../lib/archive-dto.ts';
 import {citation,citationStyles} from '../lib/citations.ts';
 const marker=randomUUID(),userId=randomUUID(),password=randomBytes(20).toString('hex'),base=('http://localhost:'+(process.env.PORT||3000));
 const papers=[],authors=[];
 const request=(url,cookie='')=>fetch(base+url,{headers:cookie?{Cookie:cookie}:{}});
-sqlite.prepare('INSERT INTO users(id,email,name,role,password_hash,password_salt,created_at) VALUES(?,?,?,?,?,?,?)').run(userId,marker+'@kuta.local','DTO verifier','admin','','',Date.now()/1000|0);
+sqlite.prepare('INSERT INTO users(id,email,name,role,password_hash,password_salt,created_at) VALUES(?,?,?,?,?,?,?)').run(userId,marker+'@slsu.edu.ph','DTO verifier','admin','','',Date.now()/1000|0);
 function plain(value){if(value&&typeof value==='object'){assert.equal(Object.getPrototypeOf(value),Array.isArray(value)?Array.prototype:Object.prototype);for(const v of Object.values(value))plain(v);}}
 try{
  sqlite.prepare('UPDATE users SET google_sub=? WHERE id=?').run(userId,userId);const cookie=SESSION_COOKIE+'='+await newSession(userId);

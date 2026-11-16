@@ -1,8 +1,8 @@
 import {NextRequest,NextResponse} from 'next/server';
-import {sessionUser,SESSION_COOKIE} from './lib/google-session.mjs';
-import {limited} from './lib/google-challenge.mjs';
+import {sessionUser,SESSION_COOKIE} from './lib/school-session.mjs';
+import {limited} from './lib/rate-limit.mjs';
 import {clientIp} from './lib/client-ip.mjs';
-const authPaths=new Set(['/api/auth/google','/api/auth/logout','/api/auth/me']);
+const authPaths=new Set(['/api/auth/account','/api/auth/logout','/api/auth/me']);
 export async function proxy(request:NextRequest){
  const path=request.nextUrl.pathname;
  // Only public asset namespaces bypass auth/rate limits; dotted page/API paths do not.
@@ -19,7 +19,7 @@ export async function proxy(request:NextRequest){
    }
    const publicApi=request.method==='GET'&&(/^\/api\/(?:papers(?:\/[^/]+)?|programs|keywords|stats|year-counts)$/.test(path)||/^\/api\/papers\/[^/]+\/citation$/.test(path)||/^\/api\/research-papers\/[^/]+\/abstract$/.test(path));
    // Abstract/citation endpoints enforce their own required 403 response and audit log.
-   if(path.startsWith('/api/')&&!publicApi)return NextResponse.json({error:'Please sign in with Google.'},{status:401,headers:{'Cache-Control':'no-store'}});
+   if(path.startsWith('/api/')&&!publicApi)return NextResponse.json({error:'Sign in with your SLSU account.'},{status:401,headers:{'Cache-Control':'no-store'}});
    if(path==='/admin'||path.startsWith('/admin/')){
     const target=new URL('/login',request.url);target.searchParams.set('return_to',path+request.nextUrl.search);
     if(request.cookies.has(SESSION_COOKIE))target.searchParams.set('reason','session_expired');

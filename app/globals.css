@@ -233,7 +233,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .auth-card>p:not(.eyebrow){color:var(--muted);font-size:14px}
 .auth-card form{display:flex;flex-direction:column;margin-top:27px}
 .auth-card label{font-size:14px;font-weight:800;margin:15px 0 6px}
-.auth-card input{height:46px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:10px 12px}
+.auth-card input,.auth-card select{height:46px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:10px 12px}
 .auth-card form small{font-size:12px;color:var(--muted);margin-top:5px}
 .auth-card form button{margin-top:23px}
 .auth-foot{border-top:1px solid var(--line);padding-top:16px;margin-top:25px}

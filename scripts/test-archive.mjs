@@ -6,7 +6,7 @@ import {randomUUID,randomBytes} from 'node:crypto';
 import {readFileSync,mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {DatabaseSync} from 'node:sqlite';
-import {newSession,SESSION_COOKIE} from '../lib/google-session.mjs';
+import {newSession,SESSION_COOKIE} from './fixture-session.mjs';
 import {sqlite} from './local-database.mjs';
 import {migrateArchive} from './migrate-archive.mjs';
 import {citation,citationParts,citationStyles} from '../lib/citations.ts';
@@ -14,7 +14,7 @@ import {copyCitation} from '../lib/clipboard.mjs';
 const base=`http://localhost:${process.env.PORT||3000}`;
 const marker=randomUUID(),password=randomBytes(20).toString('hex'),adminId=randomUUID(),publicId=randomUUID();
 let created=[],defaultCookie='';
-for(const [id,role] of [[adminId,'admin'],[publicId,'public']])sqlite.prepare('INSERT INTO users (id,email,name,role,password_hash,password_salt,created_at) VALUES (?,?,?,?,?,?,?)').run(id,`${role}-${marker}@kuta.local`,'Verification '+role,role,'','',Math.floor(Date.now()/1000));
+for(const [id,role] of [[adminId,'admin'],[publicId,'public']])sqlite.prepare('INSERT INTO users (id,email,name,role,password_hash,password_salt,created_at) VALUES (?,?,?,?,?,?,?)').run(id,`${role}-${marker}@slsu.edu.ph`,'Verification '+role,role,'','',Math.floor(Date.now()/1000));
 async function call(url,{method='GET',body,cookie=defaultCookie,headers={}}={}){return fetch(base+url,{method,headers:{Origin:base,...(cookie?{Cookie:cookie}:{}),...(body&&!(body instanceof FormData)?{'Content-Type':'application/json'}:{}),...headers},...(body?{body:body instanceof FormData?body:JSON.stringify(body)}:{}),redirect:'manual'});}
 async function check(label,fn){await fn();console.log('PASS: '+label);}
 async function login(role){const id=role==='admin'?adminId:publicId;sqlite.prepare('UPDATE users SET google_sub=? WHERE id=?').run(id,id);return SESSION_COOKIE+'='+await newSession(id);}

@@ -1,28 +1,8 @@
 # KUTA setup
 
-Public browsing is enabled; only abstracts/citations require Google sign-in, and full papers/PDFs remain administrator-only. See [PUBLIC-BROWSING.md](PUBLIC-BROWSING.md) for the current access rules and testing walkthrough. Authentication is Google-only. See [GOOGLE-ONLY-AUTH.md](GOOGLE-ONLY-AUTH.md) for Google Cloud, Vercel, private administrator setup and test instructions. This guide supersedes authentication instructions in historical update documents below.
+KUTA uses verified @slsu.edu.ph accounts. Guests can browse. Sign in to read abstracts and cite papers. Only administrators can publish records and access full papers. Follow [the institutional account setup guide](INSTITUTIONAL-ACCESS.md) for email, Vercel, administrator access, and checks. It supersedes all older authentication instructions.
 
-Requires Node.js 24.x. Use npm (Vercel runs npm ci). Production uses Next.js, Turso and private Vercel Blob; local development uses SQLite and local PDF storage.
-
-```powershell
-Set-Location 'C:\Users\KurtJohn\Desktop\1KUTA'
-npm ci
-npm run seed
-# Set GOOGLE_CLIENT_ID in your private .env, then:
-npm start
-```
-
-The seed creates private local configuration and initializes the database. It never creates password accounts. Sign in with Google first, then run `npm run admin:google -- --local` to promote your local Google account. Existing data is preserved. Google sign-in requires an internet connection and the correct authorized origin.
-
-GitHub upload and automatic syncing: [SYNC.md](SYNC.md). Keep the watcher stopped while editing authentication, and push completed, tested changes.
-
-```powershell
-npm run test:auth
-npm run build
-npm run test:auth:http
-```
-
-The new authentication suites run against disposable databases and synthetic signed test tokens, without contacting Google or changing hosted data. The HTTP suite starts and stops its own production server. Research and layout regression suites can also run in this isolated server with `node scripts/test-google-http.mjs --regressions`.
+Use Node.js 24 and npm. Run `npm ci`, `npm run seed`, and `npm start` in this folder for local development. Run `npm run test:auth`, `npm run build`, then `npm run test:auth:http` to check the account flows.
 
 ## Archive management update
 
