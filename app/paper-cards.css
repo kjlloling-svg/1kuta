@@ -60,3 +60,19 @@ html .favorites-list p{white-space:nowrap;text-overflow:ellipsis;overflow:hidden
 html .favorites-list .favorite-error{position:absolute;right:20px;left:20px;bottom:0;white-space:normal;font-size:12px;background:var(--surface)}
 @media(max-width:620px),(pointer:coarse){html .paper-action{height:44px;min-height:44px;min-width:44px}html .paper-action-icon{width:44px}html .paper-card .card-keywords-slot{min-height:56px}html .paper-card .keyword-chip{min-height:44px;padding-block:12px}html .paper-card .paper-sign-in{min-height:44px}html .paper-card .card-preview{height:76px}html .paper-card,html .paper-skeleton{min-height:456px}html .paper-skeleton{height:456px}}
 @media(prefers-reduced-motion:reduce){html .paper-action{transition:none}}
+
+/* Research listing only; other shared-card placements retain their layout and palette. */
+html .archive-layout{--research-maroon:#7B1E3A}
+html .archive-layout .maroon{--dept-accent:var(--research-maroon);--dept-edge:var(--research-maroon);--dept-text:var(--research-maroon);--dept-tint:color-mix(in srgb,var(--research-maroon) 8%,var(--surface));--dept-glow:color-mix(in srgb,var(--research-maroon) var(--glow-strength),transparent)}
+html[data-theme="dark"] .archive-layout .maroon{--dept-text:color-mix(in srgb,var(--research-maroon) 35%,white);--dept-tint:color-mix(in srgb,var(--research-maroon) 30%,var(--surface))}
+html .archive-layout .paper-card.maroon{border-color:var(--dept-edge)}
+html .archive-layout .paper-card.maroon .keyword-chip:hover{background:var(--dept-tint)}
+html .archive-layout .keyword-filter .keyword-suggestion{border-style:dashed}
+html .archive-layout .keyword-filter .suggested-keywords-label{flex-basis:100%;margin-top:4px}
+html .archive-layout .paper-card h3{min-height:4.05em}
+html .archive-layout .paper-card h3 a{height:auto;-webkit-line-clamp:3;line-clamp:3}
+html .archive-layout .paper-card .card-authors{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+html .archive-layout .paper-card .card-preview{height:auto;min-height:188px}
+html .archive-layout .paper-card .card-excerpt{-webkit-line-clamp:6;line-clamp:6;line-height:24px}
+html .archive-layout .paper-card .card-excerpt-expanded{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible}
+html .archive-layout .paper-card .abstract-toggle{min-height:44px;margin:0;padding:0 4px;border:0;background:transparent;box-shadow:none;color:var(--green);font-size:13px;text-decoration:underline;transform:none}

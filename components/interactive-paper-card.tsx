@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {ArrowUpRight,FileText} from 'lucide-react';
 import {FavoriteButton} from './favorite-button';
 import {departmentAccentFor} from '@/lib/departments';
@@ -10,10 +10,12 @@ import {LockedResearch} from './locked-research';
 import {DetailActions} from './detail-actions';
 import {KeywordChips} from './keyword-chips';
 export type PublicPaper={id:number;slug:string;title:string;authors:{name?:string;given:string;family:string;suffix?:string|null}[];year:number;program_id:string;program:string;abstract?:string|null;keywords:string[];status:'pending'|'verified'|'demo';category?:string;created_at?:string;has_file?:boolean;views?:number};
-export function InteractivePaperCard({paper,onKeyword,admin=false,authenticated=false}:{paper:PublicPaper;authenticated?:boolean;admin?:boolean;onKeyword?:(keyword:string)=>void}){
+export function InteractivePaperCard({paper,onKeyword,admin=false,authenticated=false,expandableAbstract=false}:{paper:PublicPaper;authenticated?:boolean;admin?:boolean;expandableAbstract?:boolean;onKeyword?:(keyword:string)=>void}){
  const [expanded,setExpanded]=useState(paper.abstract!==undefined),[expired,setExpired]=useState(false),[abstract,setAbstract]=useState<string|null>(paper.abstract??null),[busy,setBusy]=useState(false),[notice,setNotice]=useState('');
+ const [abstractExpanded,setAbstractExpanded]=useState(false),[abstractOverflows,setAbstractOverflows]=useState(false);
+ const excerptRef=useRef<HTMLParagraphElement>(null);
  async function readAbstract(){
-  if(expanded){setExpanded(false);return;}
+  if(expanded){setExpanded(false);setAbstractExpanded(false);return;}
   setBusy(true);setNotice('');
   try{
    const response=await fetch('/api/research-papers/'+encodeURIComponent(paper.slug)+'/abstract',{credentials:'same-origin',cache:'no-store'});
@@ -25,6 +27,13 @@ export function InteractivePaperCard({paper,onKeyword,admin=false,authenticated=
  const program=programFor(paper.program_id),href='/research-papers/'+encodeURIComponent(paper.slug);
  const authors=paper.authors.map(a=>a.name||`${a.given} ${a.family}${a.suffix?`, ${a.suffix}`:''}`.trim()).join(', ')||'Authors not recorded';
  const allowed=authenticated&&!expired;
+ useEffect(()=>{
+  const excerpt=excerptRef.current;
+  if(!expandableAbstract||!allowed||!expanded||abstractExpanded||!excerpt)return;
+  const measure=()=>setAbstractOverflows(excerpt.scrollHeight>excerpt.clientHeight+1);
+  measure();const observer=new ResizeObserver(measure);observer.observe(excerpt);
+  return()=>observer.disconnect();
+ },[expandableAbstract,allowed,expanded,abstractExpanded,abstract,busy,notice]);
  return <article className={`paper-card interactive-card ${departmentAccentFor(paper.program_id).className}`}>
   <div className="card-top"><span className="tag" title={program?.label||paper.program}>{program?.label||paper.program}</span><span className="paper-year">{paper.year}</span></div>
   <h3><Link href={href} title={paper.title}>{paper.title}</Link></h3>
@@ -32,7 +41,7 @@ export function InteractivePaperCard({paper,onKeyword,admin=false,authenticated=
   <div className="card-metadata"><span>{paper.status==='demo'?'Demo · Sample content only':paper.status==='pending'?'Pending review':'Verified record'}</span>{paper.category&&<span title={paper.category}>{paper.category}</span>}{typeof paper.views==='number'&&Number.isFinite(paper.views)&&paper.views>=0&&<span>{Math.floor(paper.views).toLocaleString()} views</span>}</div>
   <div className="card-keywords-slot"><KeywordChips keywords={paper.keywords} limit={2} onKeyword={onKeyword}/></div>
   <div className="card-preview" id={`abstract-${paper.id}`} aria-busy={busy}>
-   {allowed?<p className="card-excerpt">{busy?'Loading abstract…':notice|| (expanded?(abstract?.trim()||'No abstract is available for this record.'):'Select Preview abstract to read a short summary.')}</p>:<LockedResearch slug={paper.slug} compact/>}
+   {allowed?<><p ref={excerptRef} id={`abstract-text-${paper.id}`} className={`card-excerpt${expandableAbstract&&abstractExpanded?' card-excerpt-expanded':''}`}>{busy?'Loading abstract…':notice|| (expanded?(abstract?.trim()||'No abstract is available for this record.'):'Select Preview abstract to read a short summary.')}</p>{expandableAbstract&&expanded&&!busy&&!notice&&(abstractOverflows||abstractExpanded)&&<button className="abstract-toggle" type="button" aria-expanded={abstractExpanded} aria-controls={`abstract-text-${paper.id}`} onClick={()=>setAbstractExpanded(value=>!value)}>{abstractExpanded?'Read less':'Read more'}</button>}</>:<LockedResearch slug={paper.slug} compact/>}
   </div>
   <span className="sr-only" role="status">{notice}</span>
   {!admin&&paper.status==='verified'?<FavoriteButton slug={paper.slug} status={paper.status}/>:<div className="card-feedback-space" aria-hidden="true"/>}
