@@ -67,8 +67,6 @@ html .archive-layout .maroon{--dept-accent:var(--research-maroon);--dept-edge:va
 html[data-theme="dark"] .archive-layout .maroon{--dept-text:color-mix(in srgb,var(--research-maroon) 35%,white);--dept-tint:color-mix(in srgb,var(--research-maroon) 30%,var(--surface))}
 html .archive-layout .paper-card.maroon{border-color:var(--dept-edge)}
 html .archive-layout .paper-card.maroon .keyword-chip:hover{background:var(--dept-tint)}
-html .archive-layout .keyword-filter .keyword-suggestion{border-style:dashed}
-html .archive-layout .keyword-filter .suggested-keywords-label{flex-basis:100%;margin-top:4px}
 html .archive-layout .paper-card h3{min-height:4.05em}
 html .archive-layout .paper-card h3 a{height:auto;-webkit-line-clamp:3;line-clamp:3}
 html .archive-layout .paper-card .card-authors{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
