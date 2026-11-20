@@ -10,6 +10,10 @@ const from = 'FROM research_papers p JOIN programs g ON g.id=p.program_id';
 const baseFields = `p.id,p.slug,p.title,p.keywords,p.year,p.paper_type,p.created_at,p.status,g.slug AS program_slug,g.name AS program_name,g.major,
   (SELECT group_concat(name, ', ') FROM (SELECT a.name FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id ORDER BY pa.position)) AS authors`;
 const fieldsFor=(access:PaperAccess)=>baseFields+((access==='public'||access==='admin')?',p.abstract':'')+(access==='admin'?',p.file_name':'');
+const paperStatuses=(access?:PaperAccess)=>access==='admin'?'1=1':"p.status IN ('verified','demo')";
+const paperQueryMatch=`p.title LIKE ? OR p.keywords LIKE ? OR EXISTS (SELECT 1 FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id AND a.name LIKE ?)`;
+const term=(s?:string)=>s?.trim().slice(0,100);
+const queryBinds=(query:string,count:number)=>Array<string>(count).fill(`%${query}%`);
 export {normalizeKeywords as keywordsOf} from './keywords.mjs';
 import {normalizeKeywords as keywordsOf} from './keywords.mjs';
 export async function stats() {
@@ -18,15 +22,15 @@ export async function stats() {
   return {papers:result?.papers??0,years:result?.years??0,authors:author?.authors??0};
 }
 export async function searchPapers(filters:SearchFilters) {
-  const clauses=[filters.access==='admin'?'1=1':"p.status IN ('verified','demo')"];
+  const clauses=[paperStatuses(filters.access)];
   const binds:(string|number)[]=[];
   const add=(sql:string,value:string|number)=>{clauses.push(sql);binds.push(value);};
   if(filters.program)add('g.slug=?',canonicalProgram(filters.program));
   if(filters.year)add('p.year=?',filters.year);
-  const term=(s?:string)=>s?.trim().slice(0,100);
-  if(term(filters.q)){
-    clauses.push(`(p.title LIKE ? OR p.keywords LIKE ? OR g.name LIKE ? OR g.major LIKE ? OR EXISTS (SELECT 1 FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id AND a.name LIKE ?))`);
-    binds.push(...Array(5).fill(`%${term(filters.q)}%`));
+  const query=term(filters.q);
+  if(query){
+    clauses.push(`(${paperQueryMatch} OR g.name LIKE ? OR g.major LIKE ?)`);
+    binds.push(...queryBinds(query,5));
   }
   if(term(filters.author))add('EXISTS (SELECT 1 FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id AND a.name LIKE ?)',`%${term(filters.author)}%`);
   if(term(filters.keyword))add('p.keywords LIKE ?',`%${term(filters.keyword)}%`);
@@ -36,6 +40,27 @@ export async function searchPapers(filters:SearchFilters) {
   const order=filters.sort==='oldest'?'p.year ASC,p.title ASC':filters.sort==='recent'?'p.created_at DESC,p.id DESC':'p.year DESC,p.title ASC';
   const rows=await database().prepare(`SELECT ${fieldsFor(filters.access||'guest')} ${from}${where} ORDER BY ${order} LIMIT 12 OFFSET ?`).bind(...binds,(page-1)*12).all<Paper>();
   return {papers:rows.results.map(row=>toPaperDTO(row,filters.access)),total:count?.total??0,page,pages:Math.ceil((count?.total??0)/12)};
+}
+export async function suggestPaperSearches(value:string,access:PaperAccess='guest'){
+  const query=term(value);
+  if(!query)return [];
+  const {results}=await database().prepare(`SELECT p.title,p.keywords,
+    (SELECT json_group_array(a.name) FROM research_paper_authors pa JOIN authors a ON a.id=pa.author_id WHERE pa.paper_id=p.id) AS author_names
+    ${from} WHERE ${paperStatuses(access)} AND (${paperQueryMatch})
+    ORDER BY p.year DESC,p.title ASC LIMIT 24`).bind(...queryBinds(query,3))
+    .all<{title:string;keywords:string|null;author_names:string}>();
+  const suggestions=new Map<string,string>();
+  const lowerQuery=query.toLowerCase();
+  for(const paper of results){
+    const authors=JSON.parse(paper.author_names) as string[];
+    for(const label of [paper.title,...authors,...keywordsOf(paper.keywords)]){
+      const key=label.toLowerCase();
+      if(!key.includes(lowerQuery)||suggestions.has(key))continue;
+      suggestions.set(key,label);
+      if(suggestions.size===6)return [...suggestions.values()];
+    }
+  }
+  return [...suggestions.values()];
 }
 export async function recentPapers(access:PaperAccess='guest'){
   const rows=await database().prepare(`SELECT ${fieldsFor(access)} ${from} WHERE p.status='verified' ORDER BY p.created_at DESC,p.id DESC LIMIT 3`).all<Paper>();

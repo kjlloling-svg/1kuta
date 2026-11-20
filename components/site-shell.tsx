@@ -7,11 +7,13 @@ import {ColorVisionControl} from './color-vision-control';
 import { getCurrentUser } from '@/lib/auth';
 import {AccountMenu} from './account-menu';
 import {MobileMenu} from './mobile-menu';
+import {NavbarSearch} from './navbar-search';
 
 const links = [ ['Home','/'], ['Research Papers','/research-papers'], ['Browse by Year','/browse-by-year'], ['Programs','/programs'], ['About','/about'], ['FAQ','/faq'] ];
 export async function Header() { let user:Awaited<ReturnType<typeof getCurrentUser>>=null;try{user=await getCurrentUser();}catch(e){console.error('Header session check failed',e);} return <><SpaceBackground/><header className="site-header"><SessionRefresh identity={user?user.id+':'+user.role:''}/><div className="wrap header-inner">
   <Link className="brand" href="/" aria-label="KUTA home"><span className="brand-mark"><Image src="/assets/slsu-gumaca-logo.webp" alt="SLSU Gumaca campus logo" width={44} height={44} preload /></span><span className="brand-text"><strong>KUTA</strong><small>SLSU Gumaca Research Archive</small></span></Link>
   <nav className="desktop-nav" aria-label="Primary navigation">{links.map(([label,url])=><Link href={url} key={url}>{label}</Link>)}</nav>
+  <NavbarSearch/>
   <div className="header-actions">{user?<AccountMenu user={{name:user.name,email:user.email,picture:user.picture,role:user.role}}/>:<Link className="account-link" href="/login">Sign in</Link>}</div>
   <div className="header-theme"><ThemeToggle/><ColorVisionControl/></div>
   <MobileMenu><nav aria-label="Mobile navigation">{links.map(([label,url])=><Link href={url} key={url}>{label}</Link>)}</nav><div className="mobile-account">{user?<AccountMenu mobile user={{name:user.name,email:user.email,picture:user.picture,role:user.role}}/>:<Link className="account-link" href="/login">Sign in</Link>}</div></MobileMenu>
