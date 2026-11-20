@@ -5,9 +5,9 @@
  --ambient-blur:blur(6px);
  --placeholder-blur:blur(3px);
 
- --motion-fast:150ms;--motion-base:250ms;--motion-slow:500ms;
- --motion-out:cubic-bezier(.2,.8,.2,1);--motion-in-out:cubic-bezier(.4,0,.2,1);--motion-stagger:70ms;
- --motion-reveal-distance:20px;--motion-lift:4px;--motion-press:.97;
+ --motion-fast:250ms;--motion-base:320ms;--motion-slow:400ms;
+ --motion-out:cubic-bezier(.22,1,.36,1);--motion-in-out:cubic-bezier(.4,0,.2,1);--motion-stagger:45ms;
+ --motion-reveal-duration:380ms;--motion-reveal-distance:16px;--motion-lift:4px;--motion-press:.97;
  --motion-loop:3.2s;--motion-loading:1s;--motion-shimmer:1.8s;--motion-marquee:36s;--motion-float:18s;
  --motion-panel-distance:8px;--motion-nudge:3px;--motion-small-lift:2px;--motion-press-nudge:1px;--motion-parallax-full:18;--motion-parallax-accent:5;
  --glass-blur:12px;--glass-filter:blur(var(--glass-blur));--glass:color-mix(in srgb,var(--surface) 97%,transparent);
@@ -17,9 +17,8 @@
  --control-pressed:inset 2px 2px 4px var(--shadow-dark),inset -2px -2px 4px var(--shadow-light);
  --spotlight-size:300px;--spotlight-strength:8%;--spotlight-opacity:1;
  --switch-ease:cubic-bezier(.2,.9,.3,1.15);
- --theme-transition:background-color var(--motion-base) ease,color var(--motion-base) ease,border-color var(--motion-base) ease,fill var(--motion-base) ease,box-shadow var(--motion-base) ease;
 }
-@media(max-width:639px){:root{--glass-blur:8px;--motion-reveal-distance:12px;--motion-stagger:35ms;--spotlight-size:200px}}
+@media(max-width:639px){:root{--motion-reveal-duration:280ms;--motion-reveal-distance:8px;--motion-stagger:25ms;--spotlight-size:200px}}
 html[data-theme=dark]{--glass:color-mix(in srgb,var(--surface) 97%,transparent);--spotlight-strength:6%}
 
 :root,:is(.gold,.rose,.blue,.maroon,.green,.dept-fallback,.marquee-diploma-cpt,.marquee-diploma-mech){
@@ -30,7 +29,7 @@ html[data-theme=dark]{--glass:color-mix(in srgb,var(--surface) 97%,transparent);
  --program-star-glow:drop-shadow(0 0 3px var(--dept-accent)) drop-shadow(0 0 7px var(--dept-glow));
 }
 
-/* The header remains opaque at a fixed height in both themes. */
+/* The header keeps its fixed footprint in both themes. */
 html .site-header{background:var(--surface);border-bottom-color:var(--line);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 html .site-header::after{content:none}
 .header-sentinel{position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none;opacity:0}
@@ -43,7 +42,7 @@ html .account-dropdown,html .mobile-panel:not([hidden]),html .color-vision-popov
 html .citation-dialog .hero-search,html .archive-modal .hero-search{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
 
 /* Each observer-triggered animation releases its layer on animationend. */
-html [data-reveal=running]{animation:motion-reveal var(--motion-base) var(--motion-out) both;animation-delay:calc(var(--reveal-index,0)*var(--motion-stagger));will-change:transform,opacity}
+html [data-reveal=running]{animation:motion-reveal var(--motion-reveal-duration) var(--motion-out) both;animation-delay:calc(var(--reveal-index,0)*var(--motion-stagger));will-change:transform,opacity}
 @keyframes motion-reveal{from{opacity:0;transform:translateY(var(--motion-reveal-distance))}to{opacity:1;transform:none}}
 
 /* The highlight is a fixed radial texture translated by pointer coordinates. */
@@ -76,10 +75,10 @@ html body :is(.theme-toggle,.color-vision-trigger,.keyword-chip,.pagination butt
 
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination){scroll-snap-type:x proximity;overscroll-behavior-x:contain;scroll-padding-inline:8px}
 html :is(.about-nav,.keyword-filter,.card-keywords,.pagination)>*{scroll-snap-align:start}
-/* Only token-painted surfaces transition; existing hover transforms stay intact. */
-html,html body,html body::before,html .space-background,html body :is(.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea){transition:var(--theme-transition),transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
+/* Let theme colors settle immediately while interaction motion stays on the compositor. */
+html,html body,html body::before,html .space-background,html body :is(.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea){transition:transform var(--motion-fast) var(--motion-out),opacity var(--motion-fast) var(--motion-out)}
 html body .theme-toggle{background:linear-gradient(115deg,transparent,color-mix(in srgb,var(--green) 12%,transparent)),var(--soft);text-decoration:none}
-html body .theme-knob{transition:transform var(--motion-base) var(--switch-ease),var(--theme-transition)}
+html body .theme-knob{transition:transform var(--motion-base) var(--switch-ease)}
 html:not(.theme-ready),html:not(.theme-ready) body::before,html:not(.theme-ready) .space-background,html:not(.theme-ready) :is(body,.site-header,.footer,.page-main,.welcome-content,.welcome-note,.hero-search,.filters,.paper-card,.directory-card,.detail-panel,.admin-panel,.account-dropdown,.mobile-panel,.color-vision-popover,.citation-dialog,.archive-modal,.year-tile,.year-number,.tag,.keyword-chip,.button,.paper-action,.text-link,.account-link,button,input,select,textarea,.theme-knob,.theme-icon,.theme-rays,.theme-crescent){transition:none!important}
 
 @supports not (backdrop-filter:blur(1px)){html .site-header::after,html .kuta-welcome .hero-search,html .account-dropdown,html .mobile-panel,html .color-vision-popover,html .citation-dialog,html .archive-modal,html .favorite-tooltip,html .paper-overflow-actions{background:var(--surface)}}

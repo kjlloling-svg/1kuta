@@ -1,0 +1,259 @@
+/* Glass rests on the existing reading palette, including the color-vision modes. */
+:root {
+  --liquid-radius: 24px;
+  --liquid-control-radius: 16px;
+  --liquid-popover-radius: 20px;
+  --liquid-blur: 16px;
+  --liquid-modal-blur: 24px;
+  --liquid-panel: color-mix(in srgb, var(--surface) 79%, transparent);
+  --liquid-overlay: color-mix(in srgb, var(--surface) 94%, transparent);
+  --liquid-field: color-mix(in srgb, var(--surface) 86%, transparent);
+  --liquid-fill: color-mix(in srgb, var(--soft) 79%, transparent);
+  --liquid-edge: color-mix(in srgb, var(--line) 54%, white);
+  --liquid-rim: rgba(255, 255, 255, .88);
+  --liquid-highlight: linear-gradient(156deg, rgba(255, 255, 255, .76), rgba(255, 255, 255, 0) 52%);
+  --liquid-sheen: rgba(255, 255, 255, .76);
+  --liquid-field-shine: inset 0 1px 2px rgba(25, 76, 58, .09), inset 0 1px 0 var(--liquid-rim);
+  --liquid-shadow: inset 0 1px 0 var(--liquid-rim), 0 2px 6px rgba(24, 67, 52, .07), 0 14px 40px -17px rgba(24, 67, 52, .23);
+  --liquid-overlay-shadow: inset 0 1px 0 var(--liquid-rim), 0 3px 12px var(--shadow-dark), 0 22px 56px -18px var(--shadow-dark);
+  --liquid-control-shadow: inset 0 1px 0 var(--liquid-rim), 0 2px 5px var(--shadow-dark);
+  --liquid-primary: color-mix(in srgb, var(--green) 79%, var(--green-deep));
+  --liquid-primary-shine: linear-gradient(165deg, rgba(255, 255, 255, .09), transparent 70%);
+  --liquid-action-rim: rgba(255, 255, 255, .35);
+  --liquid-scrim: rgba(9, 29, 22, .52);
+  --liquid-blob: color-mix(in srgb, var(--mesh-green, var(--bokeh-color)) 56%, transparent);
+  --liquid-blob-alt: color-mix(in srgb, var(--mesh-warm, var(--gold)) 20%, transparent);
+}
+
+:root[data-theme="dark"] {
+  --liquid-panel: color-mix(in srgb, var(--surface) 83%, transparent);
+  --liquid-overlay: color-mix(in srgb, var(--surface) 96%, transparent);
+  --liquid-field: color-mix(in srgb, var(--bg) 76%, transparent);
+  --liquid-fill: color-mix(in srgb, var(--soft) 88%, transparent);
+  --liquid-edge: rgba(222, 255, 239, .29);
+  --liquid-rim: rgba(255, 255, 255, .18);
+  --liquid-highlight: linear-gradient(156deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, 0) 54%);
+  --liquid-sheen: rgba(255, 255, 255, .22);
+  --liquid-shadow: inset 0 1px 0 var(--liquid-rim), 0 2px 6px rgba(0, 0, 0, .22), 0 16px 40px -17px rgba(0, 0, 0, .68);
+  --liquid-primary: var(--green);
+  --liquid-scrim: rgba(3, 12, 9, .68);
+  --liquid-blob: color-mix(in srgb, var(--mesh-green, var(--bokeh-color)) 24%, transparent);
+  --liquid-blob-alt: color-mix(in srgb, var(--mesh-warm, var(--gold)) 14%, transparent);
+}
+
+@media (max-width: 639px) {
+  :root {
+    --liquid-radius: 20px;
+    --liquid-blur: 12px;
+    --liquid-modal-blur: 16px;
+  }
+}
+
+/* The shell, reading panels and overlays share a painted highlight. Blur is
+   reserved for the shell and the open floating layer, not repeated cards. */
+html body :is(
+  .welcome-content, .welcome-aside, .stats-strip, .hero-search, .page-intro, .how-steps,
+  .paper-card, .directory-card, .program-tile, .filters, .detail-panel, .metadata,
+  .person-card, .about-aside, .about-note, .state-card, .auth-card, .admin-panel,
+  .admin-records > li, .faq-list details, .faq-cta, .favorites-panel, .favorites-list > li,
+  .year-tile, .research-learning .learning-surface,
+  .account-dropdown, .mobile-panel, .color-vision-popover, .favorite-tooltip,
+  .paper-overflow-actions, .citation-dialog, .archive-modal
+) {
+  background: var(--liquid-highlight), var(--liquid-panel);
+  border-color: var(--liquid-edge);
+  border-radius: var(--liquid-radius);
+  box-shadow: var(--liquid-shadow);
+}
+
+html body :is(.site-header, .footer) {
+  background: var(--liquid-highlight), var(--liquid-overlay);
+  box-shadow: var(--liquid-shadow);
+}
+
+html body .site-header {
+  border-bottom-color: var(--liquid-edge);
+  border-radius: 0 0 var(--liquid-radius) var(--liquid-radius);
+}
+html body .footer { border-top: 1px solid var(--liquid-edge); }
+html body:has(.space-background[data-variant="full"]) .footer {
+  background: var(--liquid-highlight), var(--liquid-overlay);
+}
+
+html body :is(.account-dropdown, .mobile-panel, .color-vision-popover, .favorite-tooltip, .paper-overflow-actions, .citation-dialog, .archive-modal) {
+  background-color: var(--liquid-overlay);
+  border-radius: var(--liquid-popover-radius);
+  box-shadow: var(--liquid-overlay-shadow);
+}
+
+html body .mobile-panel { border-radius: 0 0 var(--liquid-popover-radius) var(--liquid-popover-radius); }
+html body :is(.citation-dialog, .archive-modal)::backdrop { background: var(--liquid-scrim); }
+
+/* Keep navigation readable when images pass underneath. Large reading
+   surfaces get live blur only on wider screens. */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  html body :is(.site-header, .account-dropdown, .mobile-panel, .color-vision-popover, .paper-overflow-actions) {
+    -webkit-backdrop-filter: blur(var(--liquid-blur)) saturate(140%);
+    backdrop-filter: blur(var(--liquid-blur)) saturate(140%);
+  }
+  html body :is(.citation-dialog[open], .archive-modal[open]) {
+    -webkit-backdrop-filter: blur(var(--liquid-modal-blur)) saturate(140%);
+    backdrop-filter: blur(var(--liquid-modal-blur)) saturate(140%);
+  }
+  @media (min-width: 900px) and (pointer: fine) {
+    html body :is(.footer, .kuta-welcome .welcome-content) {
+      -webkit-backdrop-filter: blur(var(--liquid-blur)) saturate(140%);
+      backdrop-filter: blur(var(--liquid-blur)) saturate(140%);
+    }
+  }
+}
+
+html body :is(.hero-search, .favorite-tooltip) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+html body :is(
+  .button, .desktop-nav a, .mobile-panel nav a, .header-search, .account-link,
+  .account-trigger, .theme-toggle, .color-vision-trigger, .menu-trigger,
+  .filter-head button, .paper-action, .pagination :is(a, button),
+  .dialog-close, .learning-tabs button, .admin-record-actions button
+) {
+  border-radius: var(--liquid-control-radius);
+  box-shadow: var(--liquid-control-shadow);
+}
+
+html body :is(
+  .button-outline, .desktop-nav a, .mobile-panel nav a, .account-link, .account-trigger,
+  .color-vision-trigger, .menu-trigger, .filter-head button,
+  .paper-action:not(.paper-action-primary), .pagination :is(a, button), .dialog-close,
+  .learning-tabs button, .admin-record-actions button
+) {
+  background: var(--liquid-highlight), var(--liquid-fill);
+}
+
+html body :is(.button-primary, .header-search, .paper-action-primary, .hero-search button) {
+  background-image: var(--liquid-primary-shine);
+  background-color: var(--liquid-primary);
+  color: var(--on-accent);
+  border-radius: var(--liquid-control-radius);
+  box-shadow: inset 0 1px 0 var(--liquid-action-rim), 0 4px 12px var(--shadow-dark);
+}
+
+html body .kuta-welcome :is(.welcome-actions .button-primary, .hero-search button) {
+  background: var(--liquid-primary-shine), var(--liquid-primary);
+  color: var(--on-accent);
+  border-color: var(--green-deep);
+  box-shadow: inset 0 1px 0 var(--liquid-action-rim), 0 4px 12px var(--shadow-dark);
+}
+
+html body :is(input:not([type="checkbox"],[type="radio"],[type="hidden"]), select, textarea) {
+  background-color: var(--liquid-field);
+  border-radius: var(--liquid-control-radius);
+  box-shadow: var(--liquid-field-shine);
+}
+html body .hero-search input { background-color: transparent; box-shadow: none; }
+html body :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
+
+html body .learning-tabs button[aria-selected="true"] {
+  background-color: var(--liquid-field);
+  box-shadow: inset 0 -2px var(--accent), var(--liquid-control-shadow);
+}
+html body .learning-panel { transition: opacity var(--motion-base) var(--motion-out); }
+html body .learning-connector { transition: transform var(--motion-base) var(--motion-out); }
+
+html body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Radial gradients have feathered edges without a filter on the entire viewport. */
+html .space-background::before,
+html .space-background::after {
+  content: "";
+  position: absolute;
+  width: clamp(270px, 55vw, 780px);
+  height: clamp(320px, 60vh, 620px);
+  pointer-events: none;
+  border-radius: 60% 40% 53% 47%;
+  background: radial-gradient(ellipse at 46% 48%, var(--liquid-blob), transparent 69%);
+}
+html .space-background::before { top: -9%; left: -10%; }
+html .space-background::after {
+  right: -9%;
+  bottom: -10%;
+  background: radial-gradient(ellipse at 55% 50%, var(--liquid-blob-alt), transparent 70%);
+}
+
+@keyframes liquid-drift {
+  from { transform: translate3d(0, 0, 0) rotate(-12deg) scale(1); }
+  to { transform: translate3d(13%, 8%, 0) rotate(10deg) scale(1.15, .95); }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html .space-background::before { animation: liquid-drift 24s ease-in-out infinite alternate; }
+  html .space-background::after { animation: liquid-drift 31s ease-in-out infinite alternate-reverse; }
+
+  html body :is(.paper-card, .directory-card, .program-tile):hover {
+    transform: translateY(calc(-1 * var(--motion-lift)));
+  }
+
+  .card-spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(112deg, transparent 29%, var(--liquid-sheen) 49%, transparent 68%);
+    opacity: 0;
+    transform: translateX(-110%);
+    pointer-events: none;
+  }
+
+  html body :is(.paper-card, .directory-card):hover > .card-spotlight::after {
+    animation: liquid-sheen var(--motion-reveal-duration) var(--motion-out) both;
+  }
+
+  html body :is(.button, .header-search, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):hover {
+    transform: translateY(-1px) scale(1.015);
+  }
+
+  html body :is(.button, .header-search, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):active {
+    transform: scale(var(--motion-press));
+  }
+}
+
+@keyframes liquid-sheen {
+  0% { opacity: 0; transform: translateX(-110%); }
+  30% { opacity: .8; }
+  100% { opacity: 0; transform: translateX(110%); }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  @supports not (-webkit-backdrop-filter: blur(1px)) {
+    :root, :root[data-theme="dark"] {
+      --liquid-panel: var(--surface);
+      --liquid-overlay: var(--surface);
+      --liquid-field: var(--surface);
+      --liquid-fill: var(--soft);
+    }
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+  :root, :root[data-theme="dark"] {
+    --liquid-panel: var(--surface);
+    --liquid-overlay: var(--surface);
+    --liquid-field: var(--surface);
+    --liquid-fill: var(--soft);
+    --liquid-highlight: none;
+    --liquid-edge: var(--line);
+  }
+  html body :is(.site-header, .footer, .kuta-welcome .welcome-content, .account-dropdown, .mobile-panel, .color-vision-popover, .paper-overflow-actions, .citation-dialog[open], .archive-modal[open]) {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  html body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline-color: Highlight; }
+}

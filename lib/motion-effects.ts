@@ -1,4 +1,4 @@
-const revealSelector='main>section,main .section-heading,main .page-intro,main .about-section,main .about-person,main .directory-card,main .paper-card,main .year-item,main .faq-list details,main .admin-panel,main .auth-card,main .prose-section,main .detail-panel,main .favorites-list>li,main .admin-records>li,main .state-card';
+const revealSelector='main>section,main .section-heading,main .page-intro,main .about-section,main .about-person,main .directory-card,main .program-tile,main .learning-surface,main .paper-card,main .year-item,main .faq-list details,main .admin-panel,main .auth-card,main .prose-section,main .detail-panel,main .favorites-list>li,main .admin-records>li,main .state-card';
 const cardSelector='.directory-card,.paper-card';
 
 /** Progressive enhancement: the observer starts animations, never hides waiting content. */

@@ -6,6 +6,7 @@ import {isSearchIndexable, siteUrl} from '@/lib/seo';
 import { Header, Footer } from '@/components/site-shell';
 import './globals.css';
 import './motion.css';
+import './liquid-glass.css';
 import {DesignMotion} from '@/components/design-motion';
 import {ScrollProgress} from '@/components/scroll-progress';
 // Every page header reflects the current local session.
