@@ -15,7 +15,7 @@ const plain=(max:number,min=0)=>z.string().trim().min(min,'This field is require
 const author=plain(100,1);
 export const paperInput=z.object({
  title:plain(300,1),
- authors:z.array(z.object({given:author,family:author}).strict()).min(1,'At least one author is required').max(30).refine(value=>new Set(value.map(a=>`${a.given.toLowerCase()}|${a.family.toLowerCase()}`)).size===value.length,'Remove duplicate authors'),
+ authors:z.array(z.object({given:plain(100),family:author,suffix:plain(30).optional()}).strict()).min(1,'At least one author is required').max(30).refine(value=>new Set(value.map(a=>[a.given,a.family,a.suffix||''].join('|').toLowerCase())).size===value.length,'Remove duplicate authors'),
  program_id:z.number().int().positive('Select a program'),
  year:z.number().int().min(FIRST_RESEARCH_YEAR).refine(year=>year<=currentResearchYear(),'Year cannot be in the future'),
  category:z.literal('Research Paper').default('Research Paper'),
@@ -27,8 +27,9 @@ export type PaperInput=z.infer<typeof paperInput>;
 export function parseAuthors(value:string){
  return value.split(/\r?\n|;/).filter(line=>line.trim()).map(line=>{
   const parts=line.split('|').map(p=>p.trim());
-  if(parts.length!==2||!parts[0]||!parts[1])throw new Error('Authors: use Given name | Family name; separate authors with semicolons or new lines.');
-  return {given:parts[0],family:parts[1]};
+  if(parts.length<2||parts.length>3||!parts[1])throw new Error('Authors: use Given name | Family name | Optional suffix. Separate authors with semicolons or new lines.');
+  const [given,family,suffix]=parts;
+  return suffix?{given,family,suffix}:{given,family};
  });
 }
 export function issueMessage(error:unknown){return error instanceof z.ZodError?error.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; '):error instanceof Error?error.message:'Check the record fields.';}

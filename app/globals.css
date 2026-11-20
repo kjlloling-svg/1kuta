@@ -227,10 +227,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .citation-dialog .button{margin-bottom:12px}
 .copy-notice{min-height:22px;color:var(--green);font-size:14px;font-weight:700;margin:0}
 .citation-note{color:var(--muted);font-size:12px;line-height:1.6;margin:15px 0 0}
-.auth-page{min-height:65vh;display:grid;place-items:center;padding:50px 16px 75px}
+.auth-page{min-height:65vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:50px 16px 75px}
 .auth-card{width:min(100%,470px);background:var(--surface);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow-raised);padding:clamp(24px,5vw,42px)}
 .auth-card h1{font:500 42px var(--font-inter),system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 8px}
 .auth-card>p:not(.eyebrow){color:var(--muted);font-size:14px}
+.auth-card p{overflow-wrap:anywhere}
+.auth-card fieldset{display:flex;flex-direction:column;min-width:0;margin:0;padding:0;border:0}
 .auth-card form{display:flex;flex-direction:column;margin-top:27px}
 .auth-card label{font-size:14px;font-weight:800;margin:15px 0 6px}
 .auth-card input,.auth-card select{height:46px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:10px 12px}
@@ -321,8 +323,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .batch-table th:last-child{width:230px}
 .batch-table td>span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .batch-table-scroll:focus-visible,.batch-import summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.admin-layout .auth-toast{display:flex;align-items:center;gap:16px;color:var(--ink);overflow-wrap:anywhere}
-.admin-layout .auth-toast .button{min-height:44px;flex-shrink:0}
+.admin-save-feedback{display:flex;flex-wrap:wrap;align-items:center;gap:12px;color:var(--ink);overflow-wrap:anywhere}
+.admin-save-feedback p{margin:0}
+.admin-save-feedback:has(button){margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}
 @media(max-width:1024px){.admin-layout{grid-template-columns:1fr}
 }
 @media(max-width:840px){
@@ -344,7 +347,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .auth-card .remember-option{display:flex;align-items:center;gap:10px;font-weight:500}
 .auth-card .remember-option input{height:20px;min-height:20px;width:20px;box-shadow:var(--shadow-raised)}
 .field-error,.login-status{font-size:13px;color:var(--error)}
-.auth-toast{position:fixed;bottom:24px;right:24px;max-width:min(380px,90vw);padding:16px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-raised);z-index:100}
 button:disabled{cursor:wait}
 .citation-entry{display:inline-block}
 .card-actions .citation-entry .button{margin:0}
@@ -371,7 +373,7 @@ input[type="checkbox"]{accent-color:var(--green)}
 .field-error{color:var(--error)}
 .footer{padding:59px 0 23px;background:var(--soft);color:var(--ink)}
 .footer p,.footer .fine,.footer h2,.footer-bottom,.footer-brand span{color:var(--muted)}
-.citation-dialog,.archive-modal,.auth-toast{background:var(--surface)}
+.citation-dialog,.archive-modal{background:var(--surface)}
 .citation-dialog::backdrop,.archive-modal::backdrop{background:var(--scrim)}
 @supports (backdrop-filter:blur(1px)){
  .citation-dialog,.archive-modal{background:color-mix(in srgb,var(--surface) 96%,transparent);backdrop-filter:var(--glass-filter);-webkit-backdrop-filter:var(--glass-filter)}

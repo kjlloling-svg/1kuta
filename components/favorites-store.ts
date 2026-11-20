@@ -10,10 +10,10 @@ async function load(){
  if(inflight)return inflight;
  inflight=(async()=>{
   try{
-   const auth=await fetch('/api/auth/me',{cache:'no-store'});
-   if(auth.status===401){emit({...initial,role:'guest',ready:true});return;}
+   const auth=await fetch('/api/auth/me?optional=1',{cache:'no-store'});
    if(!auth.ok)throw new Error('Favorites could not load. Please retry.');
-   const data=await auth.json() as {role:string};
+   const data=await auth.json() as {authenticated:boolean;role?:string};
+   if(!data.authenticated){emit({...initial,role:'guest',ready:true});return;}
    if(data.role==='admin'){emit({...initial,role:'admin',ready:true});return;}
    const response=await fetch('/api/bookmarks',{cache:'no-store'});
    if(!response.ok)throw new Error('Favorites could not load. Please retry.');
@@ -42,7 +42,7 @@ export async function toggleFavorite(slug:string){
  emit({...state,slugs,busy,errors:{...state.errors,[slug]:''}});
  try{
   const response=await fetch('/api/bookmarks',{method:was?'DELETE':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paper_id:slug})});
-  if(!response.ok){const data=await response.json() as {error?:string};throw new Error(data.error||'Unable to update Favorites. Please try again.');}
+  if(!response.ok){const data=await response.json() as {error?:string};throw new Error(data.error||'Unable to update favorites. Please try again.');}
   try{localStorage.setItem('kuta-favorites-update',String(Date.now()));}catch{/* Storage can be disabled. */}
   window.dispatchEvent(new Event('favorites-changed'));
   return true;

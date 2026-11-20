@@ -16,7 +16,11 @@ const server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','
 const request=(url,cookie='',extra={})=>fetch(base+url,{redirect:'manual',headers:{...(cookie?{cookie}:{}),...extra.headers},...extra});
 try{
  let ready=false;for(let i=0;i<120;i++){try{if((await request('/login')).status===200){ready=true;break;}}catch{}await delay(250);}assert.ok(ready,'Production server did not start: '+logs);
- for(const route of ['/','/browse-by-year','/about','/faq','/programs','/research-papers','/research-papers/test']){const r=await request(route);assert.equal(r.status,200,route);assert.equal(r.headers.get('location'),null);assert.match(r.headers.get('cache-control'),/no-store/);}
+ for(const route of ['/','/browse-by-year','/about','/faq','/programs','/research-papers']){const r=await request(route);assert.equal(r.status,200,route);assert.equal(r.headers.get('location'),null);assert.match(r.headers.get('cache-control'),/no-store/);}
+ assert.equal((await request('/research-papers/qa-missing-record')).status,404);
+ const guestProbe=await request('/api/auth/me?optional=1');
+ assert.equal(guestProbe.status,200);
+ assert.deepEqual(await guestProbe.json(),{authenticated:false});
  assert.equal((await request('/admin')).status,307);
  for(const route of ['/api/papers','/api/programs','/api/keywords','/api/stats','/api/year-counts'])assert.equal((await request(route)).status,200,route);
  for(const route of ['/api/papers/1/citation','/api/research-papers/test/abstract']){const r=await request(route);assert.equal(r.status,403);assert.deepEqual(await r.json(),{error:'Login required',type:'auth_required'});}

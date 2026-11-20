@@ -9,8 +9,8 @@ export function LogoutButton({menuItem=false}:{menuItem?:boolean}){
    // Clear cached authenticated UI with a full document navigation after logout.
    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
    window.location.assign('/');}
-  catch{setError('Unable to log out. Please check your connection and try again.');setBusy(false);}
+  catch{setError('Unable to sign out. Please check your connection and try again.');setBusy(false);}
  }
- const button=<button className="account-link" type="button" onClick={logout} disabled={busy} aria-busy={busy}>{busy?'Logging out…':'Log out'}</button>;
+ const button=<button className="account-link" type="button" onClick={logout} disabled={busy} aria-busy={busy}>{busy?'Signing out…':'Sign out'}</button>;
  return <span className="logout-control">{menuItem?<DropdownMenuItem asChild disabled={busy} onSelect={event=>event.preventDefault()}>{button}</DropdownMenuItem>:button}{error&&<span role="alert">{error}</span>}</span>;
 }

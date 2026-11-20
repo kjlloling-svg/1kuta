@@ -11,7 +11,7 @@ sql.exec(`PRAGMA foreign_keys=ON;
  CREATE TABLE programs(id INTEGER PRIMARY KEY,slug TEXT,name TEXT,major TEXT);
  INSERT INTO programs VALUES(1,'bsba-hrdm','Business','HRDM');
  CREATE TABLE research_papers(id INTEGER PRIMARY KEY,slug TEXT UNIQUE,title TEXT,abstract TEXT,keywords TEXT,year INTEGER,program_id INTEGER REFERENCES programs(id),paper_type TEXT,department TEXT,status TEXT,created_at TEXT,updated_at TEXT);
- CREATE TABLE authors(id INTEGER PRIMARY KEY,name TEXT,given_name TEXT,family_name TEXT);
+ CREATE TABLE authors(id INTEGER PRIMARY KEY,name TEXT,given_name TEXT,family_name TEXT,suffix TEXT);
  CREATE TABLE research_paper_authors(paper_id INTEGER REFERENCES research_papers(id),author_id INTEGER REFERENCES authors(id),position INTEGER,PRIMARY KEY(paper_id,author_id));`);
 let injectFailure=false;
 class Statement{constructor(query,values=[]){this.query=query;this.values=values;}bind(...values){return new Statement(this.query,values);}async first(){return sql.prepare(this.query).get(...this.values)||null;}async all(){return {results:sql.prepare(this.query).all(...this.values)};}async run(){const result=sql.prepare(this.query).run(...this.values);return {meta:{changes:Number(result.changes)}};}}
@@ -27,6 +27,8 @@ await writePaper(db,paperInput.parse({...base,abstract:'Updated text'}),id);
 assert.deepEqual({...sql.prepare('SELECT status,department FROM research_papers WHERE id=?').get(id)},{status:'demo',department:'Preserve legacy data'});
 sql.prepare('INSERT INTO research_papers(slug,title,year,program_id,status) VALUES(?,?,?,?,?)').run('historical-duplicate',base.title,base.year,base.program_id,'pending');
 await writePaper(db,paperInput.parse({...base,abstract:'Historical duplicates remain editable'}),id);
+await writePaper(db,paperInput.parse({...base,authors:[{given:'Ana',family:'Reyes',suffix:'Jr.'},{given:'',family:'Sol'}]}),id);
+assert.deepEqual(sql.prepare('SELECT a.name,a.suffix FROM authors a JOIN research_paper_authors pa ON a.id=pa.author_id WHERE pa.paper_id=? ORDER BY position').all(id).map(a=>({...a})),[{name:'Ana Reyes Jr.',suffix:'Jr.'},{name:'Sol',suffix:null}]);
 injectFailure=true;await assert.rejects(()=>writePaper(db,paperInput.parse({...base,title:'Rollback example',authors:[{given:'New',family:'Author'}]})),/Simulated/);injectFailure=false;
 assert.equal(sql.prepare("SELECT COUNT(*) n FROM research_papers WHERE title='Rollback example'").get().n,0);assert.equal(sql.prepare("SELECT COUNT(*) n FROM authors WHERE given_name='New'").get().n,0);
 await Promise.allSettled([writePaper(db,paperInput.parse({...base,title:'Retry example'})),writePaper(db,paperInput.parse({...base,title:'Retry example'}))]);assert.equal(sql.prepare("SELECT COUNT(*) n FROM research_papers WHERE title='Retry example'").get().n,1);

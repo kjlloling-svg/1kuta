@@ -8,8 +8,8 @@ export function SessionRefresh({identity}:{identity:string}){
    if(pending||document.visibilityState==='hidden')return;
    pending=true;
    try{
-    const response=await fetch('/api/auth/me',{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(10000)});
-    if(response.status!==200&&response.status!==401)return;
+    const response=await fetch('/api/auth/me?optional=1',{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(10000)});
+    if(!response.ok)return;
     const data=await response.json() as {user?:{id:string;role:string}};
     const next=data.user?data.user.id+':'+data.user.role:'';
     if(active&&next!==identity)window.location.reload();

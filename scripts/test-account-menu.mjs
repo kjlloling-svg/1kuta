@@ -40,9 +40,9 @@ try {
     assert.equal(await trigger.getAttribute('aria-expanded'),'true');
     await p.waitForFunction(()=>document.activeElement?.getAttribute('role')==='menuitem');
     await p.waitForFunction(text=>document.activeElement?.textContent===text,role==='admin'?'Dashboard':'Favorites');
-    await p.keyboard.press('ArrowDown');await p.waitForFunction(()=>document.activeElement?.textContent==='Log out');
+    await p.keyboard.press('ArrowDown');await p.waitForFunction(()=>document.activeElement?.textContent==='Sign out');
     await p.keyboard.press('ArrowDown');await p.waitForFunction(text=>document.activeElement?.textContent===text,role==='admin'?'Dashboard':'Favorites');
-    await p.keyboard.press('End');await p.waitForFunction(()=>document.activeElement?.textContent==='Log out');
+    await p.keyboard.press('End');await p.waitForFunction(()=>document.activeElement?.textContent==='Sign out');
     await p.keyboard.press('Home');await p.waitForFunction(text=>document.activeElement?.textContent===text,role==='admin'?'Dashboard':'Favorites');
     assert.notEqual(await p.evaluate(()=>getComputedStyle(document.activeElement).outlineStyle),'none','visible keyboard focus');
     await p.keyboard.press('Escape');await panel.waitFor({state:'hidden'});
@@ -63,7 +63,7 @@ try {
    await panel.locator('[data-slot="avatar-fallback"]').waitFor();assert.equal(await panel.locator('[data-slot="avatar-fallback"]').textContent(),'AR');
    assert.equal(await panel.locator('.account-avatar').evaluate(e=>e.getBoundingClientRect().width),34);
    assert.equal(await panel.locator('.account-menu-link').getAttribute('href'),role==='admin'?'/admin':'/profile');
-   assert.equal(await panel.locator('.account-divider + .logout-control button').textContent(),'Log out','logout last after divider');
+   assert.equal(await panel.locator('.account-divider + .logout-control button').textContent(),'Sign out','logout last after divider');
    assert.equal(await panel.evaluate(e=>e.scrollWidth>e.clientWidth+1),false,'account panel overflow');
    assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'open panel page overflow');
    if(role==='public'&&(width===320||width===768||width===1280||width===1440)) {
@@ -85,17 +85,17 @@ try {
  await p.getByRole('button',{name:'Account menu',exact:true}).click();await p.getByRole('menu').waitFor();await p.setViewportSize({width:375,height:1000});await p.getByRole('menu').waitFor({state:'hidden'});
  await p.getByRole('button',{name:'Menu',exact:true}).click();
  await p.route('**/api/auth/logout',r=>r.fulfill({status:503,body:'Test outage'}));
- await p.locator('.mobile-user-account').getByRole('button',{name:'Log out',exact:true}).click();await p.locator('.mobile-user-account [role=alert]').waitFor();
- assert.equal(await p.locator('.mobile-user-account').getByRole('button',{name:'Log out',exact:true}).isEnabled(),true,'logout error permits retry');await p.unroute('**/api/auth/logout');
- await p.locator('.mobile-user-account').getByRole('button',{name:'Log out',exact:true}).click();await p.waitForURL(server.base+'/');
+ await p.locator('.mobile-user-account').getByRole('button',{name:'Sign out',exact:true}).click();await p.locator('.mobile-user-account [role=alert]').waitFor();
+ assert.equal(await p.locator('.mobile-user-account').getByRole('button',{name:'Sign out',exact:true}).isEnabled(),true,'logout error permits retry');await p.unroute('**/api/auth/logout');
+ await p.locator('.mobile-user-account').getByRole('button',{name:'Sign out',exact:true}).click();await p.waitForURL(server.base+'/');
  assert.equal((await c.request.get(server.base+'/api/auth/me')).status(),401,'logout revokes session');await c.close();
  const adminContext=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
  await adminContext.addCookies([{name:server.cookie,value:server.sessions.admin,url:server.base}]);const ap=await adminContext.newPage();
  await ap.goto(server.base+'/faq');await ap.getByRole('button',{name:'Account menu',exact:true}).click();await ap.locator('.account-dropdown').waitFor();
  await ap.route('**/api/auth/logout',r=>r.fulfill({status:503,body:'Test outage'}));
- await ap.getByRole('menuitem',{name:'Log out',exact:true}).click();await ap.locator('.account-dropdown [role=alert]').waitFor();
+ await ap.getByRole('menuitem',{name:'Sign out',exact:true}).click();await ap.locator('.account-dropdown [role=alert]').waitFor();
  assert.equal(await ap.locator('.account-dropdown').isVisible(),true,'logout error remains visible in menu');await ap.unroute('**/api/auth/logout');
- await ap.getByRole('menuitem',{name:'Log out',exact:true}).click();await ap.waitForURL(server.base+'/');
+ await ap.getByRole('menuitem',{name:'Sign out',exact:true}).click();await ap.waitForURL(server.base+'/');
  assert.equal((await adminContext.request.get(server.base+'/api/auth/me')).status(),401,'desktop logout revokes session');await adminContext.close();
  assert.deepEqual(errors,[]);fs.writeFileSync(out+'/matrix.json',JSON.stringify(matrix,null,2));console.log('PASS photo fallback, role checks, keyboard/outside dismissal, responsive menu, logout retry and revocation');
 } finally {await browser?.close();await server.close();}

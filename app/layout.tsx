@@ -32,12 +32,8 @@ function disableDevTools() {
         (event.ctrlKey && event.altKey && !event.shiftKey && key === 'u') ||
         (event.ctrlKey && !event.shiftKey && !event.altKey && key === 'u')) event.preventDefault();
   }, true);
-  // Cancels the whole page context menu, including its normal copy/link actions.
-  document.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-  }, true);
 }
 disableDevTools();
 `;
-export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) {return <html lang="en" className={inter.variable} suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><DesignMotion/><ScrollProgress/><a className="skip-link" href="#main">Skip to content</a><Header/>{children}<Footer /></body></html>; }
+export default async function RootLayout({children}: Readonly<{children:React.ReactNode}>) {return <html lang="en" className={inter.variable} suppressHydrationWarning><head><noscript><style>{".learning-interactive{display:none}"}</style></noscript><script dangerouslySetInnerHTML={{__html:browserShortcutScript}}/><meta name="color-scheme" content="light dark"/><script dangerouslySetInnerHTML={{__html:themeBootstrapScript}}/><script dangerouslySetInnerHTML={{__html:colorVisionBootstrapScript}}/></head><body><DesignMotion/><ScrollProgress/><a className="skip-link" href="#main" tabIndex={0}>Skip to content</a><Header/>{children}<Footer /></body></html>; }
 

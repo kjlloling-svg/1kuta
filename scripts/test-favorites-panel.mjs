@@ -24,7 +24,7 @@ const resolve=(request,data)=>request.resolve({ok:true,json:async()=>data});
 function button(tree,label){if(!tree||typeof tree!=='object')return; if(tree.type==='button'&&tree.props.children===label)return tree;for(const child of [tree.props?.children].flat(Infinity)){const found=button(child,label);if(found)return found;}}
 let tree=render();assert.equal(pending.length,0,'render does not fetch');const initialWrites=writes;flush();assert.equal(writes,initialWrites,'effect does not synchronously set state');assert.equal(pending.length,1);
 pending[0].reject(new Error('Network failed'));await settle();tree=render();assert.ok(button(tree,'Retry'),'failure gives a retry action');
-button(tree,'Retry').props.onClick();tree=render();assert.equal(tree.props.children[1].props.children,'Loading Favorites...');resolve(pending[1],result('First'));await settle();tree=render();
+button(tree,'Retry').props.onClick();tree=render();assert.equal(tree.props.children[1].props.children,'Loading favorites…');resolve(pending[1],result('First'));await settle();tree=render();
 button(tree,'Next').props.onClick();tree=render();flush();assert.equal(pending[2].url,'/api/favorites?page=2');
 listeners.get('favorites-changed')();resolve(pending[3],result('Newest',2));await settle();resolve(pending[2],result('Stale',2));await settle();tree=render();assert.match(JSON.stringify(tree),/Newest/);assert.doesNotMatch(JSON.stringify(tree),/Stale/);
 listeners.get('focus')();for(const hook of hooks)hook?.cleanup?.();const beforeUnmount=writes;resolve(pending[4],result('Unmounted'));await settle();assert.equal(writes,beforeUnmount,'unmounted requests cannot set state');assert.equal(listeners.size,0);

@@ -19,8 +19,12 @@ export async function writePaper(db:D1Database,raw:PaperInput,existingId?:number
  const match=slug?'slug=?':'id=?',key=slug||existingId!;
  ops.push(db.prepare(`DELETE FROM research_paper_authors WHERE paper_id=(SELECT id FROM research_papers WHERE ${match})`).bind(key));
  input.authors.forEach((author,index)=>{
-  ops.push(db.prepare(`INSERT INTO authors (name,given_name,family_name) SELECT ?,?,? WHERE EXISTS (SELECT 1 FROM research_papers WHERE ${match}) AND NOT EXISTS (SELECT 1 FROM authors WHERE given_name=? AND family_name=?)`).bind(`${author.given} ${author.family}`,author.given,author.family,key,author.given,author.family));
-  ops.push(db.prepare(`INSERT INTO research_paper_authors (paper_id,author_id,position) SELECT p.id,(SELECT id FROM authors WHERE given_name=? AND family_name=? ORDER BY id LIMIT 1),? FROM research_papers p WHERE p.${match}`).bind(author.given,author.family,index,key));
+  const suffix=author.suffix||'';
+  const name=[author.given,author.family,suffix].filter(Boolean).join(' ');
+  const nameMatch="COALESCE(given_name,'')=? AND COALESCE(family_name,name)=? AND COALESCE(suffix,'')=?";
+  const nameValues=[author.given,author.family,suffix];
+  ops.push(db.prepare(`INSERT INTO authors (name,given_name,family_name,suffix) SELECT ?,?,?,? WHERE EXISTS (SELECT 1 FROM research_papers WHERE ${match}) AND NOT EXISTS (SELECT 1 FROM authors WHERE ${nameMatch})`).bind(name,author.given||null,author.family,suffix||null,key,...nameValues));
+  ops.push(db.prepare(`INSERT INTO research_paper_authors (paper_id,author_id,position) SELECT p.id,(SELECT id FROM authors WHERE ${nameMatch} ORDER BY id LIMIT 1),? FROM research_papers p WHERE p.${match}`).bind(...nameValues,index,key));
  });
  const results=await db.batch(ops);
  if(!results[0].meta.changes){if(slug)throw new DuplicatePaperError();throw new Error('Record not found');}

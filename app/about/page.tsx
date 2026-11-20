@@ -39,12 +39,12 @@ const officials=[
   },
   {
     "name": "Ian Titus Ramones",
-    "role": "Program Chairperson, BSIT-Computer Technology",
+    "role": "Program Chairperson, BSIT – Computer Technology",
     "image": "/images/about/faculty/SIR Ian Titus Ramones.jpg"
   },
   {
     "name": "Kevo Riel U. Tarray",
-    "role": "Program Chairperson, BSEd Math",
+    "role": "Program Chairperson, BSEd Mathematics",
     "image": "/images/about/faculty/SIR Kevo Riel U. Tarray.jpg"
   },
   {
@@ -114,10 +114,10 @@ export default async function About() {
       </section>
       <section id="team" className="about-section" aria-labelledby="team-title" data-about-section="team">
         <p className="about-label">02 / THE PEOPLE</p>
-        <h2 id="team-title">We, the Researchers</h2>
+        <h2 id="team-title">Project researchers</h2>
         <ul className="about-people about-researchers">{team.map(person => <PersonCard key={person.name} person={person} researcher />)}</ul>
-        <h3 className="about-group-title" id="officials-title">Faculty &amp; Campus Officials</h3>
-        <p className="about-note">Roles supplied for this project; current appointments should be confirmed before an institutional launch.</p>
+        <h3 className="about-group-title" id="officials-title">Faculty and campus officials</h3>
+        <p className="about-note">The roles shown were supplied for this project.</p>
         <ul className="about-people about-leadership" aria-labelledby="officials-title">{leadership.map(person => <PersonCard key={person.name} person={person} />)}</ul>
         <ul className="about-people about-faculty">{officials.map(person => <PersonCard key={person.name} person={person} />)}</ul>
       </section>
@@ -130,7 +130,7 @@ export default async function About() {
             <div><dt>Research years represented</dt><dd>{counts.years.toLocaleString('en-US')}</dd></div>
             <div><dt>Authors of verified papers</dt><dd>{counts.authors.toLocaleString('en-US')}</dd></div>
           </dl>
-          <p className="about-note">Counts reflect verified records currently in the archive. Demo and pending records are excluded.{counts.papers === 0 ? ' No verified papers have been added yet.' : ''}</p>
+          <p className="about-note">Counts reflect verified records currently in the archive. Demo and pending records are excluded.</p>
         </> : counts && counts.papers === 0 ? <p className="about-note">The archive is being built. Verified research will appear here.</p> : <p className="about-note" role="status">Archive statistics are currently unavailable. Please check again later.</p>}
       </section>
       <section id="values" className="about-section" aria-labelledby="values-title" data-about-section="values">
@@ -139,11 +139,10 @@ export default async function About() {
         <ol className="about-values">{values.map(([title,description]) => <li key={title}><h3>{title}</h3><p>{description}</p></li>)}</ol>
       </section>
       <section id="contact" className="about-section about-contact" aria-labelledby="contact-title" data-about-section="contact">
-        <p className="about-label">05 / EXPLORE & CONTACT</p>
+        <p className="about-label">05 / EXPLORE</p>
         <h2 id="contact-title">Explore the research.</h2>
         <p>Find papers by title, author, program, keyword, or year.</p>
         <div className="about-actions"><Link className="about-primary" href="/research-papers">Browse the archive <span aria-hidden="true">↗</span></Link><Link className="about-secondary" href="/faq">Read the FAQ</Link></div>
-        <p className="about-note">Contact details coming soon.</p>
       </section>
       <a className="about-back" href="#about-top">Back to top ↑</a>
     </div>

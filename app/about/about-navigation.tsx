@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const links = [['story', 'Story'], ['team', 'Team'], ['values', 'Values'], ['contact', 'Contact']] as const;
+const links = [['story', 'Story'], ['team', 'Team'], ['values', 'Values'], ['contact', 'Explore']] as const;
 
 export function AboutNavigation() {
   const [active, setActive] = useState<string>('story');

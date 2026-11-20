@@ -14,6 +14,7 @@ html .paper-card .card-metadata{display:flex;flex-wrap:wrap;gap:4px 10px;color:v
 html .paper-card .card-metadata span{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 html .paper-card .card-keywords-slot{min-height:48px}
 html .paper-card .card-keywords{display:flex;flex-wrap:nowrap;gap:6px;min-height:36px;margin:0 0 12px;min-width:0}
+html .paper-card .card-keywords-expanded{flex-wrap:wrap}
 html .paper-card .keyword-chip{display:block;min-width:0;max-width:45%;min-height:36px;padding:8px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:11px;border-radius:8px;box-shadow:none;line-height:18px;flex:0 1 auto}
 html .paper-card .keyword-chip:last-child{flex-shrink:0;max-width:40%}
 html .paper-card .keyword-chip:hover{background:var(--soft)}
