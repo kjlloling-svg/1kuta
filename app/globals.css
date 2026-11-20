@@ -414,13 +414,10 @@ html[data-scrolled="true"] .brand-mark{transform:scale(1)}
 .brand-text{display:flex;flex-direction:column;line-height:1.2;min-width:0}
 .brand-text strong{font-size:18px;font-weight:700;letter-spacing:-.035em}
 .brand-text small{font-size:10px;max-width:155px;line-height:1.25;letter-spacing:.015em;color:var(--muted)}
-.desktop-nav{display:flex;align-items:center;gap:5px;margin-left:auto}
+.desktop-nav{display:flex;align-items:center;gap:5px;margin-inline:auto}
 .desktop-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;font-size:12px;white-space:nowrap;border:1px solid var(--line);border-radius:14px;background:var(--surface-gradient);color:var(--green);box-shadow:var(--shadow-raised)}
-.header-actions{display:flex;align-items:center;gap:10px;flex:none}
+.header-actions{display:flex;align-items:center;flex:none}
 .header-actions form{margin:0}
-.header-search{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:14px;background:var(--green);color:var(--on-accent);font-size:12px;font-weight:700;white-space:nowrap;box-shadow:var(--shadow-raised)}
-.header-search:hover{background:var(--green-deep);color:var(--on-accent)}
-.header-account-slot{display:flex;justify-content:flex-end;align-items:center;width:144px;flex:none}
 html .account-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;min-width:44px;max-width:100%;padding:4px 8px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);box-shadow:none;flex:none}
 html .account-trigger:hover{background:var(--soft)}
 @media (hover:hover) and (pointer:fine){
@@ -447,7 +444,7 @@ html :is(.account-dropdown,.mobile-user-account) :is(.account-menu-link,.account
 :is(.account-dropdown,.mobile-user-account) .logout-control{display:block;min-width:0}
 :is(.account-dropdown,.mobile-user-account) .logout-control [role="alert"]{display:block;padding:8px 12px;color:var(--error);font-size:13px;overflow-wrap:anywhere}
 .mobile-user-account{min-width:0;display:grid;gap:8px}
-@media(min-width:1440px){.header-account-slot{width:160px}.account-first-name{display:block}}
+@media(min-width:1440px){.account-first-name{display:block}}
 @media(max-width:1279px){html .account-dropdown{display:none}}
 @media(max-width:360px){.header-inner .brand-text{display:none}}
 .header-actions .account-link{font-size:12px;padding:8px 10px;white-space:nowrap}
@@ -510,8 +507,8 @@ button,.button,.keyword-chip,.theme-toggle{background:var(--surface-gradient)}
 button:active,.button:active,.keyword-chip:active,.directory-card:active,[aria-pressed="true"],.menu-trigger[aria-expanded="true"]{box-shadow:var(--shadow-pressed)}
 input,textarea,select{box-shadow:var(--shadow-pressed)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.button-primary,.header-search,.hero-search button{background:var(--green);color:var(--on-accent);border-color:var(--green)}
-.button-primary:hover,.header-search:hover,.hero-search button:hover{background:var(--green-deep);color:var(--on-accent)}
+.button-primary,.hero-search button{background:var(--green);color:var(--on-accent);border-color:var(--green)}
+.button-primary:hover,.hero-search button:hover{background:var(--green-deep);color:var(--on-accent)}
 button:disabled,.button[aria-disabled="true"]{transform:none;background:var(--soft);color:var(--muted);box-shadow:var(--shadow-pressed)}
 @media(max-width:1279px){:root,:root[data-theme]{--header-expanded:80px;--header-compact:64px}.desktop-nav,.header-actions{display:none}.mobile-navigation{display:block}.brand-text small{max-width:190px}}
 @media(min-width:1280px){.mobile-navigation{display:none}.desktop-nav,.header-actions{display:flex}}

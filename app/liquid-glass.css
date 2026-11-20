@@ -114,7 +114,7 @@ html body :is(.hero-search, .favorite-tooltip) {
 }
 
 html body :is(
-  .button, .desktop-nav a, .mobile-panel nav a, .header-search, .account-link,
+  .button, .desktop-nav a, .mobile-panel nav a, .account-link,
   .account-trigger, .theme-toggle, .color-vision-trigger, .menu-trigger,
   .filter-head button, .paper-action, .pagination :is(a, button),
   .dialog-close, .learning-tabs button, .admin-record-actions button
@@ -132,7 +132,7 @@ html body :is(
   background: var(--liquid-highlight), var(--liquid-fill);
 }
 
-html body :is(.button-primary, .header-search, .paper-action-primary, .hero-search button) {
+html body :is(.button-primary, .paper-action-primary, .hero-search button) {
   background-image: var(--liquid-primary-shine);
   background-color: var(--liquid-primary);
   color: var(--on-accent);
@@ -213,11 +213,11 @@ html .space-background::after {
     animation: liquid-sheen var(--motion-reveal-duration) var(--motion-out) both;
   }
 
-  html body :is(.button, .header-search, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):hover {
+  html body :is(.button, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):hover {
     transform: translateY(-1px) scale(1.015);
   }
 
-  html body :is(.button, .header-search, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):active {
+  html body :is(.button, .paper-action, .learning-tabs button):not(:disabled, [aria-disabled="true"]):active {
     transform: scale(var(--motion-press));
   }
 }
